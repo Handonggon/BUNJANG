@@ -1,5 +1,6 @@
 package kr.co.study.bunjang.component.properties;
 
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 

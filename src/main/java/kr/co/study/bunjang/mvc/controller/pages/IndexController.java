@@ -8,7 +8,7 @@ import springfox.documentation.annotations.ApiIgnore;
 
 @Slf4j
 @Controller
-public class MainController {
+public class IndexController {
 
 	@ApiIgnore
 	@RequestMapping(value = "/")
