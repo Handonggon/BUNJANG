@@ -1,0 +1,144 @@
+buildscript {
+	ext {
+		swaggerVersion = "3.0.0"
+		queryDslVersion = "5.0.0"
+	}
+}
+
+plugins {
+	id 'org.springframework.boot' version '2.7.4'
+	id 'io.spring.dependency-management' version '1.0.14.RELEASE'
+	id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
+	id 'java'
+	id 'war'
+}
+
+group = 'kr.co.study'
+version = '0.0.1'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	//implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	//implementation 'org.springframework.boot:spring-boot-starter-cache'
+	//implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	//implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	//providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	//implementation 'org.springframework.session:spring-session-core'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	// Thymeleaf
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+
+	// Lucty XSS Filter
+	implementation 'com.navercorp.lucy:lucy-xss-servlet:2.0.1'
+	implementation 'com.navercorp.lucy:lucy-xss'
+
+	implementation 'org.apache.commons:commons-text:1.8'
+	implementation 'com.fasterxml.jackson.core:jackson-databind'
+
+	// DB & JPA
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+	runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
+	runtimeOnly 'mysql:mysql-connector-java'
+	runtimeOnly 'com.oracle.database.jdbc:ojdbc6:11.2.0.4'
+
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+	
+	// Swagger
+	implementation "io.springfox:springfox-boot-starter:${swaggerVersion}"
+	implementation "io.springfox:springfox-swagger-ui:${swaggerVersion}"
+
+	// QueryDSL
+	implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
+	implementation "com.querydsl:querydsl-core:${queryDslVersion}"
+	annotationProcessor 'javax.persistence:javax.persistence-api'
+	annotationProcessor 'javax.annotation:javax.annotation-api'
+	implementation "com.querydsl:querydsl-apt:${queryDslVersion}:jpa"
+}
+
+def querydslDir = "$buildDir/generated/querydsl"
+
+querydsl {
+	library = "com.querydsl:querydsl-apt"
+	jpa = true
+	querydslSourcesDir = querydslDir
+}
+
+sourceSets {
+	main.java.srcDir querydslDir
+}
+
+compileQuerydsl.doFirst {
+	if(file(querydslDir).exists())
+		delete(file(querydslDir))
+}
+
+compileQuerydsl{
+	options.annotationProcessorPath = configurations.querydsl
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+	querydsl.extendsFrom compileClasspath
+}
+
+test {
+	useJUnitPlatform()
+}
+
+war {
+	def activeProfile = 'local'
+
+	if(project.hasProperty('profile')) {
+		activeProfile = profile
+	}
+
+	processResources {
+		exclude('application.yaml', 'application-*.yaml')
+	}
+
+	into('WEB-INF/classes') {
+		from "src/main/resources/application-${activeProfile}.yaml"
+	}
+
+	rename "application-${activeProfile}.yaml", "application.yaml"
+
+	archiveFileName = "ROOT.war"
+}
+
+bootWar {
+	def activeProfile = 'local'
+
+	if(project.hasProperty('profile')) {
+		activeProfile = profile
+	}
+
+	processResources {
+		exclude('application.yaml', 'application-*.yaml')
+	}
+
+	into('WEB-INF/classes') {
+		from "src/main/resources/application-${activeProfile}.yaml"
+	}
+
+	rename "application-${activeProfile}.yaml", "application.yaml"
+
+	archiveFileName = "ROOT.war"
+}

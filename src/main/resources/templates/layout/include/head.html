@@ -1,0 +1,63 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<th:block th:fragment="headFragment">
+		<!-- Vendor JS -->
+		<script type="text/javascript" th:src="@{/js/vendor/jquery/jquery-3.6.0.min.js}"></script>
+		<script type="text/javascript" th:src="@{/js/vendor/jquery/form/jquery.form.min.js}"></script>
+		<script type="text/javascript" th:src="@{/js/vendor/jquery/ui/jquery-ui.min.js}"></script>
+		<link rel="stylesheet" th:href="@{/js/vendor/jquery/ui/jquery-ui.min.css}" />
+		
+		<script type="text/javascript" th:src="@{/js/vendor/axios/axios.min.js}"></script>
+		
+		<script type="text/javascript" th:src="@{/js/vendor/bootstrap/bootstrap.min.js}"></script>
+		<link rel="stylesheet" th:href="@{/js/vendor/bootstrap/bootstrap.min.css}" />
+		
+		<script type="text/javascript" th:src="@{/js/vendor/font-awesome/all.min.js}"></script>
+		<script type="text/javascript" th:src="@{/js/vendor/feather-icons/feather.min.js}"></script>
+		
+		<!-- tui -->
+		<script type="text/javascript" th:src="@{/js/vendor/tui/tooltip/tooltip.js}"></script>
+		<link rel="stylesheet" th:href="@{/js/vendor/tui/tooltip/tooltip.css}" />
+		<script type="text/javascript" th:src="@{/js/vendor/tui/pagination/tui-pagination.min.js}"></script>
+		<link rel="stylesheet" th:href="@{/js/vendor/tui/pagination/tui-pagination.min.css}" />
+		<script type="text/javascript" th:src="@{/js/vendor/tui/selectbox/toastui-select-box.min.js}"></script>
+		<link rel="stylesheet" th:href="@{/js/vendor/tui/selectbox/toastui-select-box.min.css}" />
+		<script type="text/javascript" th:src="@{/js/vendor/tui/datepicker/tui-date-picker.min.js}"></script>
+		<link rel="stylesheet" th:href="@{/js/vendor/tui/datepicker/tui-date-picker.min.css}" />
+		<script type="text/javascript" th:src="@{/js/vendor/tui/timepicker/tui-time-picker.min.js}"></script>
+		<link rel="stylesheet" th:href="@{/js/vendor/tui/timepicker/tui-time-picker.min.css}" />
+		<script type="text/javascript" th:src="@{/js/vendor/tui/grid/tui-grid.min.js}"></script>
+		<link rel="stylesheet" th:href="@{/js/vendor/tui/grid/tui-grid.min.css}" />
+		
+		<script type="module" th:src="@{/js/vendor/tui/TuiSelectBoxAdapter.js}" defer></script>
+		<script type="module" th:src="@{/js/vendor/tui/TuiGridAdapter.js}" defer></script>
+		
+		<script type="text/javascript" th:src="@{/js/vendor/chartjs/chart.min.js}"></script>
+		
+		<script type="text/javascript" th:src="@{/js/vendor/litepicker/bundle.js}"></script>
+		<script type="text/javascript" th:src="@{/js/vendor/litepicker/litepicker.js}"></script>
+		<link rel="stylesheet" th:href="@{/js/vendor/litepicker/litepicker.css}" />
+		
+		<script type="text/javascript" th:src="@{/js/vendor/postcode/postcode.js}"></script>
+		
+		<script type="text/javascript" th:src="@{/js/vendor/smarteditor/js/service/HuskyEZCreator.js}" charset="utf-8"></script>
+		
+		<!-- JS -->
+		<script type="text/javascript" th:src="@{/js/common.js}"></script>
+		<script type="text/javascript" th:src="@{/js/utils.js}"></script>
+		<script type="text/javascript" th:src="@{/js/cookie.js}"></script>
+		<script type="text/javascript" th:src="@{/js/popup.js}"></script>
+		
+		<!-- CSS -->
+		<link rel="stylesheet" th:href="@{/css/font.css}" />
+		<link rel="stylesheet" th:href="@{/css/reset.css}" />
+		<link rel="stylesheet" th:href="@{/css/style.css}" />
+		
+		<!-- Meta -->
+		<meta charset="UTF-8">
+		<meta name="author" content="Soin">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>KZ SSO</title>
+		<meta name="keyword" content="SSO">
+		<meta name="description" content="KoreaZinc SSO">
+	</th:block>
+</html>

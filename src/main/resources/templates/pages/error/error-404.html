@@ -1,0 +1,21 @@
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/layout/defaultLayout}">
+
+        <th:block layout:fragment="contentFragment">
+            
+            <section>
+                <header></header>
+
+                <article>
+                    <div th:text="${status}"></div>
+                    
+                    Hello
+                    <div th:text="#{error.msg-0001}"></div>
+                    
+                </article>
+
+                <footer></footer>
+            </section>
+        </th:block>
+
+</html>

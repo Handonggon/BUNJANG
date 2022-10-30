@@ -1,0 +1,87 @@
+server:
+  error:
+    path: /error
+    whitelabel:
+      enabled: false
+
+logging:
+  config: classpath:logback/logback-dev.xml
+
+spring:
+  config:
+    activate:
+      onProfile: dev
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+  messages:
+    basename: classpath:messages/
+    encoding: UTF-8
+    cacheDuration: -1
+    fallbackToSystemLocale: false
+  web:
+    resources:
+      staticLocations: classpath:static/
+  thymeleaf:
+    enabled: true
+    prefix: classpath:templates/
+    suffix: .html
+    encoding: UTF-8
+    mode: HTML
+    check-template: true
+    check-template-location: true
+    cache: true
+
+  devtools: #devtools
+    livereload:
+      enabled: false
+    restart:
+      enabled: false
+
+  datasource: #DB 접속정보
+    home:
+      driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+      jdbcUrl: jdbc:log4jdbc:mariadb://172.10.0.156:3030/kz_utms
+      username: root
+      password: root!@345
+      connectionTimeout : 30000
+      maximumPoolSize: 10
+      dataSourceProperties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+    kzerp:
+      driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+      jdbcUrl: jdbc:log4jdbc:sqlserver://172.11.0.102:1433;databaseName=KOREAZINC;encrypt=false;sendStringParametersAsUnicode=false
+      username: koreazincinfo
+      password: Sorin03)^
+      connectionTimeout : 30000
+      maximumPoolSize: 10
+      dataSourceProperties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+
+  jpa: #JPA 설정
+    open-in-view: false
+    properties:
+      hibernate:
+        showSql: false
+        formatSql: false
+        useSqlComments: false
+        globallyQuotedIdentifiers: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: validate
+      naming:
+        physical-strategy: kr.co.study.bunjang.configuration.datasource.CustomNamingStrategy
+
+azure:
+  tenant:
+    id: 2002127d-ecd5-424c-b995-a6f750055ecd
+  client:
+    id: 0962a9ea-d046-4b9a-bcfe-23a20a885230
+    url: api://0962a9ea-d046-4b9a-bcfe-23a20a885230
+    secret:

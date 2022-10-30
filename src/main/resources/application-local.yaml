@@ -1,0 +1,97 @@
+server:
+  port: 20000
+  error:
+    path: /error
+    whitelabel:
+      enabled: false
+
+logging:
+  config: classpath:logback/logback-local.xml
+
+spring:
+  config:
+    activate:
+      onProfile: local
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+  messages:
+    basename: messages/messages
+    encoding: UTF-8
+    cacheDuration: 10
+    fallbackToSystemLocale: false
+  web:
+    resources:
+      staticLocations: classpath:static/
+  thymeleaf:
+    # thymeleaf 사용 여부
+    enabled: true
+    # template 경로 접두사
+    prefix: classpath:templates/
+    # template 경로 접미사
+    suffix: .html
+    # template 인코딩
+    encoding: UTF-8
+    #기본 template 모드
+    mode: HTML
+    # 렌더링 전에 template 존재 여부 확인 
+    checkTemplate: true
+    # template 위치 존재 여부 확인
+    checkTemplate-location: true
+    # 캐시 사용 여부 확인
+    cache: false
+
+  devtools: #devtools
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+
+  datasource: #DB 접속정보
+    home:
+      driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+      jdbcUrl: jdbc:log4jdbc:mariadb://20.214.203.241:3306/BUNJANG
+      username: root
+      password: root!@345
+      connectionTimeout : 30000
+      maximumPoolSize: 10
+      dataSourceProperties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+
+  jpa: #JPA 설정
+    #영속성의 범위
+    open-in-view: false
+    properties:
+      hibernate:
+        #하이버네이트가 실행하는 모든 SQL문을 콘솔로 출력해 준다.
+        showSql: true
+        #콘솔에 출력되는 JPA 실행 쿼리를 가독성있게 표현한다.
+        formatSql: true
+        #디버깅이 용이하도록 SQL문 이외에 추가적인 정보를 출력해 준다.
+        useSqlComments: true
+        #예약여 사용 가능 여부
+        globallyQuotedIdentifiers: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+      #create: 기존테이블 삭제 후 다시 생성 (DROP + CREATE)
+      #create-drop: create와 같으나 종료시점에 테이블 DROP
+      #update: 변경분만 반영
+      #validate: 엔티티와 테이블이 정상 매핑되었는지만 확인
+      #none: 사용하지 않음
+      naming:
+        #논리적 명명 전략
+        #implicitStrategy:
+        #물리적 명명 전략
+        physicalStrategy: kr.co.study.bunjang.configuration.datasource.CustomNamingStrategy
+
+azure:
+  tenant:
+    id: 2002127d-ecd5-424c-b995-a6f750055ecd
+  client:
+    id: deec18ee-6b7e-4153-9a3b-1b79f7629aa7
+    url: api://deec18ee-6b7e-4153-9a3b-1b79f7629aa7
+    secret:
