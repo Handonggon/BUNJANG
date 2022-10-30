@@ -41,3 +41,38 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+*, ::before, ::after {
+    box-sizing: border-box;
+}
+
+a {
+    color: rgb(33, 33, 33);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button {
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+}
+button, input[type="text"], input[type="tel"], input[type="number"] {
+    appearance: none;
+}
+button, input {
+    padding: 0px;
+    border: 0px;
+}

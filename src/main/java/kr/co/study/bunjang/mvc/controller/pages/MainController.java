@@ -14,6 +14,7 @@ public class MainController {
 	@RequestMapping(value = "/")
 	public String login() {
 		log.debug("MainController - login");
-		return "redirect:/swagger-ui/index.html";
+		//return "redirect:/swagger-ui/index.html";
+		return "pages/index";
 	}
 }
