@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -67,7 +68,7 @@ public class HttpUtils {
 	}
 
 	private String getBaseUrl(HttpServletRequest request) {
-		return request.getRequestURL().toString().replace(request.getRequestURI(), "");
+		return request.getRequestURL().toString().replace(request.getRequestURI(), StringUtils.EMPTY);
 	}
 
 	public String getBaseUrl() {
@@ -89,7 +90,7 @@ public class HttpUtils {
 			}
 		}
 		log.info("HttpUtils - getAuthorization: Return Empty");
-		return "";
+		return StringUtils.EMPTY;
 	}
 
 	public String getAuthorization(String type) throws IOException {
