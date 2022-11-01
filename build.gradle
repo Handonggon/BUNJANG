@@ -69,18 +69,24 @@ dependencies {
 	annotationProcessor 'javax.persistence:javax.persistence-api'
 	annotationProcessor 'javax.annotation:javax.annotation-api'
 	implementation "com.querydsl:querydsl-apt:${queryDslVersion}:jpa"
+	
+	//Nullable Warning 처리
+	implementation 'com.google.code.findbugs:jsr305:3.0.2'
 }
 
 def querydslDir = "$buildDir/generated/querydsl"
 
 querydsl {
-	library = "com.querydsl:querydsl-apt"
 	jpa = true
 	querydslSourcesDir = querydslDir
 }
 
 sourceSets {
-	main.java.srcDir querydslDir
+	main{
+		java {
+			srcDirs = ["$projectDir/src/main/java", querydslDir]
+		}
+	}
 }
 
 compileQuerydsl.doFirst {
@@ -88,7 +94,7 @@ compileQuerydsl.doFirst {
 		delete(file(querydslDir))
 }
 
-compileQuerydsl{
+compileQuerydsl {
 	options.annotationProcessorPath = configurations.querydsl
 }
 
