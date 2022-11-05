@@ -1,0 +1,54 @@
+html {
+    line-height: 1.15;
+    text-size-adjust: 100%;
+}
+
+header {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    border-bottom: 1px solid rgb(238, 238, 238);
+    height: 40px;
+    background: rgb(255, 255, 255);
+}
+
+nav {
+    position: sticky;
+    display: flex;
+    width: 100%;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding-top: 35px;
+    background: rgb(255, 255, 255);
+    z-index: 10;
+    border-bottom: 1px solid rgb(238, 238, 238);
+    top: 0px;
+    left: 0px;
+}
+
+body {
+    background-color: rgb(249, 249, 249);
+    font-size: 14px;
+}
+html, body {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 400;
+    color: rgb(33, 33, 33);
+}
+body {
+    margin: 0px;
+}
+body {
+    line-height: 1;
+}
+
+
+
+
+footer {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    background: rgb(255, 255, 255);
+}

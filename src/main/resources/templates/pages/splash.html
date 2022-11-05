@@ -1,6 +1,257 @@
 <html xmlns:th="http://www.thymeleaf.org"
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/layout/defaultLayout}">
     <th:block layout:fragment="contentFragment">
+        <style>
+.jJqPCh {
+    background: rgb(255, 255, 255);
+    width: 100%;
+    min-width: 1024px;
+    overflow: hidden;
+}
+
+.jJqPCh .splash-main {
+    height: 450px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(/image/splash_main.jpg);
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position: relative;
+}
+
+.jJqPCh h1 {
+    width: 1024px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    color: rgb(255, 255, 255);
+    line-height: 1;
+    padding-top: 8.1875rem;
+}
+.jJqPCh h1 small {
+    margin-top: 10px;
+    font-size: 56px;
+    font-weight: bold;
+    letter-spacing: -4px;
+    color: rgb(255, 255, 255);
+    margin-bottom: 40px;
+    line-height: 1;
+    display: block;
+}
+.ftmUGg {
+    height: 60px;
+    display: flex;
+    position: relative;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 2px;
+    box-shadow: rgb(0 0 0 / 20%) 0px 5px 15px 0px;
+}
+.ftmUGg input {
+    width: 320px;
+    height: 100%;
+    padding: 0px 52px;
+    font-size: 18px;
+    letter-spacing: -1px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+.ftmUGg button {
+    width: 150px;
+    height: 100%;
+    background: rgb(247, 0, 0);
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: -1px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+.ftmUGg::after {
+    content: "";
+    width: 22px;
+    height: 22px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMiIgdmlld0JveD0iMCAwIDIyIDIyIj4KICAgIDxnIGZpbGw9IiM3MjcwN0YiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTE1Ljc4MiAxNC4xODRjLS42NzgtLjY3LTEuNTI1LS42Ny0yLjE5OSAwLS41MTQuNTEtMS4wMjggMS4wMi0xLjUzMyAxLjUzOC0uMTM4LjE0Mi0uMjU1LjE3Mi0uNDI0LjA3Ny0uMzMyLS4xODEtLjY4Ni0uMzI4LTEuMDA2LS41MjctMS40OS0uOTM3LTIuNzM5LTIuMTQyLTMuODQ1LTMuNDk5LS41NDgtLjY3My0xLjAzNi0xLjM5NS0xLjM3OC0yLjIwNy0uMDY5LS4xNjQtLjA1Ni0uMjcyLjA3OC0uNDA2LjUxNC0uNDk3IDEuMDE1LTEuMDA3IDEuNTItMS41MTYuNzA1LS43MDkuNzA1LTEuNTM4LS4wMDQtMi4yNS0uNDAxLS40MDctLjgwMy0uODA0LTEuMjA1LTEuMjEtLjQxNS0uNDE1LS44MjUtLjgzNC0xLjI0NC0xLjI0NC0uNjc4LS42NjEtMS41MjUtLjY2MS0yLjE5OS4wMDQtLjUxOC41MS0xLjAxNSAxLjAzMi0xLjU0MiAxLjUzMy0uNDg4LjQ2My0uNzM0IDEuMDI4LS43ODYgMS42OS0uMDgyIDEuMDc1LjE4MSAyLjA5LjU1MyAzLjA4Ljc2IDIuMDQ3IDEuOTE4IDMuODY1IDMuMzIyIDUuNTMzIDEuODk2IDIuMjU1IDQuMTYgNC4wMzkgNi44MDggNS4zMjYgMS4xOTIuNTc5IDIuNDI3IDEuMDI0IDMuNzcgMS4wOTcuOTI1LjA1MiAxLjcyOS0uMTgxIDIuMzcyLS45MDMuNDQtLjQ5Mi45MzgtLjk0MSAxLjQwNC0xLjQxMi42OTEtLjcuNjk2LTEuNTQ3LjAwOS0yLjIzOC0uODItLjgyNS0xLjY0Ni0xLjY0NS0yLjQ3MS0yLjQ2NnpNMTUuNjgzIDExLjAzMmwxLjU5NC0uMjczYTcuMTI0IDcuMTI0IDAgMCAwLTEuOTkyLTMuODQ0IDcuMDg2IDcuMDg2IDAgMCAwLTQuMDYtMi4wMjZMMTEgNi40OWE1LjQ5OCA1LjQ5OCAwIDAgMSAzLjE0NSAxLjU2OSA1LjQ5NyA1LjQ5NyAwIDAgMSAxLjUzOCAyLjk3MnpNMTcuOTYzIDMuMzZBMTEuNzUzIDExLjc1MyAwIDAgMCAxMS4yMjUgMEwxMSAxLjYwM2ExMC4xOTEgMTAuMTkxIDAgMCAxIDUuODIzIDIuOTAyIDEwLjE4MyAxMC4xODMgMCAwIDEgMi44NTUgNS41MDhsMS41OTQtLjI3MmExMS44NCAxMS44NCAwIDAgMC0zLjMwOS02LjM4eiIvPgogICAgPC9nPgo8L3N2Zz4K);
+    position: absolute;
+    top: 19px;
+    left: 20px;
+}
+
+
+
+
+.jJqPCh .splash-section.talk {
+    background-image: url(/image/bungaetalk.jpg);
+}
+.jJqPCh .splash-section {
+    height: 820px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+    padding: 107px 0px;
+    transition: background 0.5s linear 0s;
+}
+.jJqPCh .splash-section button.selected {
+    opacity: 1;
+}
+.gqJzzS {
+    background: none;
+    border: none;
+    padding: 0px;
+    margin: 0px 0px 50px 730px;
+    width: 285px;
+    height: 114px;
+    display: block;
+    opacity: 0.2;
+    transition: opacity 0.5s linear 0s;
+}
+.gqJzzS h5 {
+    font-size: 42px;
+    font-weight: bold;
+    color: rgb(34, 34, 34);
+    line-height: 1;
+    letter-spacing: -2px;
+    margin-bottom: 12px;
+    display: flex;
+}
+.jJqPCh .splash-review {
+    padding: 80px;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.jJqPCh .splash-review > img {
+    margin-bottom: 20px;
+}
+.jJqPCh .splash-review h2 {
+    font-size: 42px;
+    line-height: 1;
+    letter-spacing: -3px;
+    font-weight: bold;
+}
+.jJqPCh .splash-review h2 small {
+    margin-top: 20px;
+    color: rgb(204, 204, 204);
+    line-height: 1;
+    letter-spacing: -1px;
+    font-size: 16px;
+    margin-bottom: 40px;
+    display: block;
+    text-align: center;
+}
+.jJqPCh .splash-review .splash-reviews {
+    display: flex;
+    padding-bottom: 50px;
+    border-bottom: 1px solid rgb(238, 238, 238);
+    margin-bottom: 50px;
+}
+
+
+
+
+
+
+
+.iOIUKh {
+    font-size: 16px;
+    text-align: center;
+    line-height: 1.75;
+    letter-spacing: -1px;
+    margin-right: 65px;
+    display: block;
+}
+.ftmUGg {
+    height: 60px;
+    display: flex;
+    position: relative;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 2px;
+    box-shadow: rgb(0 0 0 / 20%) 0px 5px 15px 0px;
+}
+.ftmUGg input {
+    width: 320px;
+    height: 100%;
+    padding: 0px 52px;
+    font-size: 18px;
+    letter-spacing: -1px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+.ftmUGg button {
+    width: 150px;
+    height: 100%;
+    background: rgb(247, 0, 0);
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: -1px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+.ftmUGg::after {
+    content: "";
+    width: 22px;
+    height: 22px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMiIgdmlld0JveD0iMCAwIDIyIDIyIj4KICAgIDxnIGZpbGw9IiM3MjcwN0YiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTE1Ljc4MiAxNC4xODRjLS42NzgtLjY3LTEuNTI1LS42Ny0yLjE5OSAwLS41MTQuNTEtMS4wMjggMS4wMi0xLjUzMyAxLjUzOC0uMTM4LjE0Mi0uMjU1LjE3Mi0uNDI0LjA3Ny0uMzMyLS4xODEtLjY4Ni0uMzI4LTEuMDA2LS41MjctMS40OS0uOTM3LTIuNzM5LTIuMTQyLTMuODQ1LTMuNDk5LS41NDgtLjY3My0xLjAzNi0xLjM5NS0xLjM3OC0yLjIwNy0uMDY5LS4xNjQtLjA1Ni0uMjcyLjA3OC0uNDA2LjUxNC0uNDk3IDEuMDE1LTEuMDA3IDEuNTItMS41MTYuNzA1LS43MDkuNzA1LTEuNTM4LS4wMDQtMi4yNS0uNDAxLS40MDctLjgwMy0uODA0LTEuMjA1LTEuMjEtLjQxNS0uNDE1LS44MjUtLjgzNC0xLjI0NC0xLjI0NC0uNjc4LS42NjEtMS41MjUtLjY2MS0yLjE5OS4wMDQtLjUxOC41MS0xLjAxNSAxLjAzMi0xLjU0MiAxLjUzMy0uNDg4LjQ2My0uNzM0IDEuMDI4LS43ODYgMS42OS0uMDgyIDEuMDc1LjE4MSAyLjA5LjU1MyAzLjA4Ljc2IDIuMDQ3IDEuOTE4IDMuODY1IDMuMzIyIDUuNTMzIDEuODk2IDIuMjU1IDQuMTYgNC4wMzkgNi44MDggNS4zMjYgMS4xOTIuNTc5IDIuNDI3IDEuMDI0IDMuNzcgMS4wOTcuOTI1LjA1MiAxLjcyOS0uMTgxIDIuMzcyLS45MDMuNDQtLjQ5Mi45MzgtLjk0MSAxLjQwNC0xLjQxMi42OTEtLjcuNjk2LTEuNTQ3LjAwOS0yLjIzOC0uODItLjgyNS0xLjY0Ni0xLjY0NS0yLjQ3MS0yLjQ2NnpNMTUuNjgzIDExLjAzMmwxLjU5NC0uMjczYTcuMTI0IDcuMTI0IDAgMCAwLTEuOTkyLTMuODQ0IDcuMDg2IDcuMDg2IDAgMCAwLTQuMDYtMi4wMjZMMTEgNi40OWE1LjQ5OCA1LjQ5OCAwIDAgMSAzLjE0NSAxLjU2OSA1LjQ5NyA1LjQ5NyAwIDAgMSAxLjUzOCAyLjk3MnpNMTcuOTYzIDMuMzZBMTEuNzUzIDExLjc1MyAwIDAgMCAxMS4yMjUgMEwxMSAxLjYwM2ExMC4xOTEgMTAuMTkxIDAgMCAxIDUuODIzIDIuOTAyIDEwLjE4MyAxMC4xODMgMCAwIDEgMi44NTUgNS41MDhsMS41OTQtLjI3MmExMS44NCAxMS44NCAwIDAgMC0zLjMwOS02LjM4eiIvPgogICAgPC9nPgo8L3N2Zz4K);
+    position: absolute;
+    top: 19px;
+    left: 20px;
+}
+.jJqPCh .splash-appdowns {
+    margin-top: 30px;
+    display: flex;
+}
+.jJqPCh .splash-appdowns .appdownload {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    color: rgb(34, 34, 34);
+    opacity: 0.2;
+    margin-right: 40px;
+}
+.jJqPCh .splash-appdowns .appdownload img {
+    margin-right: 2px;
+}
+
+.jJqPCh::after {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+    z-index: -1;
+    content: url(/image/bungaetalk.jpg) url(/image/secure_payment.jpg) url(/image/hometown.jpg) url(/image/onetouch.jpg);
+}
+
+
+
+
+        </style>
+
+
+
         <div class="sc-kkbgRg jJqPCh">
             <section class="splash-main">
                 <h1>
@@ -31,7 +282,7 @@
                 </button>
             </section>
             <section class="splash-review">
-                <img alt="ic-pointstar" src="/pc-static/resource/7d0e1f0fd6af13f78185.png" width="250" height="40" />
+                <img alt="ic-pointstar" th:src="@{/image/icon/scope.png}" width="250" height="40" />
                 <h2>중고거래 서비스중 제일 간편했어요 !<small>- 앱스토어 후기 -</small></h2>
                 <blockquote class="splash-reviews">
                     <cite class="sc-hUMlYv iOIUKh">
@@ -55,8 +306,8 @@
                 </blockquote>
                 <form class="sc-bYwvMP ftmUGg"><input type="tel" placeholder="핸드폰 번호를 입력해 주세요." value="010****8364" /><button type="submit">앱 링크 받기</button></form>
                 <menu class="splash-appdowns">
-                    <a href="#ios" class="appdownload"><img alt="ic-ios@2x" src="/pc-static/resource/c92c88fa8f055b34c9a5.png" width="26" height="26" />Download for iOS</a>
-                    <a href="#android" class="appdownload"><img alt="ic-android@2x" src="/pc-static/resource/1933567f1060dfd1640c.png" width="26" height="26" />Download for Android</a>
+                    <a href="#ios" class="appdownload"><img alt="ic-ios@2x" th:src="@{/image/icon/apple_store.png}" width="26" height="26" />Download for iOS</a>
+                    <a href="#android" class="appdownload"><img alt="ic-android@2x" th:src="@{/image/icon/play_store.png}" width="26" height="26" />Download for Android</a>
                 </menu>
             </section>
         </div>        
