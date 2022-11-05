@@ -117,7 +117,7 @@
 
 .bKQRTB::after {
     content: "";
-    background-image: url(/pc-static/resource/7bbef4f….png);
+    background-image: url(/image/icon/drow.png);
     background-size: 10px 5px;
     position: absolute;
     top: 18px;
@@ -126,14 +126,94 @@
     height: 5px;
     cursor: default;
 }
+.ffbqaN {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.bHteAL {
+    display: block;
+    font-size: 13px;
+    color: rgb(102, 102, 102);
+}
+.foyUln {
+    position: absolute;
+    width: 400px;
+    max-height: 450px;
+    overflow-y: auto;
+    top: 100%;
+    left: calc(50% - 200px);
+    border: 1px solid rgb(238, 238, 238);
+    background: rgb(249, 249, 249);
+    display: none;
+    z-index: 30;
+}
+.duGyZI {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    color: rgb(204, 204, 204);
+    font-size: 12px;
+    padding: 40px;
+}
+
+.kpkpDl {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.aFoEk {
+    display: block;
+    font-size: 13px;
+    color: rgb(102, 102, 102);
+}
+
+.ldCzwX {
+    position: absolute;
+    width: 88px;
+    top: 100%;
+    left: calc(50% - 44px);
+    border: 1px solid rgb(238, 238, 238);
+    display: none;
+    z-index: 20;
+    padding: 15px 20px;
+    background: rgb(255, 255, 255);
+}
+.bnUMcA {
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+    color: rgb(136, 136, 136);
+}
+
+.fwCvrI:last-child {
+    margin-bottom: 0px;
+}
+
+.fwCvrI {
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+    color: rgb(136, 136, 136);
+}
+
         </style>
 
 
         <div class="sc-dqBHgY IvAsD">
             <div class="sc-gxMtzJ kaFNmQ">
                 <div class="sc-dfVpRl jYMzIJ">
-                    <a class="sc-hwwEjo hvNQEV" href="/splash"><img th:src="@{/image/app.svg}" width="16" height="17" alt="앱다운로드버튼 이미지"/>앱다운로드</a>
-                    <button class="sc-iyvyFf bNBtQ"><img th:src="@{/image/favorites.svg}" width="16" height="15" alt="즐겨찾기버튼 이미지"/>즐겨찾기</button>
+                    <a class="sc-hwwEjo hvNQEV" href="/splash"><img th:src="@{/image/icon/app.svg}" width="16" height="17" alt="앱다운로드버튼 이미지"/>앱다운로드</a>
+                    <button class="sc-iyvyFf bNBtQ"><img th:src="@{/image/icon/favorites.svg}" width="16" height="15" alt="즐겨찾기버튼 이미지"/>즐겨찾기</button>
                 </div>
                 <div class="sc-dfVpRl jYMzIJ">
                     <button class="sc-iyvyFf bNBtQ">로그아웃</button>
@@ -141,7 +221,7 @@
                         <div class="sc-bdVaJa ffbqaN">
                             <a class="sc-bwzfXH bHteAL">알림</a>
                             <div class="sc-htpNat foyUln">
-                                <div class="sc-htoDjs duGyZI"><img src="/pc-static/resource/db7979ecb257a1f5222e.png" width="20" height="23" alt="빈 알림 이미지" />최근 알림이 없습니다.</div>
+                                <div class="sc-htoDjs duGyZI"><img th:src="@{/image/icon/notice.png}" width="20" height="23" alt="빈 알림 이미지" />최근 알림이 없습니다.</div>
                             </div>
                         </div>
                     </div>

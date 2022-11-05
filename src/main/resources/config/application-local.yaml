@@ -87,11 +87,3 @@ spring:
         #implicitStrategy:
         #물리적 명명 전략
         physicalStrategy: kr.co.study.bunjang.configuration.datasource.CustomNamingStrategy
-
-azure:
-  tenant:
-    id: 2002127d-ecd5-424c-b995-a6f750055ecd
-  client:
-    id: deec18ee-6b7e-4153-9a3b-1b79f7629aa7
-    url: api://deec18ee-6b7e-4153-9a3b-1b79f7629aa7
-    secret:

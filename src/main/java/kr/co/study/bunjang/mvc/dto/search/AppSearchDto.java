@@ -1,7 +1,7 @@
 package kr.co.study.bunjang.mvc.dto.search;
 
 import kr.co.study.bunjang.mvc.dto.AbstractDto;
-import kr.co.study.bunjang.mvc.enums.Yn;
+import kr.co.study.bunjang.mvc.vo.Yn;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

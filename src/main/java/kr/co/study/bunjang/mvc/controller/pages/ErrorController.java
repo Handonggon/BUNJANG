@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.study.bunjang.component.exception.AuthenticationEntryPointException;
-import kr.co.study.bunjang.component.utils.MessageUtils;
+import kr.co.study.bunjang.component.utility.MessageUtils;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
