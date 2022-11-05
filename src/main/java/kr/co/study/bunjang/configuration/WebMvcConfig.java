@@ -2,11 +2,14 @@ package kr.co.study.bunjang.configuration;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
+import org.springframework.http.CacheControl;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.filter.CharacterEncodingFilter;
@@ -16,6 +19,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.resource.EncodedResourceResolver;
 import org.springframework.web.servlet.resource.PathResourceResolver;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -64,6 +68,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
 	}
 
+	@Value("${spring.profiles.active:}") private String activeProfile;
+
 	/* Resource 설정 */
 	private static final String[] CLASSPATH_RESOURCE_LOCATIONS = { "classpath:/static/" };
 
@@ -71,7 +77,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	public void addResourceHandlers(final ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/**")
 				.addResourceLocations(CLASSPATH_RESOURCE_LOCATIONS)
-				.resourceChain(true)
+				.setCacheControl(CacheControl.maxAge(365, TimeUnit.DAYS).cachePublic())
+				.resourceChain(!activeProfile.equals("local"))
+				.addResolver(new EncodedResourceResolver())
 				.addResolver(new PathResourceResolver());
 	}
 
