@@ -14,15 +14,13 @@ spring:
       onProfile: local
   mvc:
     pathmatch:
+      # Swagger 오류로 인해 추가
       matching-strategy: ANT_PATH_MATCHER
   messages:
     basename: messages/messages
     encoding: UTF-8
     cacheDuration: 10
     fallbackToSystemLocale: false
-  web:
-    resources:
-      staticLocations: classpath:static/
   thymeleaf:
     # thymeleaf 사용 여부
     enabled: true

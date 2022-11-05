@@ -19,9 +19,6 @@ spring:
     encoding: UTF-8
     cacheDuration: -1
     fallbackToSystemLocale: false
-  web:
-    resources:
-      staticLocations: classpath:static/
   thymeleaf:
     enabled: true
     prefix: classpath:templates/
