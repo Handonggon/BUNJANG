@@ -9,7 +9,6 @@ public class ProductController {
 
     @RequestMapping(value = "/product")
 	public String product() {
-		return "pages/product";
+		return "pages/products/product";
 	}
-    
 }
