@@ -30,7 +30,6 @@ public class ShopDetailsDto extends AbstractDto implements UserDetails {
 
 	private String shopNm;
 
-	private String shopId;
 
 	private String cmpEmail;
 
@@ -68,7 +67,6 @@ public class ShopDetailsDto extends AbstractDto implements UserDetails {
 
 	public ShopDetailsDto(Shop shop) {
 		this.shopNo = shop.getShopNo();
-		this.shopId = shop.getShopId();
 		this.shopNm = shop.getShopNm();
 		this.authorities.add(Role.USER);
 	}
