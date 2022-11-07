@@ -1,4 +1,4 @@
-package kr.co.koreazinc.utms.configuration.datasource;
+package kr.co.study.bunjang.configuration.datasource;
 
 import java.util.Locale;
 
