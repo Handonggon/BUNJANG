@@ -20,7 +20,7 @@
 		<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
 			<layout class="ch.qos.logback.classic.PatternLayout">
 				<Pattern>
-					[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} : %30logger{5} - %msg%n
+					[%thread] %highlight(%-5level) %cyan(%logger{15}) - %msg %n
 				</Pattern>
 			</layout>
 		</appender>
@@ -31,7 +31,7 @@
 			<file>${LOG_PATH}/syslog/syslog.log</file>
 			<layout class="ch.qos.logback.classic.PatternLayout">
 				<Pattern>
-					[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} : %30logger{5} - %msg%n
+					[%thread] %highlight(%-5level) %cyan(%logger{15}) - %msg %n
 				</Pattern>
 			</layout>
 			<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">

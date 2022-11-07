@@ -5,10 +5,16 @@ server:
     whitelabel:
       enabled: false
 
+logging:
+  config: classpath:logback-spring.xml
+
 spring:
   config:
     activate:
       onProfile: local
+  output:
+    ansi:
+      enabled: always
   mvc:
     pathmatch:
       # Swagger 오류로 인해 추가
