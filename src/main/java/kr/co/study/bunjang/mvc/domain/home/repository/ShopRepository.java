@@ -7,5 +7,5 @@ import kr.co.study.bunjang.mvc.domain.home.model.entity.Shop;
 
 @Repository
 public interface ShopRepository extends JpaRepository<Shop, Long>, SearchShopRepository {
-    Shop findByShopId(String shopId);
+    
 }

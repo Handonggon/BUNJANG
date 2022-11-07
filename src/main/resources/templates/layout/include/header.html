@@ -1,4 +1,5 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <th:block th:fragment="headerFragment">
         <style>
             
@@ -188,37 +189,60 @@
                 margin-bottom: 10px;
                 color: rgb(136, 136, 136);
             }
+
+            .bNBtQ {
+                display: flex;
+                -webkit-box-align: center;
+                align-items: center;
+                font-size: 13px;
+                color: rgb(102, 102, 102);
+                padding: 0px 15px;
+                position: relative;
+                line-height: 1.4;
+            }
+            .hvNQEV {
+                display: flex;
+                -webkit-box-align: center;
+                align-items: center;
+                font-size: 13px;
+                color: rgb(102, 102, 102);
+                padding: 0px 15px;
+                position: relative;
+                line-height: 1.4;
+            }
         </style>
 
 
-            <div class="sc-gxMtzJ kaFNmQ">
-                <div class="sc-dfVpRl jYMzIJ">
-                    <a class="sc-hwwEjo hvNQEV" th:href="@{/splash}"><img th:src="@{/image/icon/app.svg}" width="16" height="17" alt="앱다운로드버튼 이미지"/>앱다운로드</a>
-                    <button class="sc-iyvyFf bNBtQ"><img th:src="@{/image/icon/favorites.svg}" width="16" height="15" alt="즐겨찾기버튼 이미지"/>즐겨찾기</button>
-                </div>
-                <div class="sc-dfVpRl jYMzIJ">
-                    <button class="sc-iyvyFf bNBtQ">로그아웃</button>
-                    <div class="sc-gzOgki bKQRTB">
-                        <div class="sc-bdVaJa ffbqaN">
-                            <a class="sc-bwzfXH bHteAL">알림</a>
-                            <div class="sc-htpNat foyUln">
-                                <div class="sc-htoDjs duGyZI"><img th:src="@{/image/icon/notice.png}" width="20" height="23" alt="빈 알림 이미지" />최근 알림이 없습니다.</div>
-                            </div>
+        <div class="sc-gxMtzJ kaFNmQ">
+            <div class="sc-dfVpRl jYMzIJ">
+                <a class="sc-hwwEjo hvNQEV" th:href="@{/splash}"><img th:src="@{/image/icon/app.svg}" width="16" height="17" alt="앱다운로드버튼 이미지"/>앱다운로드</a>
+                <button class="sc-iyvyFf bNBtQ"><img th:src="@{/image/icon/favorites.svg}" width="16" height="15" alt="즐겨찾기버튼 이미지"/>즐겨찾기</button>
+            </div>
+            <div class="sc-dfVpRl jYMzIJ" sec:authorize-expr="!isAuthenticated()">
+                <button class="sc-iyvyFf bNBtQ">로그인/회원가입</button>
+                <a class="sc-hwwEjo hvNQEV" href="/shop/products">내상점</a>
+            </div>
+            <div class="sc-dfVpRl jYMzIJ" sec:authorize-expr="isAuthenticated()">
+                <button class="sc-iyvyFf bNBtQ">로그아웃</button>
+                <div class="sc-gzOgki bKQRTB">
+                    <div class="sc-bdVaJa ffbqaN">
+                        <a class="sc-bwzfXH bHteAL">알림</a>
+                        <div class="sc-htpNat foyUln">
+                            <div class="sc-htoDjs duGyZI"><img th:src="@{/image/icon/notice.png}" width="20" height="23" alt="빈 알림 이미지" />최근 알림이 없습니다.</div>
                         </div>
                     </div>
-                    <div class="sc-gzOgki bKQRTB">
-                        <div class="sc-dnqmqq kpkpDl">
-                            <a class="sc-iwsKbI aFoEk" href="/shop/80273265/products">내 상점</a>
-                            <div class="sc-gZMcBi ldCzwX">
-                                <a class="sc-gqjmRU bnUMcA" href="/shop/80273265/products">내 상품</a><a class="sc-gqjmRU bnUMcA" href="/shop/80273265/favorites">찜한상품</a><a class="sc-gqjmRU bnUMcA" href="/settings">계정설정</a>
-                                <a href="https://help.bunjang.co.kr/home" class="sc-VigVT fwCvrI">고객센터</a>
-                            </div>
+                </div>
+                <div class="sc-gzOgki bKQRTB">
+                    <div class="sc-dnqmqq kpkpDl">
+                        <a class="sc-iwsKbI aFoEk" href="/shop/80273265/products">내 상점</a>
+                        <div class="sc-gZMcBi ldCzwX">
+                            <a class="sc-gqjmRU bnUMcA" href="/shop/80273265/products">내 상품</a><a class="sc-gqjmRU bnUMcA" href="/shop/80273265/favorites">찜한상품</a><a class="sc-gqjmRU bnUMcA" href="/settings">계정설정</a>
+                            <a href="https://help.bunjang.co.kr/home" class="sc-VigVT fwCvrI">고객센터</a>
                         </div>
                     </div>
                 </div>
             </div>
-
-
+        </div>
         <script>
             
         </script>

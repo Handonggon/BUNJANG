@@ -30,7 +30,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "Shop")
+@Table(name = "SHOP")
 @DynamicUpdate
 @EntityListeners(ModifListener.class)
 @Entity public class Shop implements Serializable, ModifAccessible {
@@ -46,7 +46,7 @@ import lombok.NoArgsConstructor;
 
 
 
-    
+
     @Column(length = 20, nullable = false, unique = true)
     @Comment("사용자 이름")
     private String userNm;

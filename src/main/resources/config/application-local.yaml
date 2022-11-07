@@ -87,4 +87,4 @@ spring:
         #논리적 명명 전략
         #implicitStrategy:
         #물리적 명명 전략
-        physicalStrategy: kr.co.study.bunjang.configuration.datasource.CustomNamingStrategy
+        physicalStrategy: kr.co.study.bunjang.configuration.datasource.CamelCaseToUpperUnderscoresNamingStrategy

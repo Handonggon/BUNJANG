@@ -19,7 +19,7 @@ public class ShopService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        ShopDetailsDto userDetailsDto = new ShopDetailsDto(userRepository.findByShopId(username));
+        ShopDetailsDto userDetailsDto = new ShopDetailsDto(userRepository.findAll().get(0));
         if (ObjUtils.isEmpty(userDetailsDto)) {
             throw new UsernameNotFoundException(MessageUtils.getMessage("exception.UsernameNotFound"));
         }

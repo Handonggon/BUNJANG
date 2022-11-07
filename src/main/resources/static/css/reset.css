@@ -22,21 +22,37 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     display: block;
 }
 
+
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0px;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-size: 14px;
     font-weight: 400;
     margin: 0px;
 }
 
-h1 {
-    font-size: 2em;
-    margin: 0.67em 0px;
-}
 small {
     font-size: 80%;
 }
 
+[hidden] {
+    display: none;
+}
 
+[type="checkbox"], [type="radio"] {
+    box-sizing: border-box;
+    padding: 0px;
+}
+button, [type="button"], [type="reset"], [type="submit"] {
+    appearance: button;
+}
+button, select {
+    text-transform: none;
+}
 
 a {
     color: rgb(33, 33, 33);

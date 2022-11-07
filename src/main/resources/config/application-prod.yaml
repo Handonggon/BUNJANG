@@ -70,7 +70,7 @@ spring:
     hibernate:
       ddl-auto: validate
       naming:
-        physical-strategy: kr.co.study.bunjang.configuration.datasource.CustomNamingStrategy
+        physical-strategy: kr.co.study.bunjang.configuration.datasource.CamelCaseToUpperUnderscoresNamingStrategy
 
 azure:
   tenant:
