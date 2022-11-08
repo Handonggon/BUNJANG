@@ -5,9 +5,6 @@ server:
     whitelabel:
       enabled: false
 
-#logging:
-#  config: classpath:logback-spring.xml
-
 spring:
   config:
     activate:
