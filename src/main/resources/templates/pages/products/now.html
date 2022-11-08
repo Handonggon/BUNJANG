@@ -1,8 +1,1655 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/layout/defaultLayout}">
 <th:block layout:fragment="contentFragment">
+    <style>
+
+        .jgJUYK {
+            background: rgb(255, 255, 255);
+            font-size: 16px;
+        }
+
+        .lnYSlB {
+            height: 4rem;
+            border-bottom: 1px solid rgb(244, 244, 250);
+            display: flex;
+            -webkit-box-pack: center;
+            justify-content: center;
+        }
+
+        .gflHGA {
+            width: 1024px;
+            display: flex;
+            height: 100%;
+            font-size: 13px;
+        }
+
+        .kiOFJC:first-child {
+            margin-left: -0.5rem;
+        }
+
+        .kiOFJC {
+            height: 100%;
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            margin-right: 2rem;
+        }
+
+        .kiOFJC .sc-cqCuEk {
+            color: rgb(255, 80, 88);
+        }
+
+        .hFRWUu {
+            padding: 0.5rem;
+        }
+
+        .kiOFJC::after {
+            content: "";
+            width: 1px;
+            height: 14px;
+            border-right: 1px solid rgb(210, 210, 210);
+            margin-left: 2rem;
+        }
+
+        .fPFGXW {
+            height: 100%;
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            margin-right: 2rem;
+        }
+
+        .hFRWUu {
+            padding: 0.5rem;
+        }
+
+        .fPFGXW::after {
+            content: "";
+            width: 1px;
+            height: 14px;
+            border-right: 1px solid rgb(210, 210, 210);
+            margin-left: 2rem;
+        }
+
+        .fPFGXW {
+            height: 100%;
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            margin-right: 2rem;
+        }
+
+        .gflHGA {
+            width: 1024px;
+            display: flex;
+            height: 100%;
+            font-size: 13px;
+        }
+
+        .hvgCyR {
+            background: rgb(255, 255, 255);
+            font-size: 16px;
+            position: relative;
+        }
+
+        .cVSZjn {
+            display: block;
+            width: 1024px;
+            margin: auto;
+        }
+
+        .hvgCyR section {
+            display: block;
+        }
+
+        .lmrVST {
+            margin-bottom: 3rem;
+        }
+
+        .hvgCyR section h2 {
+            height: 100px;
+            font-size: 26px;
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            border-bottom: 2px solid rgb(30, 29, 41);
+        }
+
+        .hvgCyR section h2 > span {
+            color: rgb(255, 80, 88);
+            font-size: 1rem;
+            margin-left: 2rem;
+        }
+
+        .fSSAPi {
+            padding-top: 0.5rem;
+        }
+
+        .UPAMp {
+            width: 100%;
+            display: flex;
+            padding: 2rem 0px;
+            border-bottom: 1px solid rgb(220, 219, 228);
+        }
+
+        .bFQfPj {
+            width: 10.5rem;
+            font-size: 18px;
+        }
+
+        .bFQfPj > span {
+            color: rgb(255, 80, 88);
+        }
+
+        .bFQfPj > small {
+            color: rgb(155, 153, 169);
+            margin-left: 0.25rem;
+        }
+
+        .gxpNmH {
+            flex: 1 1 0%;
+            position: relative;
+        }
+
+        .juHAat {
+            display: flex;
+            width: 856px;
+            flex-wrap: wrap;
+            overflow-x: hidden;
+        }
+
+        .juHAat li:nth-last-child(-n+4):nth-child(4n+1), .juHAat li:nth-last-child(-n+4):nth-child(4n+1) ~ li {
+            margin-bottom: 0px;
+        }
+
+        .gADNYc {
+            width: 202px;
+            height: 202px;
+            position: relative;
+            border: 1px solid rgb(230, 229, 239);
+            background: rgb(250, 250, 253);
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            justify-content: center;
+            flex-direction: column;
+            color: rgb(155, 153, 169);
+            font-size: 1rem;
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .gADNYc::before {
+            content: "";
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 2rem;
+            height: 2rem;
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj4KICAgIDxwYXRoIGZpbGw9IiNEQ0RCRTQiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTI4LjQ3MSAzMkgzLjUzYy0uOTcxIDAtMS44OTQtLjQyMi0yLjUyOS0xLjE1N2wtLjAyNi0uMDNBNCA0IDAgMCAxIDAgMjguMTk4VjguNjA3QTQgNCAwIDAgMSAuOTc0IDUuOTlMMSA1Ljk2YTMuMzQzIDMuMzQzIDAgMCAxIDIuNTI5LTEuMTU2aDIuNTM0YTIgMiAwIDAgMCAxLjUzNy0uNzJMMTAuNC43MkEyIDIgMCAwIDEgMTEuOTM3IDBoOC4xMjZBMiAyIDAgMCAxIDIxLjYuNzJsMi44IDMuMzYzYTIgMiAwIDAgMCAxLjUzNy43MmgyLjUzNGMuOTcxIDAgMS44OTQuNDIzIDIuNTI5IDEuMTU3bC4wMjYuMDNBNCA0IDAgMCAxIDMyIDguNjA2djE5LjU5MWE0IDQgMCAwIDEtLjk3NCAyLjYxN2wtLjAyNi4wM0EzLjM0MyAzLjM0MyAwIDAgMSAyOC40NzEgMzJ6TTE2IDkuNmE4IDggMCAxIDEgMCAxNiA4IDggMCAwIDEgMC0xNnptMCAxMi44YzIuNjQ3IDAgNC44LTIuMTUzIDQuOC00LjhzLTIuMTUzLTQuOC00LjgtNC44YTQuODA1IDQuODA1IDAgMCAwLTQuOCA0LjhjMCAyLjY0NyAyLjE1MyA0LjggNC44IDQuOHoiLz4KPC9zdmc+Cg==);
+            margin-bottom: 1rem;
+        }
+
+        .cVSZjn input, .cVSZjn textarea {
+            border: 1px solid rgb(195, 194, 204);
+        }
+
+        .gADNYc input {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            opacity: 0;
+            cursor: pointer;
+            font-size: 0px;
+        }
+
+        .exXLwK {
+            margin-top: 1.5rem;
+            color: rgb(74, 164, 255);
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        .fuybda {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            display: none;
+            -webkit-box-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            justify-content: center;
+        }
+
+        .kIXaQj {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            -webkit-box-pack: center;
+            justify-content: center;
+        }
+
+        .foRwju {
+            position: absolute;
+            top: 50px;
+            right: 50px;
+        }
+
+        .fjoJle {
+            padding: 3rem 0px;
+            color: rgb(255, 255, 255);
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .cunIzO {
+            height: 550px;
+        }
+
+        .cunIzO {
+            display: flex;
+            margin-left: calc((50% - 275px) - 0px);
+            transition: margin-left 0.2s ease-in-out 0s;
+        }
+
+        .fReHeT {
+            padding: 2.5rem 0px;
+        }
+
+        .fReHeT {
+            display: flex;
+            width: 100%;
+            -webkit-box-pack: center;
+            justify-content: center;
+        }
+
+        .UPAMp {
+            width: 100%;
+            display: flex;
+            padding: 2rem 0px;
+            border-bottom: 1px solid rgb(220, 219, 228);
+        }
+
+        .gvWKtv {
+            width: 10.5rem;
+            font-size: 18px;
+            padding-top: 14px;
+        }
+
+        .gvWKtv > span {
+            color: rgb(255, 80, 88);
+        }
+
+        .gxpNmH {
+            flex: 1 1 0%;
+            position: relative;
+        }
+
+        .heHZUo {
+            display: flex;
+            width: 100%;
+            -webkit-box-align: center;
+            align-items: center;
+        }
+
+        .heHZUo .ProductNewstyle__WithDeleteAll-sc-7fge4a-7 {
+            flex: 1 1 0%;
+        }
+
+        .bofJgA {
+            position: relative;
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+        }
+
+        .cVSZjn input:not([type="file"]):not([type="radio"]) {
+            height: 3rem;
+            padding: 0px 1rem;
+        }
+
+        .cVSZjn input, .cVSZjn textarea {
+            border: 1px solid rgb(195, 194, 204);
+        }
+
+        .bofJgA a {
+            position: absolute;
+            right: 1rem;
+            font-size: 1rem;
+            color: rgb(155, 153, 169);
+            text-decoration: underline;
+        }
+
+        .jAnBeg {
+            margin-left: 1.5rem;
+            font-size: 1rem;
+            text-align: right;
+        }
+
+        .knwJIa {
+            width: 10.5rem;
+            font-size: 18px;
+            padding-top: 8px;
+        }
+
+        .knwJIa > span {
+            color: rgb(255, 80, 88);
+        }
+
+        .gxpNmH {
+            flex: 1 1 0%;
+            position: relative;
+        }
+
+        .kwaHYe {
+            display: flex;
+            width: 100%;
+            height: 19rem;
+            overflow: hidden;
+            border: 1px solid rgb(220, 219, 228);
+        }
+
+        .cSzUJd {
+            width: 284px;
+            height: 100%;
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            justify-content: center;
+            overflow-y: auto;
+            color: rgb(195, 194, 204);
+        }
+
+        .fAfkpF {
+            width: 100%;
+            height: 100%;
+            padding: 0.5rem 0px;
+        }
+
+        .btyiVm {
+            display: flex;
+            width: 100%;
+            height: 40px;
+            -webkit-box-align: center;
+            align-items: center;
+        }
+
+        .kulsCh {
+            width: 100%;
+            height: 100%;
+            padding: 0px 1.5rem;
+        }
+
+        .btyiVm {
+            display: flex;
+            width: 100%;
+            height: 40px;
+            -webkit-box-align: center;
+            align-items: center;
+        }
+
+        .jYpteP {
+            font-size: 16px;
+            color: rgb(255, 80, 88);
+        }
+
+        .cSzUJd {
+            width: 284px;
+            height: 100%;
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            justify-content: center;
+            overflow-y: auto;
+            color: rgb(195, 194, 204);
+        }
+
+        .cSzUJd:nth-child(2), .cSzUJd:nth-child(3) {
+            border-left: 1px solid rgb(220, 219, 228);
+        }
+
+        .gvWKtv {
+            width: 10.5rem;
+            font-size: 18px;
+            padding-top: 14px;
+        }
+
+        .gvWKtv > span {
+            color: rgb(255, 80, 88);
+        }
+
+        .gxpNmH {
+            flex: 1 1 0%;
+            position: relative;
+        }
+
+        .cVSZjn input:not([type="file"]):not([type="radio"]):read-only {
+            background: rgb(244, 244, 250);
+        }
+
+        .cVSZjn input:not([type="file"]):not([type="radio"]) {
+            height: 3rem;
+            padding: 0px 1rem;
+        }
+
+        .cVSZjn input, .cVSZjn textarea {
+            border: 1px solid rgb(195, 194, 204);
+        }
+
+        .GEuoA {
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .fNgEhh {
+            height: 3rem;
+            width: 6.5rem;
+            text-align: center;
+            border: 1px solid rgb(195, 194, 204);
+            margin-right: 1rem;
+            border-radius: 2px;
+        }
+
+        .gGpLyz {
+            width: 10.5rem;
+            font-size: 18px;
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+        }
+
+        .gGpLyz > span {
+            color: rgb(255, 80, 88);
+        }
+
+        .gxpNmH {
+            flex: 1 1 0%;
+            position: relative;
+        }
+
+        .hKVeWn {
+            display: flex;
+        }
+
+        .fzLfip {
+            display: flex;
+            font-size: 1rem;
+            -webkit-box-align: center;
+            align-items: center;
+            position: relative;
+            margin-right: 2rem;
+        }
+
+        .fzLfip::before {
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9IiNGRjUwNTgiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEwIDIwYzUuNTE0IDAgMTAtNC40ODYgMTAtMTBTMTUuNTE0IDAgMTAgMCAwIDQuNDg2IDAgMTBzNC40ODYgMTAgMTAgMTB6bTAtMThjNC40MTEgMCA4IDMuNTg5IDggOHMtMy41ODkgOC04IDgtOC0zLjU4OS04LTggMy41ODktOCA4LTh6bTAgMTNhNSA1IDAgMSAwIDAtMTAgNSA1IDAgMCAwIDAgMTB6Ii8+Cjwvc3ZnPgo=);
+        }
+
+        .fzLfip::before {
+            content: "";
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 20px 20px;
+            width: 2rem;
+            height: 2rem;
+            padding: 0.5rem;
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9IiNDM0MyQ0MiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEwIDIwYzUuNTE0IDAgMTAtNC40ODYgMTAtMTBTMTUuNTE0IDAgMTAgMCAwIDQuNDg2IDAgMTBzNC40ODYgMTAgMTAgMTB6bTAtMThjNC40MTEgMCA4IDMuNTg5IDggOHMtMy41ODkgOC04IDgtOC0zLjU4OS04LTggMy41ODktOCA4LTh6Ii8+Cjwvc3ZnPgo=);
+            border-radius: 50%;
+        }
+
+        .fzLfip input[type="radio"] {
+            display: none;
+        }
+
+        .cVSZjn input, .cVSZjn textarea {
+            border: 1px solid rgb(195, 194, 204);
+        }
+
+        .cpJCFG {
+            display: flex;
+            font-size: 1rem;
+            -webkit-box-align: center;
+            align-items: center;
+            position: relative;
+            margin-right: 2rem;
+        }
+
+        .cpJCFG::before {
+            content: "";
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 20px 20px;
+            width: 2rem;
+            height: 2rem;
+            padding: 0.5rem;
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9IiNDM0MyQ0MiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEwIDIwYzUuNTE0IDAgMTAtNC40ODYgMTAtMTBTMTUuNTE0IDAgMTAgMCAwIDQuNDg2IDAgMTBzNC40ODYgMTAgMTAgMTB6bTAtMThjNC40MTEgMCA4IDMuNTg5IDggOHMtMy41ODkgOC04IDgtOC0zLjU4OS04LTggMy41ODktOCA4LTh6Ii8+Cjwvc3ZnPgo=);
+            border-radius: 50%;
+        }
+
+        .cpJCFG input[type="radio"] {
+            display: none;
+        }
+
+        .cVSZjn input, .cVSZjn textarea {
+            border: 1px solid rgb(195, 194, 204);
+        }
+
+        .gvWKtv > span {
+            color: rgb(255, 80, 88);
+        }
+
+        .gxpNmH {
+            flex: 1 1 0%;
+            position: relative;
+        }
+
+        .gduZji {
+            display: flex;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .iOoCMf {
+            margin-right: 2rem;
+        }
+
+        .iqSfRn {
+            width: 10.5rem;
+            font-size: 18px;
+            padding-top: 18px;
+        }
+
+        .iqSfRn > span {
+            color: rgb(255, 80, 88);
+        }
+
+        .gxpNmH {
+            flex: 1 1 0%;
+            position: relative;
+        }
+
+        .cVSZjn textarea {
+            padding: 1rem;
+            resize: none;
+            line-height: 1.35;
+        }
+
+        .cVSZjn input, .cVSZjn textarea {
+            border: 1px solid rgb(195, 194, 204);
+        }
+
+        .gQnFKF {
+            width: 100%;
+        }
+
+        .kroRXW {
+            position: absolute;
+            top: 0px;
+            padding: 1rem;
+            line-height: 16px;
+            color: rgb(155, 153, 169);
+        }
+
+        .kroRXW span {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 12px;
+        }
+
+        .cHxIMH {
+            display: flex;
+            flex-direction: row;
+            -webkit-box-align: center;
+            align-items: center;
+            -webkit-box-pack: justify;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+        }
+
+        .cHxIMH > span {
+            font-size: 1rem;
+            color: rgb(155, 153, 169);
+        }
+
+        .cHxIMH > span a {
+            color: rgb(155, 153, 169);
+            text-decoration: underline;
+        }
+
+        .krPftp {
+            text-align: right;
+        }
+
+        .iqSfRn {
+            width: 10.5rem;
+            font-size: 18px;
+            padding-top: 18px;
+        }
+
+        .gxpNmH {
+            flex: 1 1 0%;
+            position: relative;
+        }
+
+        .gpmrZa {
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            height: 3rem;
+            border: 1px solid rgb(195, 194, 204);
+            position: relative;
+        }
+
+        .VTvsX {
+            flex: 1 1 0%;
+            height: 100%;
+        }
+
+        .UoUqm {
+            position: relative;
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .cVSZjn input:not([type="file"]):not([type="radio"]) {
+            height: 3rem;
+            padding: 0px 1rem;
+        }
+
+        .cVSZjn input, .cVSZjn textarea {
+            border: 1px solid rgb(195, 194, 204);
+        }
+
+        .VTvsX input {
+            width: 100%;
+            height: 100% !important;
+            border: 0px !important;
+        }
+
+        .ftFgzy {
+            padding-top: 0.5rem;
+            line-height: 1.3;
+            color: rgb(136, 136, 136);
+        }
+
+        .ftFgzy > li {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 0.25rem;
+        }
+
+        .ftFgzy > li::before {
+            content: "- ";
+        }
+
+        .ftFgzy > li > p {
+            margin-left: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .ljLnwI {
+            width: 240px;
+            margin-right: 1rem;
+        }
+
+        .hvgCyR section {
+            display: block;
+        }
+
+        .lmrVST {
+            margin-bottom: 3rem;
+        }
+
+        .iaGiRu {
+            font-family: AppleSDGothic;
+            letter-spacing: normal;
+        }
+
+        .hvgCyR section h2 {
+            height: 100px;
+            font-size: 26px;
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            border-bottom: 2px solid rgb(30, 29, 41);
+        }
+
+        .buBPFR {
+            margin-left: 16px;
+            display: flex;
+            flex-direction: row;
+            -webkit-box-pack: justify;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 6px;
+            font-size: 12px;
+            color: rgb(155, 153, 169);
+        }
+
+        .buBPFR > p {
+            font-size: 16px;
+            font-weight: normal;
+            color: rgb(30, 29, 41);
+        }
+
+        .buBPFR a {
+            margin-left: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: underline;
+            color: rgb(30, 29, 41);
+        }
+
+        .fSSAPi {
+            padding-top: 0.5rem;
+        }
+
+        .UPAMp:last-child {
+            border-bottom: 0px;
+        }
+
+        .bFQfPj {
+            width: 10.5rem;
+            font-size: 18px;
+        }
+
+        .gxpNmH {
+            flex: 1 1 0%;
+            position: relative;
+        }
+
+        .iOoCMf {
+            margin-right: 2rem;
+        }
+
+        .iUTMsB {
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .iUTMsB::before {
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9IiNGRjUwNTgiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEwIDBDNC40ODYgMCAwIDQuNDg2IDAgMTBzNC40ODYgMTAgMTAgMTAgMTAtNC40ODYgMTAtMTBTMTUuNTE0IDAgMTAgMG0yLjI5MyA3LjI5M0w5IDEwLjU4NiA3LjcwNyA5LjI5M2ExIDEgMCAxIDAtMS40MTQgMS40MTRsMiAyYS45OTcuOTk3IDAgMCAwIDEuNDE0IDBsNC00YTEgMSAwIDEgMC0xLjQxNC0xLjQxNCIvPgo8L3N2Zz4K);
+        }
+
+        .iUTMsB::before {
+            content: "";
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 20px 20px;
+            width: 2rem;
+            height: 2rem;
+            padding: 0.5rem;
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9IiNDM0MyQ0MiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEwIDBDNC40ODYgMCAwIDQuNDg2IDAgMTBzNC40ODYgMTAgMTAgMTAgMTAtNC40ODYgMTAtMTBTMTUuNTE0IDAgMTAgMG0wIDE4Yy00LjQxMSAwLTgtMy41ODktOC04czMuNTg5LTggOC04IDggMy41ODkgOCA4LTMuNTg5IDgtOCA4bTIuMjkzLTEwLjcwN0w5IDEwLjU4NiA3LjcwNyA5LjI5M2ExIDEgMCAxIDAtMS40MTQgMS40MTRsMiAyYS45OTcuOTk3IDAgMCAwIDEuNDE0IDBsNC00YTEgMSAwIDEgMC0xLjQxNC0xLjQxNCIvPgo8L3N2Zz4K);
+            border-radius: 50%;
+        }
+
+        .cVSZjn input:not([type="file"]):not([type="radio"]):read-only {
+            background: rgb(244, 244, 250);
+        }
+
+        .cVSZjn input:not([type="file"]):not([type="radio"]) {
+            height: 3rem;
+            padding: 0px 1rem;
+        }
+
+        .iUTMsB input[type="checkbox"] {
+            display: none;
+        }
+
+        .cVSZjn input, .cVSZjn textarea {
+            border: 1px solid rgb(195, 194, 204);
+        }
+
+        .hsTHsV {
+            display: flex;
+            height: 32px;
+            font-weight: bold;
+        }
+
+        .hsTHsV > span {
+            margin-top: 6.5px;
+        }
+
+        .hsTHsV svg {
+            margin-left: 6px;
+            align-self: center;
+        }
+
+        .jfTSgw {
+            border: 1px solid rgb(230, 229, 239);
+            border-radius: 2px;
+            background-color: rgb(250, 250, 253);
+            padding: 36px;
+            margin-top: 22px;
+        }
+
+        .jfTSgw li {
+            display: flex;
+        }
+
+        .jfTSgw svg {
+            margin-right: 8px;
+        }
+
+        .jfTSgw p {
+            font-size: 15px;
+            color: rgb(30, 29, 41);
+        }
+
+        .jfTSgw small {
+            position: absolute;
+            display: block;
+            font-size: 13px;
+            color: rgb(245, 126, 0);
+            margin-top: 7px;
+        }
+
+        .jfTSgw p a {
+            color: inherit;
+            text-decoration: underline;
+        }
+
+        .jfTSgw li + li {
+            margin-top: 43px;
+        }
+
+        .jfTSgw li {
+            display: flex;
+        }
+
+        .dDvHee {
+            font-size: 14px;
+            color: rgb(114, 112, 127);
+            margin: 20px 0px 154px 32px;
+        }
+
+        .gSsteC {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            display: none;
+            -webkit-box-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            justify-content: center;
+        }
+
+        .hvgCyR section {
+            display: block;
+        }
+
+        .fLtRDu {
+            width: 30rem;
+            background: rgb(255, 255, 255);
+            border-radius: 2px;
+        }
+
+        .cVSZjn {
+            display: block;
+            width: 1024px;
+            margin: auto;
+        }
+
+        .fLtRDu header {
+            height: 4.5rem;
+            font-size: 1.5rem;
+            margin: 0px 1.5rem;
+            border-bottom: 2px solid rgb(30, 29, 41);
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            font-weight: 500;
+            -webkit-box-pack: justify;
+            justify-content: space-between;
+        }
+
+        .kEONcO {
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 20px 20px;
+            width: 2rem;
+            height: 2rem;
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9IiMxRTFEMjkiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTExLjQxNCAxMGw2LjI5My02LjI5M2ExIDEgMCAxIDAtMS40MTQtMS40MTRMMTAgOC41ODUgMy43MDcgMi4yOTNhMSAxIDAgMCAwLTEuNDE0IDEuNDE0bDYuMjkzIDYuMjkyLTYuMjkzIDYuMjkzYTEgMSAwIDEgMCAxLjQxNCAxLjQxNEwxMCAxMS40MTNsNi4yOTMgNi4yOTNhLjk5Ny45OTcgMCAwIDAgMS40MTQgMCAuOTk5Ljk5OSAwIDAgMCAwLTEuNDE0TDExLjQxNCAxMHoiLz4KPC9zdmc+Cg==);
+        }
+
+        .fLtRDu ul {
+            margin-top: 0.5rem;
+            padding: 0.5rem 0px;
+            max-height: 25rem;
+            overflow-y: auto;
+        }
+
+        .fLtRDu ul li {
+            display: block;
+            height: 3rem;
+        }
+
+        .kppXDq {
+            width: 100%;
+            height: 5.5rem;
+            background: rgb(250, 250, 253);
+            box-shadow: rgb(234 233 241) 0px -1px 0px 0px;
+            position: absolute;
+            left: 0px;
+            bottom: 0px;
+        }
+
+        .iMvseQ {
+            display: flex;
+            height: 100%;
+            -webkit-box-pack: end;
+            justify-content: flex-end;
+            -webkit-box-align: center;
+            align-items: center;
+            width: 1024px;
+            margin: auto;
+        }
+
+        .bgpKeW {
+            height: 3.5rem;
+            width: 10rem;
+            color: rgb(255, 255, 255);
+            font-size: 20px;
+            font-weight: 700;
+            border-radius: 2px;
+            background: rgb(255, 80, 88);
+            position: relative;
+        }
+
+        .bgpKeW::before {
+            content: "등록하기";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            border-radius: 2px;
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            justify-content: center;
+        }
+
+        .kppXDq {
+            width: 100%;
+            height: 5.5rem;
+            background: rgb(250, 250, 253);
+            box-shadow: rgb(234 233 241) 0px -1px 0px 0px;
+            position: absolute;
+            left: 0px;
+            bottom: 0px;
+        }
+
+        .cVSZjn {
+            display: block;
+            width: 1024px;
+            margin: auto;
+        }
+
+        .gSsteC {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            display: none;
+            -webkit-box-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            justify-content: center;
+        }
+
+        .hvgCyR {
+            background: rgb(255, 255, 255);
+            font-size: 16px;
+            position: relative;
+        }
+
+        .hvgCyR section {
+            display: block;
+        }
+
+        .fqgycQ {
+            width: 30rem;
+            background: rgb(255, 255, 255);
+            border-radius: 2px;
+        }
+
+        .fqgycQ header {
+            height: 4.5rem;
+            font-size: 1.5rem;
+            margin: 0px 1.5rem;
+            border-bottom: 2px solid rgb(30, 29, 41);
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            font-weight: 500;
+            -webkit-box-pack: justify;
+            justify-content: space-between;
+        }
+
+        .cVSZjn input:not([type="file"]):not([type="radio"]) {
+            height: 3rem;
+            padding: 0px 1rem;
+        }
+
+        .eAhDI {
+            width: 240px;
+            margin-right: 1rem;
+        }
+
+        .iOoCMf {
+            margin-right: 2rem;
+        }
+
+        .ipoTdi {
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .ipoTdi::before {
+            content: "";
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 20px 20px;
+            width: 2rem;
+            height: 2rem;
+            padding: 0.5rem;
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9IiNDM0MyQ0MiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEwIDBDNC40ODYgMCAwIDQuNDg2IDAgMTBzNC40ODYgMTAgMTAgMTAgMTAtNC40ODYgMTAtMTBTMTUuNTE0IDAgMTAgMG0wIDE4Yy00LjQxMSAwLTgtMy41ODktOC04czMuNTg5LTggOC04IDggMy41ODkgOCA4LTMuNTg5IDgtOCA4bTIuMjkzLTEwLjcwN0w5IDEwLjU4NiA3LjcwNyA5LjI5M2ExIDEgMCAxIDAtMS40MTQgMS40MTRsMiAyYS45OTcuOTk3IDAgMCAwIDEuNDE0IDBsNC00YTEgMSAwIDEgMC0xLjQxNC0xLjQxNCIvPgo8L3N2Zz4K);
+            border-radius: 50%;
+        }
+
+        .ipoTdi input[type="checkbox"] {
+            display: none;
+        }
+
+        .cVSZjn input, .cVSZjn textarea {
+            border: 1px solid rgb(195, 194, 204);
+        }
+
+        .gxpNmH {
+            flex: 1 1 0%;
+            position: relative;
+        }
 
 
+        .cVSZjn input, .cVSZjn textarea {
+            border: 1px solid rgb(195, 194, 204);
+        }
+
+
+    </style>
+
+    <div class="sc-bFADNz jgJUYK">
+        <div class="sc-cqpYsc lnYSlB">
+            <nav class="sc-hmXxxW gflHGA">
+                <div class="sc-kLIISr kiOFJC"><a class="sc-cqCuEk hFRWUu" href="/products/new">상품등록</a></div>
+                <div class="sc-kLIISr fPFGXW"><a class="sc-cqCuEk hFRWUu" href="/products/manage">상품관리</a></div>
+                <div class="sc-kLIISr fPFGXW"><a href="https://pay2.bunjang.co.kr?tab=purchases" target="_blank"
+                                                 rel="noopener noreferrer" class="sc-dliRfk lhgdPh">구매/판매 내역</a></div>
+            </nav>
+        </div>
+        <div class="ProductNewstyle__Wrapper-sc-7fge4a-0 hvgCyR">
+            <main class="ProductNewstyle__Main-sc-7fge4a-1 cVSZjn">
+                <section class="ProductNewstyle__Basic-sc-7fge4a-2 lmrVST">
+                    <h2>기본정보<span>*필수항목</span></h2>
+                    <ul class="ProductNewstyle__Groups-sc-7fge4a-3 fSSAPi">
+                        <li class="ProductNewstyle__Group-sc-7fge4a-4 UPAMp">
+                            <div class="ProductNewstyle__Label-sc-7fge4a-5 bFQfPj">
+                                상품이미지<span>*</span><small>(0/12)</small></div>
+                            <div class="ProductNewstyle__Content-sc-7fge4a-6 gxpNmH">
+                                <ul class="sc-LKuAh juHAat">
+                                    <li class="sc-iBEsjs gADNYc">이미지 등록<input type="file"
+                                                                              accept="image/jpg, image/jpeg, image/png"
+                                                                              multiple=""></li>
+                                </ul>
+                                <div class="sc-chbbiW exXLwK"><b>* 상품 이미지는 640x640에 최적화 되어 있습니다.</b><br>- 상품 이미지는 PC에서는
+                                    1:1, 모바일에서는 1:1.23 비율로 보여집니다. <br>- 이미지는 상품 등록 시 정사각형으로 잘려서 등록됩니다.<br>- 이미지를 클릭할 경우
+                                    원본 이미지를 확인할 수 있습니다.<br>- 이미지를 클릭 후 이동하여 등록순서를 변경할 수 있습니다.<br>- 큰 이미지일 경우 이미지가 깨지는
+                                    경우가 발생할 수 있습니다.<br>최대 지원 사이즈인 640 X 640으로 리사이즈 해서 올려주세요.(개당 이미지 최대 10M)
+                                </div>
+                                <div class="sc-jwKygS fuybda">
+                                    <div class="sc-qrIAp kIXaQj">
+                                        <button type="button" class="sc-iqzUVk foRwju"><img
+                                                src="/pc-static/resource/4e53b895bb4145d54acb.png" width="34"
+                                                height="32" alt="닫기 버튼 아이콘"></button>
+                                        <div class="sc-ipZHIp jSDPgp">
+                                            <div class="sc-iGrrsa fjoJle">상품이미지</div>
+                                            <div class="sc-bmyXtO cunIzO"></div>
+                                            <div class="sc-jtggT fReHeT"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="ProductNewstyle__Group-sc-7fge4a-4 UPAMp">
+                            <div class="ProductNewstyle__Label-sc-7fge4a-5 gvWKtv">제목<span>*</span></div>
+                            <div class="ProductNewstyle__Content-sc-7fge4a-6 gxpNmH">
+                                <div class="ProductNewstyle__TitleWrapper-sc-7fge4a-9 heHZUo">
+                                    <div class="ProductNewstyle__WithDeleteAll-sc-7fge4a-7 bofJgA"><input type="text"
+                                                                                                          placeholder="상품 제목을 입력해주세요."
+                                                                                                          class="ProductNewstyle__NameInput-sc-7fge4a-10 lnslOO"
+                                                                                                          value=""><a
+                                            href="https://help.bunjang.co.kr/faq/2/220" target="_blank">거래금지 품목</a>
+                                    </div>
+                                    <div class="ProductNewstyle__Counter-sc-7fge4a-11 jAnBeg">0/40</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="ProductNewstyle__Group-sc-7fge4a-4 UPAMp">
+                            <div class="ProductNewstyle__Label-sc-7fge4a-5 knwJIa">카테고리<span>*</span></div>
+                            <div class="ProductNewstyle__Content-sc-7fge4a-6 gxpNmH">
+                                <div class="CategoryBoxstyle__CategoryGroup-sc-r1u93i-0 kwaHYe">
+                                    <div class="CategoryBoxstyle__CategoryListWrapper-sc-r1u93i-1 cSzUJd">
+                                        <ul class="CategoryBoxstyle__CategoryList-sc-r1u93i-2 fAfkpF">
+                                            <li class="CategoryBoxstyle__Category-sc-r1u93i-3 btyiVm">
+                                                <button type="button"
+                                                        class="CategoryBoxstyle__CategoryButton-sc-r1u93i-4 kulsCh">여성의류
+                                                </button>
+                                            </li>
+                                            <li class="CategoryBoxstyle__Category-sc-r1u93i-3 btyiVm">
+                                                <button type="button"
+                                                        class="CategoryBoxstyle__CategoryButton-sc-r1u93i-4 kulsCh">남성의류
+                                                </button>
+                                            </li>
+                                            <li class="CategoryBoxstyle__Category-sc-r1u93i-3 btyiVm">
+                                                <button type="button"
+                                                        class="CategoryBoxstyle__CategoryButton-sc-r1u93i-4 kulsCh">신발
+                                                </button>
+                                            </li>
+                                            <li class="CategoryBoxstyle__Category-sc-r1u93i-3 btyiVm">
+                                                <button type="button"
+                                                        class="CategoryBoxstyle__CategoryButton-sc-r1u93i-4 kulsCh">가방
+                                                </button>
+                                            </li>
+                                            <li class="CategoryBoxstyle__Category-sc-r1u93i-3 btyiVm">
+                                                <button type="button"
+                                                        class="CategoryBoxstyle__CategoryButton-sc-r1u93i-4 kulsCh">
+                                                    시계/쥬얼리
+                                                </button>
+                                            </li>
+                                            <li class="CategoryBoxstyle__Category-sc-r1u93i-3 btyiVm">
+                                                <button type="button"
+                                                        class="CategoryBoxstyle__CategoryButton-sc-r1u93i-4 kulsCh">패션
+                                                    액세서리
+                                                </button>
+                                            </li>
+                                            <li class="CategoryBoxstyle__Category-sc-r1u93i-3 btyiVm">
+                                                <button type="button"
+                                                        class="CategoryBoxstyle__CategoryButton-sc-r1u93i-4 kulsCh">
+                                                    디지털/가전
+                                                </button>
+                                            </li>
+                                            <li class="CategoryBoxstyle__Category-sc-r1u93i-3 btyiVm">
+                                                <button type="button"
+                                                        class="CategoryBoxstyle__CategoryButton-sc-r1u93i-4 kulsCh">
+                                                    스포츠/레저
+                                                </button>
+                                            </li>
+                                            <li class="CategoryBoxstyle__Category-sc-r1u93i-3 btyiVm">
+                                                <button type="button"
+                                                        class="CategoryBoxstyle__CategoryButton-sc-r1u93i-4 kulsCh">
+                                                    차량/오토바이
+                                                </button>
+                                            </li>
+                                            <li class="CategoryBoxstyle__Category-sc-r1u93i-3 btyiVm">
+                                                <button type="button"
+                                                        class="CategoryBoxstyle__CategoryButton-sc-r1u93i-4 kulsCh">스타굿즈
+                                                </button>
+                                            </li>
+                                            <li class="CategoryBoxstyle__Category-sc-r1u93i-3 btyiVm">
+                                                <button type="button"
+                                                        class="CategoryBoxstyle__CategoryButton-sc-r1u93i-4 kulsCh">키덜트
+                                                </button>
+                                            </li>
+                                            <li class="CategoryBoxstyle__Category-sc-r1u93i-3 btyiVm">
+                                                <button type="button"
+                                                        class="CategoryBoxstyle__CategoryButton-sc-r1u93i-4 kulsCh">
+                                                    예술/희귀/수집품
+                                                </button>
+                                            </li>
+                                            <li class="CategoryBoxstyle__Category-sc-r1u93i-3 btyiVm">
+                                                <button type="button"
+                                                        class="CategoryBoxstyle__CategoryButton-sc-r1u93i-4 kulsCh">
+                                                    음반/악기
+                                                </button>
+                                            </li>
+                                            <li class="CategoryBoxstyle__Category-sc-r1u93i-3 btyiVm">
+                                                <button type="button"
+                                                        class="CategoryBoxstyle__CategoryButton-sc-r1u93i-4 kulsCh">
+                                                    도서/티켓/문구
+                                                </button>
+                                            </li>
+                                            <li class="CategoryBoxstyle__Category-sc-r1u93i-3 btyiVm">
+                                                <button type="button"
+                                                        class="CategoryBoxstyle__CategoryButton-sc-r1u93i-4 kulsCh">
+                                                    뷰티/미용
+                                                </button>
+                                            </li>
+                                            <li class="CategoryBoxstyle__Category-sc-r1u93i-3 btyiVm">
+                                                <button type="button"
+                                                        class="CategoryBoxstyle__CategoryButton-sc-r1u93i-4 kulsCh">
+                                                    가구/인테리어
+                                                </button>
+                                            </li>
+                                            <li class="CategoryBoxstyle__Category-sc-r1u93i-3 btyiVm">
+                                                <button type="button"
+                                                        class="CategoryBoxstyle__CategoryButton-sc-r1u93i-4 kulsCh">
+                                                    생활/가공식품
+                                                </button>
+                                            </li>
+                                            <li class="CategoryBoxstyle__Category-sc-r1u93i-3 btyiVm">
+                                                <button type="button"
+                                                        class="CategoryBoxstyle__CategoryButton-sc-r1u93i-4 kulsCh">
+                                                    유아동/출산
+                                                </button>
+                                            </li>
+                                            <li class="CategoryBoxstyle__Category-sc-r1u93i-3 btyiVm">
+                                                <button type="button"
+                                                        class="CategoryBoxstyle__CategoryButton-sc-r1u93i-4 kulsCh">
+                                                    반려동물용품
+                                                </button>
+                                            </li>
+                                            <li class="CategoryBoxstyle__Category-sc-r1u93i-3 btyiVm">
+                                                <button type="button"
+                                                        class="CategoryBoxstyle__CategoryButton-sc-r1u93i-4 kulsCh">기타
+                                                </button>
+                                            </li>
+                                            <li class="CategoryBoxstyle__Category-sc-r1u93i-3 btyiVm">
+                                                <button type="button"
+                                                        class="CategoryBoxstyle__CategoryButton-sc-r1u93i-4 kulsCh">지역
+                                                    서비스
+                                                </button>
+                                            </li>
+                                            <li class="CategoryBoxstyle__Category-sc-r1u93i-3 btyiVm">
+                                                <button type="button"
+                                                        class="CategoryBoxstyle__CategoryButton-sc-r1u93i-4 kulsCh">
+                                                    원룸/함께살아요
+                                                </button>
+                                            </li>
+                                            <li class="CategoryBoxstyle__Category-sc-r1u93i-3 btyiVm">
+                                                <button type="button"
+                                                        class="CategoryBoxstyle__CategoryButton-sc-r1u93i-4 kulsCh">번개나눔
+                                                </button>
+                                            </li>
+                                            <li class="CategoryBoxstyle__Category-sc-r1u93i-3 btyiVm">
+                                                <button type="button"
+                                                        class="CategoryBoxstyle__CategoryButton-sc-r1u93i-4 kulsCh">구인구직
+                                                </button>
+                                            </li>
+                                            <li class="CategoryBoxstyle__Category-sc-r1u93i-3 btyiVm">
+                                                <button type="button"
+                                                        class="CategoryBoxstyle__CategoryButton-sc-r1u93i-4 kulsCh">재능
+                                                </button>
+                                            </li>
+                                            <li class="CategoryBoxstyle__Category-sc-r1u93i-3 btyiVm">
+                                                <button type="button"
+                                                        class="CategoryBoxstyle__CategoryButton-sc-r1u93i-4 kulsCh">커뮤니티
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="CategoryBoxstyle__CategoryListWrapper-sc-r1u93i-1 cSzUJd">중분류 선택</div>
+                                    <div class="CategoryBoxstyle__CategoryListWrapper-sc-r1u93i-1 cSzUJd">소분류 선택</div>
+                                </div>
+                                <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 1.5rem;">
+                                    <h3 class="CategoryBoxstyle__SelectedCategory-sc-r1u93i-5 jYpteP">선택한 카테고리 : <b></b>
+                                    </h3>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="ProductNewstyle__Group-sc-7fge4a-4 UPAMp">
+                            <div class="ProductNewstyle__Label-sc-7fge4a-5 gvWKtv">거래지역<span>*</span></div>
+                            <div class="ProductNewstyle__Content-sc-7fge4a-6 gxpNmH">
+                                <div class="ProductNewstyle__LocationButtons-sc-7fge4a-12 gslAjW">
+                                    <button type="button" class="ProductNewstyle__LocationButton-sc-7fge4a-13 fNgEhh">내
+                                        위치
+                                    </button>
+                                    <button type="button" class="ProductNewstyle__LocationButton-sc-7fge4a-13 fNgEhh">최근
+                                        지역
+                                    </button>
+                                    <button type="button" class="ProductNewstyle__LocationButton-sc-7fge4a-13 fNgEhh">주소
+                                        검색
+                                    </button>
+                                    <button type="button" class="ProductNewstyle__LocationButton-sc-7fge4a-13 fNgEhh">
+                                        지역설정안함
+                                    </button>
+                                </div>
+                                <input readonly="" placeholder="선호 거래 지역을 검색해주세요."
+                                       class="ProductNewstyle__LocationInput-sc-7fge4a-14 GEuoA" value="경기도">
+                            </div>
+                        </li>
+                        <li class="ProductNewstyle__Group-sc-7fge4a-4 UPAMp">
+                            <div class="ProductNewstyle__Label-sc-7fge4a-5 gGpLyz">상태<span>*</span></div>
+                            <div class="ProductNewstyle__Content-sc-7fge4a-6 gxpNmH">
+                                <div class="sc-gVyKpa hKVeWn"><label for="중고상품" class="sc-eXNvrr fzLfip"><input
+                                        id="중고상품" type="radio" value="0" checked="">중고상품</label><label for="새상품"
+                                                                                                       class="sc-eXNvrr cpJCFG"><input
+                                        id="새상품" type="radio" value="0">새상품</label></div>
+                            </div>
+                        </li>
+                        <li class="ProductNewstyle__Group-sc-7fge4a-4 UPAMp">
+                            <div class="ProductNewstyle__Label-sc-7fge4a-5 gGpLyz">교환<span>*</span></div>
+                            <div class="ProductNewstyle__Content-sc-7fge4a-6 gxpNmH">
+                                <div class="sc-gVyKpa hKVeWn"><label for="교환불가" class="sc-eXNvrr fzLfip"><input
+                                        id="교환불가" type="radio" value="0" checked="">교환불가</label><label for="교환가능"
+                                                                                                       class="sc-eXNvrr cpJCFG"><input
+                                        id="교환가능" type="radio" value="0">교환가능</label></div>
+                            </div>
+                        </li>
+                        <li class="ProductNewstyle__Group-sc-7fge4a-4 UPAMp">
+                            <div class="ProductNewstyle__Label-sc-7fge4a-5 gvWKtv">가격<span>*</span></div>
+                            <div class="ProductNewstyle__Content-sc-7fge4a-6 gxpNmH">
+                                <div class="ProductNewstyle__PriceInputWrapper-sc-7fge4a-15 fDlSqf"><input type="text"
+                                                                                                           placeholder="숫자만 입력해주세요."
+                                                                                                           class="ProductNewstyle__PriceInput-sc-7fge4a-16 eAhDI"
+                                                                                                           value="">원
+                                </div>
+                                <div class="ProductNewstyle__OptionCheckBox-sc-7fge4a-17 gduZji">
+                                    <div class="ProductNewstyle__RoundCheckBox-sc-7fge4a-20 iOoCMf"><label
+                                            for="includeShippingCost"
+                                            class="ProductNewstyle__RoundCheckBoxLabel-sc-7fge4a-19 ipoTdi"><input
+                                            id="includeShippingCost" type="checkbox">배송비 포함</label></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="ProductNewstyle__Group-sc-7fge4a-4 UPAMp">
+                            <div class="ProductNewstyle__Label-sc-7fge4a-5 iqSfRn">설명<span>*</span></div>
+                            <div class="ProductNewstyle__Content-sc-7fge4a-6 gxpNmH">
+                                <textarea rows="6" class="ProductNewstyle__Description-sc-7fge4a-21 gQnFKF"></textarea>
+                                <div class="ProductNewstyle__DescriptionPlaceholder-sc-7fge4a-22 kroRXW">여러 장의 상품 사진과 구입
+                                    연도, 브랜드, 사용감, 하자 유무 등 구매자에게 필요한 정보를 꼭 포함해 주세요. (10자 이상)<br><span>안전하고 건전한 거래 환경을 위해 과학기술정보통신부, 한국인터넷진흥원과 번개장터(주)가 함께 합니다.</span>
+                                </div>
+                                <div class="ProductNewstyle__DescriptionInfo-sc-7fge4a-23 cHxIMH">
+                                    <span>혹시 <a href="https://help.bunjang.co.kr/notice/607" target="_blank">카카오톡 ID</a>를 적으셨나요?</span>
+                                    <div class="ProductNewstyle__DescCounter-sc-7fge4a-24 krPftp">0/2000</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="ProductNewstyle__Group-sc-7fge4a-4 UPAMp">
+                            <div class="ProductNewstyle__Label-sc-7fge4a-5 iqSfRn">연관태그</div>
+                            <div class="ProductNewstyle__Content-sc-7fge4a-6 gxpNmH">
+                                <div class="TagBoxstyle__Wrapper-sc-jn2mit-0 gpmrZa">
+                                    <div class="TagBoxstyle__TagInputWrapper-sc-jn2mit-1 VTvsX">
+                                        <div class="TagBoxstyle__WithDeleteAll-sc-jn2mit-12 UoUqm"><input type="text"
+                                                                                                          placeholder="연관태그를 입력해주세요. (최대 5개)"
+                                                                                                          value="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="ProductNewstyle__TagGuide-sc-7fge4a-33 ftFgzy">
+                                    <li>
+                                        <p>태그는 띄어쓰기로 구분되며 최대 9자까지 입력할 수 있습니다. </p>
+                                    </li>
+                                    <li>
+                                        <p>태그는 검색의 부가정보로 사용 되지만, 검색 결과 노출을 보장하지는 않습니다.</p>
+                                    </li>
+                                    <li>
+                                        <p>검색 광고는 태그정보를 기준으로 노출됩니다.</p>
+                                    </li>
+                                    <li>
+                                        <p>상품과 직접 관련이 없는 다른 상품명, 브랜드, 스팸성 키워드 등을 입력하면 노출이 중단되거나 상품이 삭제될 수 있습니다.</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="ProductNewstyle__Group-sc-7fge4a-4 UPAMp">
+                            <div class="ProductNewstyle__Label-sc-7fge4a-5 gGpLyz">수량</div>
+                            <div class="ProductNewstyle__Content-sc-7fge4a-6 gxpNmH">
+                                <div class="ProductNewstyle__QuantityInputWrapper-sc-7fge4a-25 cBVSIA"><input
+                                        type="text" class="ProductNewstyle__QuantityInput-sc-7fge4a-26 ljLnwI"
+                                        value="1">개
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+                <footer class="ProductNewstyle__FloatingFooter-sc-7fge4a-27 kppXDq">
+                    <div class="ProductNewstyle__RegisterButtonWrapper-sc-7fge4a-28 iMvseQ"><button type="button" class="ProductNewstyle__RegisterButton-sc-7fge4a-29 bgpKeW"></button></div>
+                </footer>
+                <section class="ProductNewstyle__Basic-sc-7fge4a-2 lmrVST">
+                    <div class="ProductNewstyle__BunPayWrapper-sc-7fge4a-38 iaGiRu">
+                        <h2>
+                            빠른 판매
+                            <div class="ProductNewstyle__HeadDesc-sc-7fge4a-34 buBPFR">
+                                <p>내 상품에 안전결제 배지가 표시돼요</p>
+                                <a href="https://m.bunjang.co.kr/banner/pay?utm_source=pay-filter&amp;utm_medium=product-register&amp;utm_campaign=pay-master-seller-2109#seller"
+                                   target="_blank">자세히</a>
+                            </div>
+                        </h2>
+                        <ul class="ProductNewstyle__Groups-sc-7fge4a-3 fSSAPi">
+                            <li class="ProductNewstyle__Group-sc-7fge4a-4 UPAMp">
+                                <div class="ProductNewstyle__Label-sc-7fge4a-5 bFQfPj">옵션</div>
+                                <div class="ProductNewstyle__Content-sc-7fge4a-6 gxpNmH">
+                                    <div class="ProductNewstyle__RoundCheckBox-sc-7fge4a-20 iOoCMf">
+                                        <label for="bunPayFilter"
+                                               class="ProductNewstyle__RoundCheckBoxLabel-sc-7fge4a-19 iUTMsB">
+                                            <input id="bunPayFilter" type="checkbox">
+                                            <span class="ProductNewstyle__CheckBoxLabel-sc-7fge4a-35 hsTHsV">
+                                 <span>안전결제 환영</span>
+                                 <svg width="60" height="24" viewBox="0 0 35 16" xmlns="http://www.w3.org/2000/svg"
+                                      role="img">
+                                    <g fill="none" fill-rule="evenodd">
+                                       <rect fill="#D80C18" width="35" height="16" rx="2"></rect>
+                                       <path d="m9.226 3.003-.56 4.563h2.325a.05.05 0 0 1 .036.083l-5.024 5.388c-.033.035-.091.008-.085-.04l.56-4.563H4.153a.05.05 0 0 1-.036-.083L9.14 2.963a.05.05 0 0 1 .085.04zm11.803.706v8.59h-1.306V3.71h1.306zm8.447 0v8.59h-1.345V3.71h1.345zm-10.265.048v8.38h-1.288V8.138h-.776V6.875h.776V3.757h1.288zm5.398-.02c.353 0 .677.05.97.149.294.099.548.25.763.455.214.203.385.458.511.765.126.306.199.663.218 1.071a30.552 30.552 0 0 1 0 3.052 3.16 3.16 0 0 1-.218 1.076 2.2 2.2 0 0 1-.511.76 2.037 2.037 0 0 1-.762.455 3.031 3.031 0 0 1-.971.148c-.714 0-1.291-.2-1.733-.602-.442-.402-.685-1.015-.73-1.837a95.334 95.334 0 0 1-.033-.785 19.155 19.155 0 0 1 0-1.483c.01-.248.021-.51.034-.784.044-.823.287-1.435.729-1.836.442-.403 1.02-.604 1.733-.604zm-7.084.182v1.187h-.531l-.016 5.075.614-.024v1.167l-4.47.192v-1.187l.624-.024-.017-5.2h-.531V3.92h4.327zm7.084 1.005c-.165 0-.312.027-.44.081a.814.814 0 0 0-.337.268c-.095.124-.17.288-.227.492-.057.205-.095.46-.114.766-.025.376-.038.767-.038 1.172 0 .405.013.796.038 1.172.02.306.057.561.114.765.057.204.132.368.227.493a.82.82 0 0 0 .336.268c.13.054.276.08.44.08.165 0 .312-.026.44-.08a.82.82 0 0 0 .337-.268c.095-.125.17-.289.228-.493.056-.204.094-.46.113-.765a17.748 17.748 0 0 0 0-2.343 3.805 3.805 0 0 0-.113-.767 1.454 1.454 0 0 0-.228-.492.814.814 0 0 0-.336-.268 1.127 1.127 0 0 0-.44-.081zm-8.894.182h-.707l.016 5.15.675-.026.016-5.124z"
+                                             fill="#FFF"></path>
+                                    </g>
+                                 </svg>
+                              </span>
+                                        </label>
+                                    </div>
+                                    <ul class="ProductNewstyle__BunPayFilterDetailBox-sc-7fge4a-36 jfTSgw">
+                                        <li>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                                 viewBox="0 0 20 20" role="img" fill="#ff5058">
+                                                <g fill="current" fill-rule="evenodd">
+                                                    <g fill="current">
+                                                        <g>
+                                                            <path d="M7.5 16.667c-.221 0-.433-.088-.59-.244l-5-5c-.21-.21-.292-.518-.215-.805.077-.288.302-.512.59-.59.287-.076.594.006.804.216l4.363 4.364 9.415-10.984c.3-.349.825-.39 1.175-.09.349.299.39.824.09 1.174l-10 11.666c-.15.177-.368.283-.6.292H7.5"
+                                                                  transform="translate(-308 -798) translate(308 798)"></path>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                            <p>안전결제(번개페이) 요청을 거절하지 않는 대신 혜택을 받을 수 있어요.<small>거절 시,<a
+                                                    href="https://help.bunjang.co.kr/faq/3/415" target="_blank">이용
+                                                제재</a>가 있을 수 있으니 주의해 주세요.</small></p>
+                                        </li>
+                                        <li>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                                 viewBox="0 0 20 20" role="img" fill="#ff5058">
+                                                <g fill="current" fill-rule="evenodd">
+                                                    <g fill="current">
+                                                        <g>
+                                                            <path d="M7.5 16.667c-.221 0-.433-.088-.59-.244l-5-5c-.21-.21-.292-.518-.215-.805.077-.288.302-.512.59-.59.287-.076.594.006.804.216l4.363 4.364 9.415-10.984c.3-.349.825-.39 1.175-.09.349.299.39.824.09 1.174l-10 11.666c-.15.177-.368.283-.6.292H7.5"
+                                                                  transform="translate(-308 -798) translate(308 798)"></path>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                            <p>내 상품을 먼저 보여주는 전용 필터로 더 빠르게 판매할 수 있어요.</p>
+                                        </li>
+                                        <li>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                                 viewBox="0 0 20 20" role="img" fill="#ff5058">
+                                                <g fill="current" fill-rule="evenodd">
+                                                    <g fill="current">
+                                                        <g>
+                                                            <path d="M7.5 16.667c-.221 0-.433-.088-.59-.244l-5-5c-.21-.21-.292-.518-.215-.805.077-.288.302-.512.59-.59.287-.076.594.006.804.216l4.363 4.364 9.415-10.984c.3-.349.825-.39 1.175-.09.349.299.39.824.09 1.174l-10 11.666c-.15.177-.368.283-.6.292H7.5"
+                                                                  transform="translate(-308 -798) translate(308 798)"></path>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                            <p>번개페이 배지로 더 많은 관심을 받을 수 있어요.</p>
+                                        </li>
+                                    </ul>
+                                    <div class="ProductNewstyle__BunPayFilterDetailDesc-sc-7fge4a-37 dDvHee">* 번개페이 배지와
+                                        전용 필터 기능은 앱 또는 모바일 웹에서만 볼 수 있어요.
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <div class="sc-jwKygS gSsteC">
+                    <section class="sc-kZmsYB fLtRDu">
+                        <header>최근 지역
+                            <button type="button" class="sc-RcBXQ kEONcO"></button>
+                        </header>
+                        <ul>
+                            <li>
+                                <button type="button" class="sc-gmeYpB hUPKvF">경기도 군포시 군포1동</button>
+                            </li>
+                            <li>
+                                <button type="button" class="sc-gmeYpB hUPKvF">경기도 군포시 산본1동</button>
+                            </li>
+                            <li>
+                                <button type="button" class="sc-gmeYpB hUPKvF">경기도 수원시 팔달구 매교동</button>
+                            </li>
+                            <li>
+                                <button type="button" class="sc-gmeYpB hUPKvF">경기도 안양시 동안구 범계동</button>
+                            </li>
+                            <li>
+                                <button type="button" class="sc-gmeYpB hUPKvF">서울특별시 서대문구 신촌동</button>
+                            </li>
+                            <li>
+                                <button type="button" class="sc-gmeYpB hUPKvF">경기도 안양시 만안구 안양1동</button>
+                            </li>
+                            <li>
+                                <button type="button" class="sc-gmeYpB hUPKvF">경기도 군포시 군포2동</button>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+                <div class="sc-jwKygS gSsteC">
+                    <section class="sc-iSDuPN fqgycQ">
+                        <header>주소 검색
+                            <button type="button" class="sc-fZwumE jiLQdi"></button>
+                        </header>
+                        <form class="sc-clNaTc eLmsNV"><input type="text" placeholder="동(읍/면/리) 입력해주세요." value="">
+                            <button type="submit" class="sc-fQejPQ hrepOy"></button>
+                        </form>
+                    </section>
+                </div>
+            </main>
+            <footer class="ProductNewstyle__FloatingFooter-sc-7fge4a-27 kBjUWB">
+                <div class="ProductNewstyle__RegisterButtonWrapper-sc-7fge4a-28 iMvseQ">
+                    <button type="button" class="ProductNewstyle__RegisterButton-sc-7fge4a-29 bgpKeW"></button>
+                </div>
+            </footer>
+            <div class="sc-jwKygS gSsteC">
+                <div class="sc-etwtAo eeDevh">
+                    <button class="sc-iGPElx fdHszJ"><img src="/pc-static/resource/1192be75aeaf04d73c4d.png" width="16"
+                                                          height="16" alt="닫기 버튼 이미지"></button>
+                    <div class="sc-jXQZqI idINCU">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNTQiIHZpZXdCb3g9IjAgMCA0OCA1NCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBkPSJNNDggMzMuMDUzYzAgLjU3IDAgMS4xNDEtLjAwMyAxLjcxMy0uMDAzLjQ4LS4wMDkuOTYtLjAyMiAxLjQ0MS0uMDI5IDEuMDQ2LS4wOTEgMi4xMDMtLjI4IDMuMTM4YTEwLjQ3MiAxMC40NzIgMCAwIDEtLjk5NCAyLjk4NCAxMC4wMyAxMC4wMyAwIDAgMS0xLjg2NyAyLjU0IDEwLjE0NCAxMC4xNDQgMCAwIDEtMi41NyAxLjg0N2MtLjk2Ni40ODYtMS45NTQuNzk0LTMuMDE4Ljk4My0xLjA0Ny4xODYtMi4xMTUuMjQ4LTMuMTc0LjI3NkMzNC4wMzUgNDggMzMuNDU4IDQ4IDMyLjg4IDQ4SDE1LjEyYy0yLjIxOS0uMDA3LTIuNzA1LS4wMTItMy4xOS0uMDI1LTEuMDYtLjAyOC0yLjEyOC0uMDktMy4xNzUtLjI3NmExMC43NzEgMTAuNzcxIDAgMCAxLTMuMDE4LS45ODMgMTAuMTMgMTAuMTMgMCAwIDEtMi41Ny0xLjg0NiAxMC4wNTMgMTAuMDUzIDAgMCAxLTEuODY4LTIuNTQgMTAuNTI0IDEwLjUyNCAwIDAgMS0uOTk0LTIuOTg1Yy0uMTg5LTEuMDM1LS4yNS0yLjA5Mi0uMjgtMy4xMzhhNjMuNzEgNjMuNzEgMCAwIDEtLjAyLTEuNDQxQzAgMzQuMTk0IDAgMzMuNjIzIDAgMzMuMDUzVjE0Ljk0N2MwLS41NyAwLTEuMTQyLjAwNC0xLjcxMi4wMDMtLjQ4MS4wMDktLjk2MS4wMjItMS40NDIuMDI4LTEuMDQ3LjA5LTIuMTAzLjI3OS0zLjEzOGExMC41MiAxMC41MiAwIDAgMSAuOTk0LTIuOTg0IDEwLjEwOSAxMC4xMDkgMCAwIDEgNC40MzgtNC4zODZBMTAuNzcxIDEwLjc3MSAwIDAgMSA4Ljc1NS4zQzkuODAyLjExNSAxMC44Ny4wNTMgMTEuOTI5LjAyNSAxMy45NjUgMCAxNC41NDMgMCAxNS4xMiAwaDE3LjI4OEwyNi4yNS4wMDIgMzIuODggMGMyLjIxOS4wMDcgMi43MDUuMDEyIDMuMTkyLjAyNSAxLjA1OS4wMjggMi4xMjcuMDkgMy4xNzQuMjc2IDEuMDY0LjE4OSAyLjA1Mi40OTcgMy4wMTguOTgzLjk0OC40NzggMS44MTggMS4xMDEgMi41NyAxLjg0NmExMCAxMCAwIDAgMSAxLjg2NyAyLjU0Yy40OTMuOTU2LjgwNCAxLjkzMy45OTQgMi45ODUuMTg5IDEuMDM1LjI1MSAyLjA5MS4yOCAzLjEzOC4wMTMuNDguMDIuOTYxLjAyMiAxLjQ0Mi4wMDMuNTcuMDAzIDEuMTQyLjAwMyAxLjcxMnYxOC4xMDZ6IiBpZD0iYSIvPgogICAgPC9kZWZzPgogICAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDMpIj4KICAgICAgICAgICAgPG1hc2sgaWQ9ImIiIGZpbGw9IiNmZmYiPgogICAgICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjYSIvPgogICAgICAgICAgICA8L21hc2s+CiAgICAgICAgICAgIDxwYXRoIGZpbGw9IiNEODBDMTgiIG1hc2s9InVybCgjYikiIGQ9Ik0wIDBoNDh2NDhIMHoiLz4KICAgICAgICAgICAgPGcgbWFzaz0idXJsKCNiKSIgZmlsbD0iI0ZGRiI+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMzQuODY0IDIyLjkgMTkuMDY2IDM5LjgxNWEuMTU1LjE1NSAwIDAgMS0uMjY4LS4xMjZsMS43NjMtMTQuMzI3SDEzLjI1YS4xNTYuMTU2IDAgMCAxLS4xMTQtLjI2MkwyOC45MzMgOC4xODVhLjE1NS4xNTUgMCAwIDEgLjI2OC4xMjZsLTEuNzYzIDE0LjMyN2g3LjMxMmMuMTM3IDAgLjIwOC4xNjIuMTE0LjI2MnoiLz4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgICAgICA8cGF0aCBkPSJNMCAwaDQ4djU0SDB6Ii8+CiAgICA8L2c+Cjwvc3ZnPgo="
+                             width="48" alt="팔로우 이미지" class="sc-kasBVs RLXNc">
+                        <div class="sc-hgHYgh iCfLAW">모바일 기기 인증이 필요합니다</div>
+                        <div class="sc-eInJlc cNXsWW">앱에 로그인하면 자동으로<br>모바일 기기 인증이 완료됩니다.</div>
+                        <div class="sc-gtfDJT cIRDZb"><input type="tel" placeholder="핸드폰 번호를 입력해 주세요."
+                                                             value="010****9850"></div>
+                        <button class="sc-fOICqy dJDesg">앱 링크 받기</button>
+                    </div>
+                </div>
+            </div>
+            <div class="sc-jwKygS gSsteC">
+                <div class="sc-jeCdPy ceFZKW">
+                    <button class="sc-bGbJRg gdzKzo"><img src="/pc-static/resource/1192be75aeaf04d73c4d.png" width="16"
+                                                          height="16" alt="닫기 버튼 이미지"></button>
+                    <form class="sc-jtRlXQ elNKrC">
+                        <div class="sc-ePZHVD bCqxHS">본인 명의인증</div>
+                        <div class="sc-likbZx kTQzcd">인증정보가 장기간 유지되어 재확인이 필요합니다. 이름을 입력하면 상품등록이 완료됩니다.</div>
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzgiIGhlaWdodD0iMTE0IiB2aWV3Qm94PSIwIDAgMTc4IDExNCI+CiAgICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGZpbGw9IiNGRkYyRTQiPgogICAgICAgICAgICA8cmVjdCB3aWR0aD0iMTQ0LjAxOCIgaGVpZ2h0PSI5Ny4wMjEiIHg9IjE2Ljk5MSIgeT0iMTYuOTc5IiBmaWxsLW9wYWNpdHk9Ii40IiByeD0iMTYiLz4KICAgICAgICAgICAgPHJlY3Qgd2lkdGg9IjE2MC4yIiBoZWlnaHQ9Ijk3LjAyMSIgeD0iOC45IiB5PSI4Ljg5NCIgZmlsbC1vcGFjaXR5PSIuNiIgcng9IjE2Ii8+CiAgICAgICAgICAgIDxyZWN0IHdpZHRoPSIxNzgiIGhlaWdodD0iOTcuMDIxIiByeD0iMTYiLz4KICAgICAgICA8L2c+CiAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTYuMTgyIDE2LjE3KSI+CiAgICAgICAgICAgIDxlbGxpcHNlIGN4PSIzMi4zNjQiIGN5PSIzMi4zNCIgZmlsbD0iI0ZGRiIgcng9IjMyLjM2NCIgcnk9IjMyLjM0Ii8+CiAgICAgICAgICAgIDxnIGZpbGw9IiNGRkYiIGZpbGwtcnVsZT0ibm9uemVybyIgc3Ryb2tlPSIjRkY1MDU4IiBzdHJva2Utd2lkdGg9IjIiPgogICAgICAgICAgICAgICAgPHBhdGggZD0iTTQ5Ljk3MyA0OS45MzZ2LTEuMzk5YzAtNy44OTctNi41MzMtMTQuMzMxLTE0LjU3NS0xNC4zMzFoLTUuMjZjLTguMDQyIDAtMTQuNTc0IDYuNDM0LTE0LjU3NCAxNC4zMzF2MS40aDM0LjQwOXpNNDMuNzUgMjMuM2MwLTUuNzA4LTQuNzYzLTEwLjM0Ny0xMC42NTEtMTAuMzQ3LTUuODg5IDAtMTAuNjUxIDQuNjQtMTAuNjUxIDEwLjM0OCAwIDUuNzA5IDQuNzYyIDEwLjM0NyAxMC42NSAxMC4zNDcgNS44ODkgMCAxMC42NTEtNC42MzggMTAuNjUxLTEwLjM0N3oiLz4KICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8cGF0aCBmaWxsPSIjRkY1MDU4IiBkPSJNODYuMTgxIDM1LjM3bDcuNi03LjU5OWEuOTgzLjk4MyAwIDEgMSAxLjM5IDEuMzlsLTcuODQ0IDcuODQ0YS45ODMuOTgzIDAgMCAxLTEuNjE1LjY3MS45ODIuOTgyIDAgMCAxLS40NDItLjQzNmwtNC4wNTktNC4wNmEuOTgzLjk4MyAwIDAgMSAxLjM5LTEuMzlsMy41OCAzLjU4em0wLTE2LjE3bDcuNi03LjZhLjk4My45ODMgMCAxIDEgMS4zOSAxLjM5bC03Ljg0NCA3Ljg0NWEuOTgzLjk4MyAwIDAgMS0xLjYxNS42NzEuOTgyLjk4MiAwIDAgMS0uNDQyLS40MzdsLTQuMDU5LTQuMDZhLjk4My45ODMgMCAwIDEgMS4zOS0xLjM4OWwzLjU4IDMuNTh6bTE4LjU0LTMuODM4aDMxLjY2OGExLjk2NiAxLjk2NiAwIDAgMSAwIDMuOTNIMTA0LjcyYTEuOTY2IDEuOTY2IDAgMSAxIDAtMy45M3ptMCAxNi4xN2gzOC45NWExLjk2NiAxLjk2NiAwIDEgMSAwIDMuOTNoLTM4Ljk1YTEuOTY2IDEuOTY2IDAgMSAxIDAtMy45M3pNODIuODc0IDQ5LjMxOWg1Ljc3OGExLjk2NiAxLjk2NiAwIDAgMSAwIDMuOTMxaC01Ljc3OGExLjk2NiAxLjk2NiAwIDEgMSAwLTMuOTN6bTEzLjc1NCAwaDUuNzc4YTEuOTY2IDEuOTY2IDAgMCAxIDAgMy45MzFIOTYuNjNhMS45NjYgMS45NjYgMCAxIDEgMC0zLjkzem0xMy43NTUgMGgyMi43NjlhMS45NjYgMS45NjYgMCAwIDEgMCAzLjkzMWgtMjIuNzdhMS45NjYgMS45NjYgMCAwIDEgMC0zLjkzeiIvPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="
+                             width="178" alt="본인명의인증 이미지" class="sc-bEjcJn dsENqo">
+                        <div class="sc-eKZiaR jKSVuq">인증<input type="text" placeholder="본인인증된 이름을 입력" value=""></div>
+                        <div class="sc-fgfRvd ekTZFZ">
+                            <button type="button" class="sc-gpHHfC jrbjSj">취소</button>
+                            <button type="submit" class="sc-hIVACf kEQnqH">확인</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="sc-jwKygS gSsteC">
+                <div class="ProductRegisterPopupstyle__AppDownloadPopupWrapper-sc-clbm8q-0 cMKVUc">
+                    <button class="ProductRegisterPopupstyle__CloseButton-sc-clbm8q-2 hWZdOO"><img
+                            src="/pc-static/resource/1192be75aeaf04d73c4d.png" width="16" height="16" alt="닫기 버튼 이미지">
+                    </button>
+                    <div class="ProductRegisterPopupstyle__PopupContent-sc-clbm8q-1 erBBKK">
+                        <img src="/pc-static/resource/c35d5300a0f07095da34.png" width="300" height="275"
+                             alt="상픔등록 완료 이미지" class="ProductRegisterPopupstyle__ThemeImage-sc-clbm8q-3 ZvRNQ">
+                        <div class="ProductRegisterPopupstyle__Content-sc-clbm8q-8 iAOyNX">
+                            <div class="ProductRegisterPopupstyle__PopupTitle-sc-clbm8q-4 fpybyL">상품이 등록되었습니다!</div>
+                            <div class="ProductRegisterPopupstyle__PopupDesc-sc-clbm8q-5 kwJdAq">상품을 빨리 팔고 싶다면<br>앱에서
+                                실시간 알림을 받으세요!
+                            </div>
+                            <form>
+                                <div class="ProductRegisterPopupstyle__PhoneInput-sc-clbm8q-6 gnQUdC"><input type="tel"
+                                                                                                             placeholder="핸드폰 번호를 입력해 주세요."
+                                                                                                             value="010****9850">
+                                </div>
+                                <button type="submit"
+                                        class="ProductRegisterPopupstyle__AppDownloadButton-sc-clbm8q-7 gdcjJa">앱 링크 받기
+                                </button>
+                            </form>
+                            <button type="button" class="ProductRegisterPopupstyle__ProductkButton-sc-clbm8q-10 hWVYWy">
+                                등록상품 보기
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sc-jwKygS gSsteC">
+                <div class="ProductRegisterFailPopupstyle__Wrapper-sc-p369qf-0 fvgsjW">
+                    <div class="ProductRegisterFailPopupstyle__Content-sc-p369qf-1 cjXOGL"></div>
+                    <div class="ProductRegisterFailPopupstyle__ButtonWrapper-sc-p369qf-2 joQPAA">
+                        <button class="ProductRegisterFailPopupstyle__CloseButton-sc-p369qf-3 kRxLLC"><span>닫기</span>
+                        </button>
+                        <button class="ProductRegisterFailPopupstyle__LinkButton-sc-p369qf-4 iqsCjR"><a target="_blank"
+                                                                                                        rel="noopener noreferrer">일괄
+                            등록 현황</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="sc-jwKygS gSsteC">
+                <div class="ProshopRestrictedPopupstyle__Wrapper-sc-yk8kno-0 hvCkDL">
+                    <div class="ProshopRestrictedPopupstyle__Content-sc-yk8kno-1 imINwM">프로상점에서만 판매 가능한 상품의 판매가 확인되어 해당
+                        기능을 이용하실 수 없어요. 이용을 계속하려면 프로상점에 가입해 주세요.
+                    </div>
+                    <div class="ProshopRestrictedPopupstyle__ButtonsWrapper-sc-yk8kno-2 cgkuRM">
+                        <button class="ProshopRestrictedPopupstyle__LeftButtonWrapper-sc-yk8kno-3 gYqLcr">
+                            <span>닫기</span></button>
+                        <button class="ProshopRestrictedPopupstyle__RightButtonWrapper-sc-yk8kno-4 kOJEXm"><a
+                                href="https://seller.bunjang.co.kr/proshop/intro" target="_blank"
+                                rel="noopener noreferrer">가입하기</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </th:block>
 </html>
