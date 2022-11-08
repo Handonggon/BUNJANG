@@ -4,9 +4,7 @@
     <body>
         <header class="header"><th:block th:replace="layout/include/header :: headerFragment"></th:block></header>
         <nav class="nav"><th:block th:replace="layout/include/nav :: navFragment"></th:block></nav>
-        
-        <div><th:block th:replace="layout/include/modal :: modalFragment"></div>
-
+        <modal><th:block th:replace="layout/include/modal :: modalFragment"></th:block></modal>
         <th:block layout:fragment="contentFragment"></th:block>
         <footer class="footer"><th:block th:replace="layout/include/footer :: footerFragment"></th:block></footer>
     </body>

@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "/products")
 public class ProductsController {
 
-    @RequestMapping(value = "/now")
+    @RequestMapping(value = "/new")
     public String view() {
-        return "pages/products/now";
+        return "pages/products/new";
     }
 
     @RequestMapping(value = "/{productId}")
