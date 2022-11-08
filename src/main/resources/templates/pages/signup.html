@@ -46,6 +46,10 @@
     outline: none;
     appearance: none;
 }
+.ksuikN input:focus {
+    border-color: rgb(25, 25, 25);
+}
+
 .emXoKq {
     position: absolute;
     left: 0px;
@@ -580,7 +584,39 @@
     transition: top 200ms ease-in 0s, transform 200ms ease-in 0s, font-size 200ms ease-in 0s;
 }
         </style>
+        <script>
+            $(function() {
+                $(".ksuikN > input").on("focus", function(e) {
+                    $(e.target).parent().children(".emXoKq").css("top", "0")
+                                                            .css("font-size", "0.75rem")
+                                                            .css("transform", "translateY(0px)");
+                    $(e.target).parent().children(".NXXDp").css("opacity", "1");     
+                });
+                $(".ksuikN > input").on("focusout", function(e) {
+                    $(e.target).parent().children(".emXoKq").css("top", "50%")
+                                                            .css("font-size", "1rem")
+                                                            .css("transform", "translateY(-50%)");
+                    $(e.target).parent().children(".NXXDp").css("opacity", "0");                                      
+                });
 
+                $(".dNnGOs > select").on("focus", function(e) {
+                    $(e.target).parent().children(".jzcnMC").css("top", "0")
+                                                            .css("font-size", "0.75rem")
+                                                            .css("transform", "translateY(0px)");
+                    $(e.target).parent().children(".NXXDp").css("opacity", "1");     
+                });
+                $(".dNnGOs > select").on("focusout", function(e) {
+                    $(e.target).parent().children(".jzcnMC").css("top", "50%")
+                                                            .css("font-size", "1rem")
+                                                            .css("transform", "translateY(-50%)");
+                    $(e.target).parent().children(".NXXDp").css("opacity", "0");                                      
+                });
+            });
+            
+
+            
+
+        </script>
 
 
         <div class="sc-cBrjTV eNyMmC">
@@ -591,7 +627,8 @@
                         <div>
                             <div class="sc-kkbgRg dMoNMm">
                                 <label class="ValidationInput__ValidationInputRoot-sc-104cih6-0 ksuikN">
-                                    <input value="" /><span class="ValidationInput__Label-sc-104cih6-1 emXoKq" style="top: 50%; font-size: 1rem; transform: translateY(-50%);">이름</span>
+                                    <input value="" />
+                                    <span class="ValidationInput__Label-sc-104cih6-1 emXoKq" style="top: 0; font-size: 0.75rem; transform: translateY(0px);">이름</span>
                                 </label>
                             </div>
                             <div class="sc-hRmvpr kWWmWc">

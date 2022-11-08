@@ -219,11 +219,11 @@
                 <button class="sc-iyvyFf bNBtQ"><img th:src="@{/image/icon/favorites.svg}" width="16" height="15" alt="즐겨찾기버튼 이미지"/>즐겨찾기</button>
             </div>
             <div class="sc-dfVpRl jYMzIJ" sec:authorize-expr="!isAuthenticated()">
-                <button class="sc-iyvyFf bNBtQ">로그인/회원가입</button>
+                <button class="sc-iyvyFf bNBtQ" id="loginBtn">로그인/회원가입</button>
                 <a class="sc-hwwEjo hvNQEV" href="/shop/products">내상점</a>
             </div>
             <div class="sc-dfVpRl jYMzIJ" sec:authorize-expr="isAuthenticated()">
-                <button class="sc-iyvyFf bNBtQ">로그아웃</button>
+                <button class="sc-iyvyFf bNBtQ" id="logoutBtn">로그아웃</button>
                 <div class="sc-gzOgki bKQRTB">
                     <div class="sc-bdVaJa ffbqaN">
                         <a class="sc-bwzfXH bHteAL">알림</a>
