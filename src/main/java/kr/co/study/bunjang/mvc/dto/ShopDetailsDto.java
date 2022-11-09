@@ -2,7 +2,6 @@ package kr.co.study.bunjang.mvc.dto;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.core.GrantedAuthority;
@@ -10,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import kr.co.study.bunjang.mvc.domain.home.model.entity.Shop;
 import kr.co.study.bunjang.mvc.vo.Role;
+import kr.co.study.bunjang.mvc.vo.Yn;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,48 +26,54 @@ public class ShopDetailsDto extends AbstractDto implements UserDetails {
 
 	private Long shopNo;
 
-	private String empNo;
-
 	private String shopNm;
 
+	
+	private String userNm;
 
-	private String cmpEmail;
+	private String identiNumber;
 
-	private String cellPhone;
+	private String phoneNumber;
 
-	private String cmpCd;
+	private String telecom;
 
-	private String cmpNm;
+	private Yn authenticationYn;
 
-	private String bsCd;
+	private Yn termsYn;
 
-	private String bsNm;
+	private Yn collectionPrivacyPolicyYn;
 
-	private String deptCd;
+	private Yn phoneIdentificationYn;
 
-	private String deptNm;
+	private Yn privacyArchivingYn;
 
-	private String ofcCd;
+	private Yn locationInfoYn;
 
-	private String ofcNm;
+	private Yn privacyYn;
 
-	private String posCd;
+	private Yn eventYn;
 
-	private String posNm;
-
-	private String rankCd;
-
-	private String rankNm;
-
-	private String roleCd;
-
-	public final List<String> accDeptCd = new ArrayList<String>();
+	private Yn adUtilizationYn;
+	
 
 	public final Collection<Role> authorities = new ArrayList<Role>();
 
 	public ShopDetailsDto(Shop shop) {
 		this.shopNo = shop.getShopNo();
 		this.shopNm = shop.getShopNm();
+		this.userNm = shop.getUserNm();
+		this.identiNumber = shop.getIdentiNumber();
+		this.phoneNumber = shop.getPhoneNumber();
+		this.telecom = shop.getTelecom();
+		this.authenticationYn = shop.getAdUtilizationYn();
+		this.termsYn = shop.getTermsYn();
+		this.collectionPrivacyPolicyYn = shop.getCollectionPrivacyPolicyYn();
+		this.phoneIdentificationYn = shop.getPhoneIdentificationYn();
+		this.privacyArchivingYn = shop.getPrivacyArchivingYn();
+		this.locationInfoYn = shop.getLocationInfoYn();
+		this.privacyYn = shop.getPrivacyYn();
+		this.eventYn = shop.getEventYn();
+		this.adUtilizationYn = shop.getAdUtilizationYn();
 		this.authorities.add(Role.USER);
 	}
 
@@ -87,7 +93,7 @@ public class ShopDetailsDto extends AbstractDto implements UserDetails {
 
 	@Override
 	public String getUsername() {
-		return this.shopNm + " " + this.posNm;
+		return this.shopNm + " " + this.userNm;
 	}
 
 	@Override
@@ -108,5 +114,23 @@ public class ShopDetailsDto extends AbstractDto implements UserDetails {
 	@Override
 	public boolean isEnabled() {
 		return false;
+	}
+	
+	public Shop toEntity() {
+		return Shop.builder()
+					.shopNo(this.shopNo)
+					.userNm(this.userNm)
+					.identiNumber(this.identiNumber)
+					.phoneNumber(this.phoneNumber)
+					.telecom(this.telecom)
+					.termsYn(this.termsYn)
+					.collectionPrivacyPolicyYn(this.collectionPrivacyPolicyYn)
+					.phoneIdentificationYn(this.phoneIdentificationYn)
+					.privacyArchivingYn(this.privacyArchivingYn)
+					.locationInfoYn(this.locationInfoYn)
+					.privacyYn(this.privacyYn)
+					.eventYn(this.eventYn)
+					.adUtilizationYn(this.adUtilizationYn)
+					.build();
 	}
 }

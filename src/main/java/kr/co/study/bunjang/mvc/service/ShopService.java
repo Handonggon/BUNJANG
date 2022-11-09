@@ -1,5 +1,7 @@
 package kr.co.study.bunjang.mvc.service;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -24,5 +26,10 @@ public class ShopService implements UserDetailsService {
             throw new UsernameNotFoundException(MessageUtils.getMessage("exception.UsernameNotFound"));
         }
         return userDetailsDto;
+    }
+
+    @Transactional
+    public ShopDetailsDto save(ShopDetailsDto shopDetailsDto) {
+        return new ShopDetailsDto(userRepository.save(shopDetailsDto.toEntity()));
     }
 }
