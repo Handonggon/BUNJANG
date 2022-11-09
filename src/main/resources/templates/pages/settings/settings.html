@@ -1,0 +1,382 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/layout/defaultLayout}">
+<th:block layout:fragment="contentFragment">
+
+  <style>
+    .gvnzUM {
+    min-width: 1236px;
+}
+.qzafb {
+    background: rgb(255, 255, 255);
+    height: 100vh;
+    width: 100%;
+    max-width: 540px;
+    margin: auto;
+    display: block;
+}
+.cwkjCq {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    max-width: 540px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    height: 50px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 0px 10px;
+}
+.hiHHsB {
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position: absolute;
+    left: 10px;
+    top: 9px;
+}
+.ivHRxC {
+    padding-top: 62px;
+    width: 100%;
+}
+.ivHRxC button, .ivHRxC a {
+    height: 4rem;
+    width: 100%;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 0px 1rem;
+    font-size: 15px;
+    border-bottom: 1px solid rgb(234, 233, 241);
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+.gSsteC {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    display: none;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+.kbvSGu {
+    background: rgb(247, 247, 247);
+    width: 420px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: rgb(0 0 0 / 10%) 0px 6px 50px 0px;
+    position: relative;
+}
+.bkcPmx {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.gcrUzx {
+    padding-top: 40px;
+}
+.gBrrkj {
+    display: block;
+    margin: auto auto 10px;
+}
+.cHwItl {
+    font-size: 20px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+.llsWuF {
+    line-height: 1.5;
+    margin-bottom: 35px;
+    text-align: center;
+}
+.caeGkJ {
+    padding: 0px 70px;
+}
+.fNMOeS {
+    width: 100%;
+    height: 38px;
+    box-shadow: rgb(0 0 0 / 5%) 0px 1px 7px 0px;
+    background: rgb(255, 255, 255);
+    text-align: center;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    position: relative;
+}
+.fNMOeS .sc-emmjRN {
+    background-image: url(/pc-static/resource/7bf83f7….png);
+}
+.hhygwv {
+    position: absolute;
+    top: calc(50% - 12px);
+    left: 35px;
+    width: 24px;
+    height: 24px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.exvIJc {
+    width: 100%;
+    height: 38px;
+    box-shadow: rgb(0 0 0 / 5%) 0px 1px 7px 0px;
+    background: rgb(255, 255, 255);
+    text-align: center;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    position: relative;
+}
+.exvIJc .sc-emmjRN {
+    background-image: url(/pc-static/resource/fc95a45….png);
+}
+.eAIGCf {
+    width: 100%;
+    height: 38px;
+    box-shadow: rgb(0 0 0 / 5%) 0px 1px 7px 0px;
+    background: rgb(255, 255, 255);
+    text-align: center;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    position: relative;
+}
+.eAIGCf .sc-emmjRN {
+    background-image: url(/pc-static/resource/46a1866….png);
+}
+.hIiBui:last-child {
+    margin-bottom: 0px;
+}
+.hIiBui {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 100%;
+    height: 38px;
+    box-shadow: rgb(0 0 0 / 5%) 0px 1px 7px 0px;
+    background: rgb(255, 255, 255);
+    text-align: center;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    position: relative;
+}
+.hIiBui .sc-emmjRN {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICAgIDxwYXRoIGZpbGw9IiM5Qjk5QTkiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTEzLjYgMGMuNDQyIDAgLjguMzU4LjguOHYxNC40YzAgLjQ0Mi0uMzU4LjgtLjguOEgyLjRjLS40NDIgMC0uOC0uMzU4LS44LS44Vi44YzAtLjQ0Mi4zNTgtLjguOC0uOGgxMS4yek0zLjIgMTQuNFYxLjZoOS42djEyLjhIMy4yek02LjQgNGMwLS40NDIuMzU4LS44LjgtLjhoMS42Yy40NDIgMCAuOC4zNTguOC44IDAgLjQ0Mi0uMzU4LjgtLjguOEg3LjJjLS40NDIgMC0uOC0uMzU4LS44LS44em0yLjQgOGMwIC40NDItLjM1OC44LS44LjgtLjQ0MiAwLS44LS4zNTgtLjgtLjggMC0uNDQyLjM1OC0uOC44LS44LjQ0MiAwIC44LjM1OC44Ljh6Ii8+Cjwvc3ZnPgo=);
+    background-size: 1rem 1rem;
+    background-position: center center;
+}
+.eByTGV {
+    padding: 3.5rem 2rem 1.5rem;
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgb(153, 153, 153);
+}
+.eByTGV p {
+    width: 100%;
+    border-top: 1px solid rgb(229, 229, 229);
+    padding-top: 1rem;
+}
+.eByTGV a {
+    font-weight: normal;
+    text-decoration: underline;
+    color: rgb(102, 102, 102);
+}
+.eByTGV b {
+    font-weight: normal;
+    color: rgb(102, 102, 102);
+}
+.loGZtw {
+    width: 18.5rem;
+    background: rgb(255, 255, 255);
+    padding: 1.5rem;
+    border-radius: 2px;
+}
+.kYaBSe {
+    white-space: pre-wrap;
+    word-break: keep-all;
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+}
+.cgZVKM {
+    display: flex;
+    flex-direction: row-reverse;
+}
+.cgZVKM > button:first-child {
+    margin-left: 0.5rem;
+}
+.cgZVKM > button {
+    flex: 1 1 0%;
+}
+.cgZVKM button {
+    height: 3rem;
+    text-align: center;
+    font-size: 1rem;
+}
+.caPtxQ {
+    color: rgb(255, 255, 255);
+    background: rgb(255, 80, 88);
+    font-weight: bold;
+}
+.cFsfis {
+    background-color: rgb(244, 244, 250);
+    color: rgb(114, 112, 127);
+}
+.kPhXzn {
+    background: rgb(255, 255, 255);
+    width: 300px;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+}
+.gxKXEL {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.gmctze {
+    padding: 30px 20px 20px;
+}
+.docUfu {
+    display: block;
+    margin: auto auto 10px;
+}
+.dmDKSG {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+.frvyYd {
+    line-height: 1.5;
+    color: rgb(136, 136, 136);
+    margin-bottom: 20px;
+    text-align: center;
+}
+.gUbicK {
+    margin-bottom: 10px;
+}
+.gUbicK input {
+    height: 36px;
+    padding: 0px 10px;
+    width: 100%;
+    border: 1px solid rgb(238, 238, 238);
+    border-radius: 4px;
+}
+.gtSViQ {
+    height: 36px;
+    width: 100%;
+    border-radius: 4px;
+    background: rgb(246, 68, 72);
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+.ciawh {
+    display: block;
+    background: rgb(249, 249, 249);
+    height: 30px;
+    color: rgb(136, 136, 136);
+    font-size: 12px;
+    line-height: 30px;
+    text-align: center;
+}
+  </style>
+
+    <div class="sc-giadOv gvnzUM">
+      <div class="sc-kkbgRg qzafb">
+        <header class="sc-hUMlYv cwkjCq">
+          <button class="sc-hRmvpr hiHHsB">
+            <img
+                    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9IiMxRTFEMjkiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTE5IDguOTk2SDMuNjZMOS42NTcgMy43NWExIDEgMCAwIDAtMS4zMTYtMS41MDZsLTggN2MtLjAwOC4wMDctLjAxLjAxOC0uMDE5LjAyNWEuOTc1Ljk3NSAwIDAgMC0uMTc3LjI0Yy0uMDE4LjAzLS4wNDUuMDU0LS4wNTkuMDg3YS45NzUuOTc1IDAgMCAwIDAgLjgwMmMuMDE0LjAzMy4wNDEuMDU3LjA2LjA4OC4wNS4wODcuMTAzLjE3LjE3Ni4yMzkuMDA4LjAwNy4wMTEuMDE4LjAyLjAyNWw4IDdhLjk5Ni45OTYgMCAwIDAgMS40MS0uMDk1IDEgMSAwIDAgMC0uMDk1LTEuNDExTDMuNjYgMTAuOTk2SDE5YTEgMSAwIDEgMCAwLTIiLz4KPC9zdmc+Cg=="
+                    alt="back"
+                    width="20"
+                    height="20"
+            />
+          </button>
+          계정설정
+        </header>
+        <div class="sc-ESoVU ivHRxC"><button type="button">SNS연동</button><button type="button">로그아웃</button><a href="/withdraw">탈퇴</a></div>
+        <div class="sc-jwKygS gSsteC">
+          <div class="sc-btzYZH loGZtw">
+            <h2 class="sc-lhVmIH hWqodb">로그아웃</h2>
+            <p class="sc-bYSBpT kYaBSe">로그아웃 하시겠습니까?</p>
+            <div class="sc-elJkPf cgZVKM"><button type="button" class="sc-jtRfpW caPtxQ">확인</button><button type="button" class="sc-kTUwUJ cFsfis">취소</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="sc-jwKygS gSsteC">
+        <div class="sc-fYiAbW kbvSGu">
+          <button class="sc-gFaPwZ bkcPmx"><img src="/pc-static/resource/ee442d3dd827628bc5fe.png" width="24" height="24" alt="로그인 모달 닫기 버튼 아이콘" /></button>
+          <div class="sc-eilVRo gcrUzx">
+            <img src="/pc-static/resource/56db3dd43075482b1d31.png" width="30" height="34" class="sc-fOKMvo gBrrkj" />
+            <div class="sc-dUjcNx cHwItl">번개장터로 중고거래 시작하기</div>
+            <div class="sc-gHboQg llsWuF">간편하게 가입하고 상품을 확인하세요</div>
+            <div class="sc-eerKOB caeGkJ">
+              <button class="sc-cpmLhU fNMOeS">
+                <div class="sc-emmjRN hhygwv"></div>
+                카카오로 이용하기
+              </button>
+              <button class="sc-cpmLhU exvIJc">
+                <div class="sc-emmjRN hhygwv"></div>
+                페이스북으로 이용하기
+              </button>
+              <button class="sc-cpmLhU eAIGCf">
+                <div class="sc-emmjRN hhygwv"></div>
+                네이버로 이용하기
+              </button>
+              <a class="sc-dymIpo hIiBui" href="/signup?rd_url=%2Fsettings">
+                <div class="sc-emmjRN hhygwv"></div>
+                본인인증으로 이용하기
+              </a>
+            </div>
+            <div class="sc-bnXvFD eByTGV">
+              <p>
+                도움이 필요하면 <a href="mailto:help@bunjang.co.kr">이메일</a> 또는 고객센터<b>1670-2910</b>로 문의 부탁드립니다.<br />
+                고객센터 운영시간: 09~18시 (점심시간 12~13시, 주말/공휴일 제외)
+              </p>
+            </div>
+          </div>
+          <div class="sc-jwKygS gSsteC">
+            <div class="sc-btzYZH loGZtw">
+              <p class="sc-bYSBpT kYaBSe"></p>
+              <div class="sc-elJkPf cgZVKM"><button type="button" class="sc-jtRfpW caPtxQ">확인</button><button type="button" class="sc-kTUwUJ cFsfis">취소</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sc-jwKygS gSsteC">
+        <div class="sc-fhYwyz kPhXzn">
+          <button class="sc-gJWqzi gxKXEL"><img src="/pc-static/resource/1192be75aeaf04d73c4d.png" width="16" height="16" alt="닫기 버튼 이미지" /></button>
+          <div class="sc-jzgbtB gmctze">
+            <img src="/pc-static/resource/af739c924043b58b3380.png" width="90" height="91" alt="팔로우 이미지" class="sc-rBLzX docUfu" />
+            <div class="sc-bMvGRv dmDKSG">팔로우 상점 알림</div>
+            <div class="sc-CtfFt frvyYd">
+              팔로우 상점이 상품 등록을 하면<br />
+              앱에서 바로 알려드려요!
+            </div>
+            <div class="sc-laTMn gUbicK"><input type="tel" placeholder="핸드폰 번호를 입력해 주세요." value="" /></div>
+            <button class="sc-hGoxap gtSViQ">앱 링크 받기</button>
+          </div>
+          <a class="sc-fjmCvl ciawh">하루동안 보지 않기</a>
+        </div>
+      </div>
+    </div>
+
+</th:block>
+</html>

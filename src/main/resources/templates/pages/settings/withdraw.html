@@ -1,0 +1,161 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/layout/defaultLayout}">
+<th:block layout:fragment="contentFragment">
+
+    <style>
+.SgzfR {
+    width: 100%;
+    height: 100%;
+}
+.flSzLg {
+    width: 100%;
+    max-width: 540px;
+    margin: 0px auto;
+    height: 50px;
+    background-color: rgb(255, 255, 255);
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    z-index: 9999;
+}
+.jLawpA {
+    height: 100%;
+    padding: 0px 1.25rem;
+}
+.jLawpA svg {
+    width: 18px;
+    height: 18px;
+}
+.bLzZEB {
+    flex: 1 1 0%;
+}
+.ljkdld {
+    height: 100%;
+    flex-direction: row;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.hdSeNn {
+    width: 100%;
+    height: 100%;
+    max-width: 540px;
+    margin: 0px auto;
+    padding: 70px 20px 20px;
+    background-color: rgb(255, 255, 255);
+    overflow-y: auto;
+}
+.fltGNg {
+    font-size: 28px;
+    font-weight: 700;
+    color: rgb(24, 24, 24);
+    margin: 0px 0px 30px;
+}
+.iPilsV {
+    display: flex;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 17px 0px;
+    cursor: pointer;
+}
+.iPilsV h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: rgb(25, 25, 25);
+}
+.iPilsV svg {
+    width: 12px;
+    height: 12px;
+}
+    </style>
+
+    <div style="width: 100%; height: 100%;">
+        <div class="sc-cwSeag SgzfR">
+            <div class="sc-bCfvAP flSzLg">
+                <button class="sc-cOxWqc jLawpA">
+                    <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" role="img">
+                        <path d="M14.265 19.537a.9.9 0 1 0 1.27-1.274l-8.362-8.34 8.365-8.387A.9.9 0 0 0 14.263.264l-9 9.024a.902.902 0 0 0 .002 1.273l9 8.976z" fill="#191919" fill-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <div class="sc-AHaJN bLzZEB"></div>
+                <div class="sc-khsqcC ljkdld"></div>
+            </div>
+            <div class="sc-jfTVlA hdSeNn">
+                <h1 class="sc-hTBuwn fltGNg">탈퇴 사유가 무엇인가요?</h1>
+                <div class="sc-gScZFl iPilsV">
+                    <h3>찾는 물품이 없어요</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" role="img">
+                        <path
+                                fill="#C3C2CC"
+                                fill-rule="evenodd"
+                                d="M4.07 15.528c-.129-.288-.077-.624.133-.86L10.13 8 4.203 1.33c-.19-.213-.251-.511-.161-.782s.317-.474.597-.532c.28-.057.57.039.759.252l6.4 7.2c.27.303.27.76 0 1.063l-6.4 7.2c-.151.171-.369.269-.598.269-.315 0-.6-.185-.73-.472z"
+                        ></path>
+                    </svg>
+                </div>
+                <div class="sc-gScZFl iPilsV">
+                    <h3>물품이 안 팔려요</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" role="img">
+                        <path
+                                fill="#C3C2CC"
+                                fill-rule="evenodd"
+                                d="M4.07 15.528c-.129-.288-.077-.624.133-.86L10.13 8 4.203 1.33c-.19-.213-.251-.511-.161-.782s.317-.474.597-.532c.28-.057.57.039.759.252l6.4 7.2c.27.303.27.76 0 1.063l-6.4 7.2c-.151.171-.369.269-.598.269-.315 0-.6-.185-.73-.472z"
+                        ></path>
+                    </svg>
+                </div>
+                <div class="sc-gScZFl iPilsV">
+                    <h3>비매너 사용자를 만났어요</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" role="img">
+                        <path
+                                fill="#C3C2CC"
+                                fill-rule="evenodd"
+                                d="M4.07 15.528c-.129-.288-.077-.624.133-.86L10.13 8 4.203 1.33c-.19-.213-.251-.511-.161-.782s.317-.474.597-.532c.28-.057.57.039.759.252l6.4 7.2c.27.303.27.76 0 1.063l-6.4 7.2c-.151.171-.369.269-.598.269-.315 0-.6-.185-.73-.472z"
+                        ></path>
+                    </svg>
+                </div>
+                <div class="sc-gScZFl iPilsV">
+                    <h3>새 상점을 만들고 싶어요</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" role="img">
+                        <path
+                                fill="#C3C2CC"
+                                fill-rule="evenodd"
+                                d="M4.07 15.528c-.129-.288-.077-.624.133-.86L10.13 8 4.203 1.33c-.19-.213-.251-.511-.161-.782s.317-.474.597-.532c.28-.057.57.039.759.252l6.4 7.2c.27.303.27.76 0 1.063l-6.4 7.2c-.151.171-.369.269-.598.269-.315 0-.6-.185-.73-.472z"
+                        ></path>
+                    </svg>
+                </div>
+                <div class="sc-gScZFl iPilsV">
+                    <h3>개인정보를 삭제하고 싶어요</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" role="img">
+                        <path
+                                fill="#C3C2CC"
+                                fill-rule="evenodd"
+                                d="M4.07 15.528c-.129-.288-.077-.624.133-.86L10.13 8 4.203 1.33c-.19-.213-.251-.511-.161-.782s.317-.474.597-.532c.28-.057.57.039.759.252l6.4 7.2c.27.303.27.76 0 1.063l-6.4 7.2c-.151.171-.369.269-.598.269-.315 0-.6-.185-.73-.472z"
+                        ></path>
+                    </svg>
+                </div>
+                <div class="sc-gScZFl iPilsV">
+                    <h3>기타</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" role="img">
+                        <path
+                                fill="#C3C2CC"
+                                fill-rule="evenodd"
+                                d="M4.07 15.528c-.129-.288-.077-.624.133-.86L10.13 8 4.203 1.33c-.19-.213-.251-.511-.161-.782s.317-.474.597-.532c.28-.057.57.039.759.252l6.4 7.2c.27.303.27.76 0 1.063l-6.4 7.2c-.151.171-.369.269-.598.269-.315 0-.6-.185-.73-.472z"
+                        ></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</th:block>
+</html>

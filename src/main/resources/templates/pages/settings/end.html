@@ -1,0 +1,150 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/layout/defaultLayout}">
+<th:block layout:fragment="contentFragment">
+
+  <style>
+.SgzfR {
+    width: 100%;
+    height: 100%;
+}
+.flSzLg {
+    width: 100%;
+    max-width: 540px;
+    margin: 0px auto;
+    height: 50px;
+    background-color: rgb(255, 255, 255);
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    z-index: 9999;
+}
+.jLawpA {
+    height: 100%;
+    padding: 0px 1.25rem;
+}
+.jLawpA svg {
+    width: 18px;
+    height: 18px;
+}
+.bLzZEB {
+    flex: 1 1 0%;
+}
+.ljkdld {
+    height: 100%;
+    flex-direction: row;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.hHsUs {
+    width: 100%;
+    height: 100%;
+    max-width: 540px;
+    margin: 0px auto;
+    padding: 60px 20px 90px;
+    background-color: rgb(255, 255, 255);
+    overflow-y: auto;
+}
+.fltGNg {
+    font-size: 28px;
+    font-weight: 700;
+    color: rgb(24, 24, 24);
+    margin: 0px 0px 30px;
+}
+.bPtqJq li {
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.56;
+    word-break: keep-all;
+    color: rgb(102, 102, 102);
+    text-indent: -6px;
+    padding-left: 12px;
+}
+.bPtqJq li::before {
+    display: inline-block;
+    width: 1px;
+    margin-right: 6px;
+    content: "・";
+}
+.bPtqJq li a {
+    color: rgb(0, 165, 135);
+    text-decoration: underline;
+    cursor: pointer;
+}
+.gVKRDY {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    max-width: 540px;
+    margin: 0px auto;
+    padding: 20px;
+    flex-direction: row;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgb(255, 255, 255) 30%, rgb(255, 255, 255));
+}
+.irzwFc {
+    margin-right: 6px;
+    background-color: rgb(251, 231, 232);
+    color: rgb(216, 12, 24);
+}
+.hlWSVb {
+    width: 100%;
+    height: 52px;
+    margin: 0px auto;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 6px;
+    background-color: rgb(216, 12, 24);
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-weight: 700;
+}
+  </style>
+
+  <div style="width: 100%; height: 100%;">
+    <div class="sc-cwSeag SgzfR">
+      <div class="sc-bCfvAP flSzLg">
+        <button class="sc-cOxWqc jLawpA">
+          <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" role="img">
+            <path d="M14.265 19.537a.9.9 0 1 0 1.27-1.274l-8.362-8.34 8.365-8.387A.9.9 0 0 0 14.263.264l-9 9.024a.902.902 0 0 0 .002 1.273l9 8.976z" fill="#191919" fill-rule="evenodd"></path>
+          </svg>
+        </button>
+        <div class="sc-AHaJN bLzZEB"></div>
+        <div class="sc-khsqcC ljkdld"></div>
+      </div>
+      <div class="sc-UpCWa hHsUs">
+        <h1 class="sc-hTBuwn fltGNg">탈퇴 전 유의사항</h1>
+        <ul class="sc-hiDMwi bPtqJq">
+          <li>탈퇴 후 7일간 재가입이 불가능합니다.</li>
+          <li>유료 구매한 아이템은 자동 소멸되며, 환불이 불가합니다.</li>
+          <li>탈퇴 시, 계정의 모든 정보는 삭제되며 재가입 시에도 복구되지 않습니다.</li>
+          <li>‘내폰시세’를 통해 판매 신청한 스마트폰은 판매 접수가 취소되며 등록하신 주소지로 스마트폰이 반송됩니다.</li>
+          <li>법령에서 일정기간 정보 보관을 규정하거나 서비스 운영상 반드시 필요한 경우, 개인정보처리방침에 공개한 내용과 같이 일정한 기간동안 개인정보를 보관 후 파기합니다.</li>
+          <li>
+            사용하지 않은 번개포인트는 모두 소멸됩니다.<br />
+            <a target="_blank" rel="noopener noreferrer" href="https://pay.bunjang.co.kr/point">잔여 번개포인트</a>
+          </li>
+          <li>
+            광고포인트는 환불하여 주세요.<br />
+            <a target="_blank" rel="noopener noreferrer" href="https://m.bunjang.co.kr/seller/point">환불가능한 광고포인트</a>
+          </li>
+        </ul>
+        <div class="sc-ehvNnt gVKRDY"><button class="sc-laZRCg sc-gGvHcT hlWSVb irzwFc" style="margin-right: 6px;">취소하기</button><button class="sc-laZRCg hlWSVb">탈퇴하기</button></div>
+      </div>
+    </div>
+  </div>
+
+
+</th:block>
+</html>
