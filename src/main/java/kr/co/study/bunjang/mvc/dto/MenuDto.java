@@ -49,10 +49,10 @@ public class MenuDto extends AbstractDto {
 		this.useYn = menu.getUseYn();
 	}
 
-	public Menu toEntity(Menu menu) {
+	public Menu toEntity(Menu parentMenu) {
 		return Menu.builder()
 				   .menuNo(this.menuNo)
-				   .parent(menu)
+				   .parent(parentMenu)
 				   .menuPath(this.menuPath)
 				   .menuIcon(this.menuIcon)
 				   .menuNm(this.menuNm)

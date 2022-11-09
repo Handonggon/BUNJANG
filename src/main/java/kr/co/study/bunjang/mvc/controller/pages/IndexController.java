@@ -15,4 +15,9 @@ public class IndexController {
 	public String splash() {
 		return "pages/splash";
 	}
+
+	@RequestMapping(value = "/signup")
+	public String signup() {
+		return "pages/signup";
+	}
 }
