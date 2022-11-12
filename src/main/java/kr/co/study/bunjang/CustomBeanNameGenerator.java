@@ -25,10 +25,9 @@ public class CustomBeanNameGenerator implements BeanNameGenerator  {
 	private boolean isTargetPackageBean(BeanDefinition definition) {
 		if(definition instanceof AnnotatedBeanDefinition) {
             final Set<String> annotationTypes = ((AnnotatedBeanDefinition) definition).getMetadata().getAnnotationTypes();
-
+            
             return annotationTypes.stream()
-								  .filter(type->type.equals(Service.class.getName()))
-								  .filter(type->type.equals(Controller.class.getName()))
+								  .filter(type->type.equals(Service.class.getName()) || type.equals(Controller.class.getName()))
 								  .findAny()
 								  .isPresent();
         }
