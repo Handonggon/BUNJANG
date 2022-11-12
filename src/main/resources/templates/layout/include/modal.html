@@ -417,6 +417,19 @@
                     display: 'flex'
                 });
             });
+
+            $('.sc-gFaPwZ').on("click", () => {
+                closeModal();
+            });
+
+            function closeModal() {
+                $('.sc-jwKygS').css({
+                    display : 'none'
+                });
+                $(document.body).css({
+                    overflow : 'visible'
+                });
+            };
         </script>
     </th:block>
 </html>
