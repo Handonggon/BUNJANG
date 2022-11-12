@@ -18,7 +18,10 @@ version = '0.0.1'
 sourceCompatibility = '11'
 
 repositories {
-	mavenCentral()
+	mavenLocal()     // 로컬 저장소 사용
+    mavenCentral()   // 원격 저장소 사용
+    jcenter()
+    google()
 }
 
 dependencies {
@@ -79,15 +82,28 @@ def querydslDir = "$buildDir/generated/querydsl"
 
 querydsl {
 	jpa = true
-	querydslSourcesDir = querydslDir
+	querydslSourcesDir = ["$projectDir/src/main/java", querydslDir]
 }
 
 sourceSets {
-	main{
+	main {
 		java {
 			srcDirs = ["$projectDir/src/main/java", querydslDir]
-		}
+		}	
 	}
+}
+
+task printSourceSetInformation() {
+    doLast {
+		//sourceSets.remove(sourceSets.querydsl)
+
+        sourceSets.each {srcSet ->
+            println "["+srcSet.name+"]"
+            print "-->Source directories: "+srcSet.allJava.srcDirs+"\n"
+            print "-->Output directories: "+srcSet.output.classesDirs.files+"\n"
+            println ""
+        }
+    }
 }
 
 compileQuerydsl.doFirst {
