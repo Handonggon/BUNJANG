@@ -93,19 +93,6 @@ sourceSets {
 	}
 }
 
-task printSourceSetInformation() {
-    doLast {
-		//sourceSets.remove(sourceSets.querydsl)
-
-        sourceSets.each {srcSet ->
-            println "["+srcSet.name+"]"
-            print "-->Source directories: "+srcSet.allJava.srcDirs+"\n"
-            print "-->Output directories: "+srcSet.output.classesDirs.files+"\n"
-            println ""
-        }
-    }
-}
-
 compileQuerydsl.doFirst {
 	if(file(querydslDir).exists())
 		delete(file(querydslDir))
@@ -145,24 +132,3 @@ war {
 
 	archiveFileName = "ROOT.war"
 }
-
-bootWar {
-	def activeProfile = 'local'
-
-	if(project.hasProperty('profile')) {
-		activeProfile = profile
-	}
-
-	processResources {
-		exclude('config')
-	}
-
-	into('WEB-INF/classes') {
-		from "src/main/resources/config/application-${activeProfile}.yaml"
-	}
-
-	rename "application-${activeProfile}.yaml", "application.yaml"
-
-	archiveFileName = "ROOT.war"
-}
-
