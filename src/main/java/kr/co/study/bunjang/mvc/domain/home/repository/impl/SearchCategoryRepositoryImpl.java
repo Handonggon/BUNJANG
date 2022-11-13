@@ -4,27 +4,23 @@ import static kr.co.study.bunjang.mvc.domain.home.model.entity.QCategory.categor
 
 import java.util.List;
 
-import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import kr.co.study.bunjang.mvc.domain.home.model.entity.Category;
 import kr.co.study.bunjang.mvc.domain.home.repository.SearchCategoryRepository;
 
-public class SearchCategoryRepositoryImpl extends QuerydslRepositorySupport implements SearchCategoryRepository {
+public class SearchCategoryRepositoryImpl implements SearchCategoryRepository {
 
-    private final JPAQueryFactory jpaQueryFactory;
-
-    public SearchCategoryRepositoryImpl(JPAQueryFactory jpaQueryFactory) {
-        super(Category.class);
-        this.jpaQueryFactory = jpaQueryFactory;
-    }
+    @Autowired
+    private JPAQueryFactory queryFactory;
 
     @Override
     public List<Category> findWithOrderby() {
-		return jpaQueryFactory.select(category)
-                              .from(category)
-                              .orderBy(category.cateOrder.asc())
-                              .fetch();
+		return queryFactory.select(category)
+                           .from(category)
+                           .orderBy(category.cateOrder.asc())
+                           .fetch();
     }
 }

@@ -9,6 +9,7 @@ plugins {
 	id 'org.springframework.boot' version '2.7.4'
 	id 'io.spring.dependency-management' version '1.0.14.RELEASE'
 	id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
+	id 'eclipse'
 	id 'java'
 	id 'war'
 }
@@ -82,7 +83,7 @@ def querydslDir = "$buildDir/generated/querydsl"
 
 querydsl {
 	jpa = true
-	querydslSourcesDir = querydslDir
+	querydslSourcesDir querydslDir
 }
 
 sourceSets {
@@ -91,6 +92,19 @@ sourceSets {
 			srcDirs = ["$projectDir/src/main/java", querydslDir]
 		}	
 	}
+}
+
+eclipse {
+	classpath {
+        file {
+            whenMerged { classpath ->
+                classpath.entries.findAll { it.kind == "src" && it.path.startsWith("build/generated/querydsl") }.each { con ->
+					con.entryAttributes['gradle_scope'] = 'main'
+					con.entryAttributes['gradle_used_by_scope'] = 'main, test'
+                }
+            }
+        }
+    }
 }
 
 compileQuerydsl.doFirst {

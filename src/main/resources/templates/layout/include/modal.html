@@ -335,6 +335,77 @@
             line-height: 1.4;
         }
 
+        .ccqEkD {
+            position: fixed;
+            z-index: 9000;
+        }
+
+        .gMGqhC {
+    position: fixed;
+    inset: 0px;
+}
+
+.eMPcVs {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 3100;
+    -webkit-box-orient: vertical;
+}
+
+
+.hLkUSB {
+    position: relative;
+    border-radius: 2px 2px 0px 0px;
+    padding: 1.5rem 1.5rem 0px;
+    max-width: 18.5rem;
+    width: 75%;
+    background-color: rgb(255, 255, 255);
+    overflow: hidden auto;
+    z-index: 3102;
+}
+
+.fjZjoV {
+    margin-bottom: 5px;
+    white-space: pre-wrap;
+    font-size: 15px;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.gJQhqh {
+    position: relative;
+    border-radius: 0px 0px 2px 2px;
+    padding: 1.5rem;
+    max-width: 18.5rem;
+    width: 75%;
+    background-color: rgb(255, 255, 255);
+    z-index: 3102;
+}
+
+.kqveTA {
+    border-radius: 2px;
+    width: 100%;
+    height: 3rem;
+    background-color: rgb(255, 80, 88);
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+.kqVnBu {
+    position: absolute;
+    inset: 0px;
+    background-color: rgba(0, 0, 0, 0.4);
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    user-select: none;
+    z-index: 3101;
+}
 
         </style>
 
@@ -405,6 +476,33 @@
             </div>
         </div>
 
+        <div id="modal" style="display: none;">
+            <div class="sc-krvtoX ccqEkD" style="transition: opacity 150ms ease-out 0s; opacity: 1; will-change: opacity;">
+                <div class="sc-bAeIUo gMGqhC">
+                    <div class="sc-iujRgT eMPcVs">
+                        <div class="sc-GMQeP hLkUSB"><div class="sc-gojNiO fjZjoV">이미 인증처리가 완료된 건입니다.</div></div>
+                        <div class="sc-lkqHmb gJQhqh"><button class="sc-eLExRp kqveTA">확인</button></div>
+                        <div class="sc-cbkKFq kqVnBu"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal" style="display: none;">
+            <div class="sc-krvtoX ccqEkD" style="transition: opacity 150ms ease-out 0s; opacity: 1; will-change: opacity;">
+                <div class="sc-bAeIUo gMGqhC">
+                    <div class="sc-iujRgT eMPcVs">
+                        <div class="sc-GMQeP hLkUSB"><div class="sc-gojNiO fjZjoV">탈퇴 후 7일간은 다시 가입하실 수 없습니다. 2022-11-14 22:27:12부터 가입을 시도해주세요</div></div>
+                        <div class="sc-lkqHmb gJQhqh"><button class="sc-eLExRp kqveTA">확인</button></div>
+                        <div class="sc-cbkKFq kqVnBu"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
         <script>
             $('#loginBtn').click(function () {
                 $('#bunjang_login').css({
@@ -430,6 +528,10 @@
                     overflow : 'visible'
                 });
             };
+
+            $('.fNMOeS').on("click", () => {
+                var popup = window.open('https://kauth.kakao.com/oauth/authorize?client_id=e1d46938686c263ed90f533d37bed141&redirect_uri=http://localhost:20000/signup/kakao/callback&response_type=code', '카카오 로그인', 'width=700px,height=800px,scrollbars=yes');
+            });
         </script>
     </th:block>
 </html>
