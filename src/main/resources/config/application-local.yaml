@@ -51,8 +51,10 @@ spring:
       jdbcUrl: jdbc:log4jdbc:mariadb://20.214.203.241:3306/BUNJANG
       username: root
       password: root!@345
-      connectionTimeout : 30000
       maximumPoolSize: 10
+      maxLifetime: 1000
+      connectionTimeout: 3000
+      leakDetectionThreshold: 10000
       dataSourceProperties:
         cachePrepStmts: true
         prepStmtCacheSize: 250
