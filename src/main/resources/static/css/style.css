@@ -26,24 +26,18 @@ nav {
     left: 0px;
 }
 
-body {
-    background-color: rgb(249, 249, 249);
-    font-size: 14px;
-}
 html, body {
     font-family: "Noto Sans KR", sans-serif;
     font-weight: 400;
     color: rgb(33, 33, 33);
 }
+
 body {
+    background-color: rgb(249, 249, 249);
+    font-size: 14px;
     margin: 0px;
-}
-body {
     line-height: 1;
 }
-
-
-
 
 footer {
     display: flex;
