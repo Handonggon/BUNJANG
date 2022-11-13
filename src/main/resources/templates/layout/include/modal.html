@@ -334,9 +334,11 @@
             margin-bottom: 1.5rem;
             line-height: 1.4;
         }
-
-
         </style>
+
+        <script>
+            
+        </script>
 
         <div id="bunjang_login" class="sc-jwKygS bynjYU">
             <div class="sc-fYiAbW kbvSGu">
@@ -430,6 +432,11 @@
                     overflow : 'visible'
                 });
             };
+
+            $('.fNMOeS').on("click", () => {
+                var popup = window.open('https://kauth.kakao.com/oauth/authorize?client_id=e1d46938686c263ed90f533d37bed141&redirect_uri=http://localhost:20000/signup/kakao/callback&response_type=code', '카카오 로그인', 'width=700px,height=800px,scrollbars=yes');
+            });
+
         </script>
     </th:block>
 </html>
