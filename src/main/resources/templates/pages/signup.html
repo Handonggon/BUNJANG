@@ -530,6 +530,7 @@
             line-height: 1.25rem;
             text-align: left;
             padding-left: 2.25rem;
+            pointer-events: none;
         }
 
         .cNjkIc input {
@@ -667,14 +668,42 @@
             });
         });
 
+        total_check = false
         $(function () {
-            $(".dvEVAn").on("click", function (e) {
-                if ($(".dvEVAn").closest(".dvEVAn").find('svg path').css('fill') === "rgb(229, 229, 229)") {
-                    $(e.target).closest(".dvEVAn").find('svg path').css('fill', "rgb(216, 12, 24)");
+            $('.bEjDza').on("click", function (e) {
+                if (total_check === false) {
+                    $('input:checkbox[id="isTermsAgreed"]').prop('checked',true);
+                    $(".bEjDza").closest(".bEjDza").find('svg path').css('fill', "rgb(216, 12, 24)")
+                    $(".dvEVAn").closest(".dvEVAn").find('svg path').css('fill', "rgb(216, 12, 24)")
+                    total_check = true
                 } else {
-                    $(e.target).closest(".dvEVAn").find('svg path').css('fill', "rgb(229, 229, 229)");
+                    $('input:checkbox[id="isTermsAgreed"]').prop('checked',false);
+                    $(".bEjDza").closest(".bEjDza").find('svg path').css('fill', "rgb(229, 229, 229)")
+                    $(".dvEVAn").closest(".dvEVAn").find('svg path').css('fill', "rgb(229, 229, 229)")
+                    total_check = false
                 }
-            });
+            })
+
+            // 전체 체크를 true or false로 나타냄
+            // checkbox의 id 값을 지정해서 넘겼는데, 왜 하나만 되는게 아닌 전체 다 되는지 ㅈㄴ 궁금함..
+            // 더블클릭 오류. 왜 두번 클릭해야하는지
+
+            $(".dvEVAn").on("click", function (e) {
+                if ($('input:checkbox[id="isCollectionPrivacyPolicyAgreed"]').is(":checked") === false) {
+                    $('input:checkbox[id="isCollectionPrivacyPolicyAgreed"]').prop('checked',true);
+                    $(e.target).closest(".dvEVAn").find('svg path').css('fill', "rgb(216, 12, 24)")
+                } else {
+                    $('input:checkbox[id="isCollectionPrivacyPolicyAgreed"]').prop('checked', false);
+                    $(e.target).closest(".dvEVAn").find('svg path').css('fill', "rgb(229, 229, 229)")
+                }
+            })
+
+            if (total_check === true) {
+                $('.kLryzS').attr('disabled', false)
+            } else {
+                $('.kLryzS').attr('disabled', true)
+            }
+
         });
 
 

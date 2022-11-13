@@ -82,7 +82,7 @@ def querydslDir = "$buildDir/generated/querydsl"
 
 querydsl {
 	jpa = true
-	querydslSourcesDir = ["$projectDir/src/main/java", querydslDir]
+	querydslSourcesDir = querydslDir
 }
 
 sourceSets {
