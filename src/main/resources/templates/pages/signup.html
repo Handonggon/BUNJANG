@@ -637,21 +637,98 @@
             font-weight: 700;
             transition: top 200ms ease-in 0s, transform 200ms ease-in 0s, font-size 200ms ease-in 0s;
         }
+
+        .bwJmtg {
+            display: inline-flex;
+            width: 100%;
+            padding: 0px 1rem;
+            border: 1.4px solid rgb(216, 12, 24);
+            height: 3.5rem;
+            border-radius: 5px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: rgb(25, 25, 25);
+            -webkit-box-pack: start;
+            justify-content: flex-start;
+            -webkit-box-align: center;
+            align-items: center;
+        }
+
+        .bwJmtg svg {
+            width: 20px;
+            height: 20px;
+            margin-top: 0.125rem;
+            margin-right: 1rem;
+        }
+
     </style>
 
     <script>
         $(function () {
             $(".ksuikN > input").on("focus", function (e) {
-                $(e.target).parent().children(".emXoKq").css("top", "0")
-                    .css("font-size", "0.75rem")
-                    .css("transform", "translateY(0px)");
-                $(e.target).parent().children(".NXXDp").css("opacity", "1");
+                if ($(e.target).val() === '') {
+                    $(e.target).parent().children(".emXoKq").css("top", "0")
+                        .css("font-size", "0.75rem")
+                        .css("transform", "translateY(0px)");
+                    $(e.target).parent().children(".NXXDp").css("opacity", "1");
+                }
             });
+
+            $(".ksuikN[id='user_id'] > input").on("keyup", function (e) {
+                let trans_num = $(e.target).val().replace(/[a-z0-9]|[ \[\]{}()<>?|`~!@#$%^&*-_+=,.;:\"'\\]/gi, '');
+                $(e.target).val(trans_num)
+
+                if (trans_num.length > 4) {
+                    $(this).val($(this).val().substring(0, 4));
+                };
+            });
+
+            $(".ksuikN[id='birthday_first'] > input").on("keyup", function (e) {
+                let trans_num = $(e.target).val().replace(/[^0-9]/gi,'');
+                $(e.target).val(trans_num)
+
+                if (trans_num.length > 6) {
+                    $(this).val($(this).val().substring(0, 6));
+                };
+
+                if ($(e.target).val() === '') {
+                    $(e.target).parent().children(".NXXDp").css("opacity", "1");
+                } else {
+                    $(e.target).parent().children(".NXXDp").css("opacity", "0");
+                }
+            });
+
+            $(".ksuikN[id='birthday_last'] > input").on("keyup", function (e) {
+                let trans_num = $(e.target).val().replace(/[^1-4]/gi,'');
+                $(e.target).val(trans_num)
+
+                if (trans_num.length > 1) {
+                    $(this).val($(this).val().substring(0, 1));
+                };
+            });
+
+            $(".ksuikN[id='phone_num'] > input").on("keyup", function (e) {
+                let trans_num = $(e.target).val().replace(/[^0-9]/gi,'');
+                $(e.target).val(trans_num)
+
+                if (trans_num.length > 11) {
+                    $(this).val($(this).val().substring(0, 11));
+                };
+
+                if ($(e.target).val() === '') {
+                    $(e.target).parent().children(".NXXDp").css("opacity", "1");
+                } else {
+                    $(e.target).parent().children(".NXXDp").css("opacity", "0");
+                }
+            });
+
             $(".ksuikN > input").on("focusout", function (e) {
-                $(e.target).parent().children(".emXoKq").css("top", "50%")
-                    .css("font-size", "1rem")
-                    .css("transform", "translateY(-50%)");
-                $(e.target).parent().children(".NXXDp").css("opacity", "0");
+                if ($(e.target).val() === ''){
+                    $(e.target).parent().children(".emXoKq").css("top", "50%")
+                        .css("font-size", "1rem")
+                        .css("transform", "translateY(-50%)");
+                    $(e.target).parent().children(".NXXDp").css("opacity", "0");
+                }
             });
 
             $(".dNnGOs > select").on("focus", function (e) {
@@ -668,44 +745,58 @@
             });
         });
 
-        total_check = false
+
+
         $(function () {
-            $('.bEjDza').on("click", function (e) {
-                if (total_check === false) {
-                    $('input:checkbox[id="isTermsAgreed"]').prop('checked',true);
+            let total_check = false
+            let check_length = 0
+
+            function check_function() {
+                if (check_length === 8) {
+                    $('.kLryzS').attr('disabled', false)
                     $(".bEjDza").closest(".bEjDza").find('svg path').css('fill', "rgb(216, 12, 24)")
-                    $(".dvEVAn").closest(".dvEVAn").find('svg path').css('fill', "rgb(216, 12, 24)")
-                    total_check = true
+                    $(".bEjDza").addClass('bwJmtg')
+                    $(".bEjDza").removeClass('bEjDza')
+                    total_check = true;
                 } else {
-                    $('input:checkbox[id="isTermsAgreed"]').prop('checked',false);
-                    $(".bEjDza").closest(".bEjDza").find('svg path').css('fill', "rgb(229, 229, 229)")
-                    $(".dvEVAn").closest(".dvEVAn").find('svg path').css('fill', "rgb(229, 229, 229)")
-                    total_check = false
+                    $('.kLryzS').attr('disabled', true)
+                    $(".bwJmtg").closest(".bwJmtg").find('svg path').css('fill', "rgb(229, 229, 229)")
+                    $(".bwJmtg").addClass('bEjDza')
+                    $(".bwJmtg").removeClass('bwJmtg')
+                    total_check = false;
                 }
-            })
-
-            // 전체 체크를 true or false로 나타냄
-            // checkbox의 id 값을 지정해서 넘겼는데, 왜 하나만 되는게 아닌 전체 다 되는지 ㅈㄴ 궁금함..
-            // 더블클릭 오류. 왜 두번 클릭해야하는지
-
-            $(".dvEVAn").on("click", function (e) {
-                if ($('input:checkbox[id="isCollectionPrivacyPolicyAgreed"]').is(":checked") === false) {
-                    $('input:checkbox[id="isCollectionPrivacyPolicyAgreed"]').prop('checked',true);
-                    $(e.target).closest(".dvEVAn").find('svg path').css('fill', "rgb(216, 12, 24)")
-                } else {
-                    $('input:checkbox[id="isCollectionPrivacyPolicyAgreed"]').prop('checked', false);
-                    $(e.target).closest(".dvEVAn").find('svg path').css('fill', "rgb(229, 229, 229)")
-                }
-            })
-
-            if (total_check === true) {
-                $('.kLryzS').attr('disabled', false)
-            } else {
-                $('.kLryzS').attr('disabled', true)
             }
 
-        });
+            $('.bEjDza').on("click", function (e) {
+                if (total_check === false) {
+                    $('input:checkbox').prop('checked', true);
+                    $(".dvEVAn").closest(".dvEVAn").find('svg path').css('fill', "rgb(216, 12, 24)")
+                    check_length = 8
+                } else {
+                    $('input:checkbox').prop('checked', false);
+                    $(".dvEVAn").closest(".dvEVAn").find('svg path').css('fill', "rgb(229, 229, 229)")
+                    check_length = 0
+                }
+                check_function()
+            })
 
+            $(".dvEVAn").on("click", function (e) {
+                let Target = $(e.target);
+                let click_id = Target.children().children()[0];
+                let click_id_id = click_id.id;
+
+                if (click_id.checked === false) {
+                    $("input:checkbox[id=" + click_id_id + "]").prop("checked", true);
+                    Target.closest(".dvEVAn").find('svg path').css('fill', "rgb(216, 12, 24)")
+                    check_length += 1
+                } else {
+                    $("input:checkbox[id=" + click_id_id + "]").prop("checked", false);
+                    Target.closest(".dvEVAn").find('svg path').css('fill', "rgb(229, 229, 229)")
+                    check_length -= 1
+                }
+                check_function()
+            })
+        });
 
     </script>
 
@@ -717,7 +808,7 @@
                 <form>
                     <div>
                         <div class="sc-kkbgRg dMoNMm">
-                            <label class="ValidationInput__ValidationInputRoot-sc-104cih6-0 ksuikN">
+                            <label class="ValidationInput__ValidationInputRoot-sc-104cih6-0 ksuikN" id="user_id">
                                 <input value=""/>
                                 <span class="ValidationInput__Label-sc-104cih6-1 emXoKq"
                                       style="top: 0; font-size: 0.75rem; transform: translateY(0px);">이름</span>
@@ -726,7 +817,7 @@
                         <div class="sc-hRmvpr kWWmWc">
                             <div class="sc-cZBZkQ itZbBN">
                                 <div>
-                                    <label class="ValidationInput__ValidationInputRoot-sc-104cih6-0 ksuikN">
+                                    <label class="ValidationInput__ValidationInputRoot-sc-104cih6-0 ksuikN" id="birthday_first">
                                         <input type="text" pattern="\d*" value=""/><span
                                             class="ValidationInput__Label-sc-104cih6-1 emXoKq"
                                             style="top: 50%; font-size: 1rem; transform: translateY(-50%);">생년월일</span>
@@ -736,13 +827,13 @@
                                 </div>
                                 <div class="sc-ecaExY jAtrMV"></div>
                                 <div>
-                                    <label class="ValidationInput__ValidationInputRoot-sc-104cih6-0 ksuikN"><input
+                                    <label class="ValidationInput__ValidationInputRoot-sc-104cih6-0 ksuikN" id="birthday_last"><input
                                             type="text" pattern="\d*" value=""/></label><span class="sc-gbzWSY HePFF">●●●●●●</span>
                                 </div>
                             </div>
                         </div>
                         <div class="sc-kkbgRg dMoNMm">
-                            <label class="ValidationInput__ValidationInputRoot-sc-104cih6-0 ksuikN">
+                            <label class="ValidationInput__ValidationInputRoot-sc-104cih6-0 ksuikN" id="phone_num">
                                 <input value=""/><span class="ValidationInput__Label-sc-104cih6-1 emXoKq"
                                                        style="top: 50%; font-size: 1rem; transform: translateY(-50%);">휴대폰번호</span>
                                 <span class="ValidationInput__Placeholder-sc-104cih6-2 NXXDp" style="opacity: 0;">01012345678</span>
