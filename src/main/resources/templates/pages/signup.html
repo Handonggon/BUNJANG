@@ -661,9 +661,43 @@
             margin-right: 1rem;
         }
 
+        .duAPIU {
+            position: absolute;
+            color: rgb(25, 25, 25);
+            font-size: 1.3125rem;
+            font-weight: 700;
+            left: 0px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: -1;
+        }
+
+        .jmzupQ {
+            width: 100%;
+        }
+
+        .jSuuWY {
+            padding-top: 1.125rem;
+            padding-left: 2.25rem;
+            text-align: left;
+        }
+
+        .jhCFfy {
+            display: inline-block;
+            color: rgb(127, 127, 127);
+            font-size: 0.875rem;
+            font-weight: 500;
+            line-height: 1.14;
+            text-decoration: underline;
+        }
+
     </style>
 
     <script>
+        let check_box = [0, 0, 0, 0]
+        let total_check = false
+        let sum = 0
+
         $(function () {
             $(".ksuikN > input").on("focus", function (e) {
                 if ($(e.target).val() === '') {
@@ -678,55 +712,71 @@
                 let trans_num = $(e.target).val().replace(/[a-z0-9]|[ \[\]{}()<>?|`~!@#$%^&*-_+=,.;:\"'\\]/gi, '');
                 $(e.target).val(trans_num)
 
-                if (trans_num.length > 4) {
-                    $(this).val($(this).val().substring(0, 4));
-                };
+                if (trans_num.length > 3) {
+                    $(this).val($(this).val().substring(0, 3));
+                }
+
+                if (trans_num.length === 3) {
+                    setTimeout(function () {
+                        check_box[0] = 1
+                        $(".ksuikN[id='birthday_first']").trigger("click");
+                    }, 500);
+                }
             });
 
             $(".ksuikN[id='birthday_first'] > input").on("keyup", function (e) {
-                let trans_num = $(e.target).val().replace(/[^0-9]/gi,'');
+                let trans_num = $(e.target).val().replace(/[^0-9]/gi, '');
                 $(e.target).val(trans_num)
 
                 if (trans_num.length > 6) {
                     $(this).val($(this).val().substring(0, 6));
-                };
+                }
 
                 if ($(e.target).val() === '') {
                     $(e.target).parent().children(".NXXDp").css("opacity", "1");
                 } else {
                     $(e.target).parent().children(".NXXDp").css("opacity", "0");
+                }
+
+                if (trans_num.length === 6) {
+                    setTimeout(function () {
+                        $(".ksuikN[id='birthday_last']").trigger("click");
+                        check_box[1] = 1
+                    }, 500);
                 }
             });
 
             $(".ksuikN[id='birthday_last'] > input").on("keyup", function (e) {
-                let trans_num = $(e.target).val().replace(/[^1-4]/gi,'');
+                let trans_num = $(e.target).val().replace(/[^1-4]/gi, '');
                 $(e.target).val(trans_num)
 
                 if (trans_num.length > 1) {
                     $(this).val($(this).val().substring(0, 1));
-                };
+                }
+
+                if (trans_num.length === 1) {
+                    setTimeout(function () {
+                        $(".ksuikN[id='phone_num']").trigger("click");
+                    }, 500);
+                }
+
             });
 
             $(".ksuikN[id='phone_num'] > input").on("keyup", function (e) {
-                let trans_num = $(e.target).val().replace(/[^0-9]/gi,'');
+                let trans_num = $(e.target).val().replace(/[^0-9]/gi, '');
                 $(e.target).val(trans_num)
 
                 if (trans_num.length > 11) {
                     $(this).val($(this).val().substring(0, 11));
-                };
+                }
+
+                if (trans_num.length === 11) {
+                    check_box[2] = 1
+                }
 
                 if ($(e.target).val() === '') {
                     $(e.target).parent().children(".NXXDp").css("opacity", "1");
                 } else {
-                    $(e.target).parent().children(".NXXDp").css("opacity", "0");
-                }
-            });
-
-            $(".ksuikN > input").on("focusout", function (e) {
-                if ($(e.target).val() === ''){
-                    $(e.target).parent().children(".emXoKq").css("top", "50%")
-                        .css("font-size", "1rem")
-                        .css("transform", "translateY(-50%)");
                     $(e.target).parent().children(".NXXDp").css("opacity", "0");
                 }
             });
@@ -737,22 +787,28 @@
                     .css("transform", "translateY(0px)");
                 $(e.target).parent().children(".NXXDp").css("opacity", "1");
             });
+
             $(".dNnGOs > select").on("focusout", function (e) {
-                $(e.target).parent().children(".jzcnMC").css("top", "50%")
-                    .css("font-size", "1rem")
-                    .css("transform", "translateY(-50%)");
-                $(e.target).parent().children(".NXXDp").css("opacity", "0");
+                if ($(e.target).val() === '') {
+                    $(e.target).parent().children(".jzcnMC").css("top", "50%")
+                        .css("font-size", "1rem")
+                        .css("transform", "translateY(-50%)");
+                    $(e.target).parent().children(".NXXDp").css("opacity", "0");
+                }
+            });
+
+            $(function () {
+                $("#Telecom").change(function () {
+                    let v = $("#Telecom").val();
+                    $('input[name=inputValue]').attr('value', v);
+                    check_box[3] = 1
+                });
             });
         });
 
-
-
         $(function () {
-            let total_check = false
-            let check_length = 0
-
             function check_function() {
-                if (check_length === 8) {
+                if (sum === 9) {
                     $('.kLryzS').attr('disabled', false)
                     $(".bEjDza").closest(".bEjDza").find('svg path').css('fill', "rgb(216, 12, 24)")
                     $(".bEjDza").addClass('bwJmtg')
@@ -771,11 +827,11 @@
                 if (total_check === false) {
                     $('input:checkbox').prop('checked', true);
                     $(".dvEVAn").closest(".dvEVAn").find('svg path').css('fill', "rgb(216, 12, 24)")
-                    check_length = 8
+                    sum = 9
                 } else {
                     $('input:checkbox').prop('checked', false);
                     $(".dvEVAn").closest(".dvEVAn").find('svg path').css('fill', "rgb(229, 229, 229)")
-                    check_length = 0
+                    sum = 0
                 }
                 check_function()
             })
@@ -788,15 +844,23 @@
                 if (click_id.checked === false) {
                     $("input:checkbox[id=" + click_id_id + "]").prop("checked", true);
                     Target.closest(".dvEVAn").find('svg path').css('fill', "rgb(216, 12, 24)")
-                    check_length += 1
+                    sum += 1
                 } else {
                     $("input:checkbox[id=" + click_id_id + "]").prop("checked", false);
                     Target.closest(".dvEVAn").find('svg path').css('fill', "rgb(229, 229, 229)")
-                    check_length -= 1
+                    sum -= 1
                 }
                 check_function()
             })
         });
+
+
+        //TODO
+        // $(function() {
+        //     $(".ehOmiS").on("click", function (e) {
+        //
+        //     })
+        // })
 
     </script>
 
@@ -817,7 +881,8 @@
                         <div class="sc-hRmvpr kWWmWc">
                             <div class="sc-cZBZkQ itZbBN">
                                 <div>
-                                    <label class="ValidationInput__ValidationInputRoot-sc-104cih6-0 ksuikN" id="birthday_first">
+                                    <label class="ValidationInput__ValidationInputRoot-sc-104cih6-0 ksuikN"
+                                           id="birthday_first">
                                         <input type="text" pattern="\d*" value=""/><span
                                             class="ValidationInput__Label-sc-104cih6-1 emXoKq"
                                             style="top: 50%; font-size: 1rem; transform: translateY(-50%);">생년월일</span>
@@ -827,7 +892,8 @@
                                 </div>
                                 <div class="sc-ecaExY jAtrMV"></div>
                                 <div>
-                                    <label class="ValidationInput__ValidationInputRoot-sc-104cih6-0 ksuikN" id="birthday_last"><input
+                                    <label class="ValidationInput__ValidationInputRoot-sc-104cih6-0 ksuikN"
+                                           id="birthday_last"><input
                                             type="text" pattern="\d*" value=""/></label><span class="sc-gbzWSY HePFF">●●●●●●</span>
                                 </div>
                             </div>
@@ -841,24 +907,31 @@
                         </div>
                         <div class="sc-kkbgRg dMoNMm">
                             <label class="ValidationSelect__ValidationSelectRoot-sc-16d3732-0 dNnGOs">
-                                <select>
+                                <select id="Telecom">
                                     <option value="" hidden="">통신사</option>
                                     <option value="SKT">SKT</option>
                                     <option value="KT">KT</option>
-                                    <option value="LGT">LG U+</option>
-                                    <option value="SKT mvno">SKT 알뜰폰</option>
-                                    <option value="KT mvno">KT 알뜰폰</option>
-                                    <option value="LGT mvno">LG U+ 알뜰폰</option>
+                                    <option value="LG U+">LG U+</option>
+                                    <option value="SKT 알뜰폰">SKT 알뜰폰</option>
+                                    <option value="KT 알뜰폰">KT 알뜰폰</option>
+                                    <option value="LG U+ 알뜰폰">LG U+ 알뜰폰</option>
                                 </select>
+
+                                <input type="text" class="ValidationSelect__Value-sc-16d3732-2 duAPIU"
+                                       name="inputValue">
+
                                 <span class="ValidationSelect__Label-sc-16d3732-1 jzcnMC"
                                       style="top: 50%; font-size: 1rem; transform: translateY(-50%);">통신사</span>
+
                             </label>
                         </div>
                     </div>
-                    <div class="sc-jqIZGH cAEmRz">
+                    <div class=" sc-jqIZGH cAEmRz">
                         <div class="SignupAgreement__SignupAgreementRoot-sc-12hmw0l-0 ghXsbe">
-                            <button type="button" class="AgreementAllCheck__AgreementAllCheckButton-sc-x3jzas-0 bEjDza">
-                                <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <button type="button"
+                                    class="AgreementAllCheck__AgreementAllCheckButton-sc-x3jzas-0 bEjDza">
+                                <svg width="20" height="20" viewBox="0 0 20 20"
+                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
                                             d="M10 0c5.523 0 10 4.477 10 10s-4.477 10-10 10S0 15.523 0 10 4.477 0 10 0zm5.056 6.275a.9.9 0 0 0-1.18.099l-5.17 5.332-2.704-2.787-.09-.082a.9.9 0 0 0-1.202 1.335l3.35 3.454.092.084a.9.9 0 0 0 1.2-.084l5.817-6 .079-.093a.9.9 0 0 0-.099-1.18z"
                                             fill="#e5e5e5"
@@ -873,7 +946,8 @@
                                         <div class="AgreementAccordionSummary__AgreementAccordionSummaryTitle-sc-us3kjk-1 dvEVAn">
                                             <label for="isTermsAgreed"
                                                    class="AgreementCheckbox__AgreementCheckboxLabel-sc-1ortua9-0 cNjkIc">
-                                                <input type="checkbox" id="isTermsAgreed"/><span>번개장터 이용약관 (필수)</span>
+                                                <input type="checkbox"
+                                                       id="isTermsAgreed"/><span>번개장터 이용약관 (필수)</span>
                                                 <svg width="20" height="20" viewBox="0 0 20 20"
                                                      xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M6.326 16.674a.897.897 0 0 0 1.273 0L18.737 5.536a.9.9 0 1 0-1.273-1.272L6.963 14.765l-4.426-4.426a.9.9 0 1 0-1.273 1.273l5.062 5.062z"
@@ -892,11 +966,14 @@
                                                     class="AgreementAccordionSummary__StyledIcChevron-sc-us3kjk-3 koyCPe"
                                             >
                                                 <title>E311C035-759D-4EB5-BD86-939BB9992164</title>
-                                                <g id="\uD68C\uC6D0\uAC00\uC785-\uAC00\uC774\uB4DC" stroke="none"
+                                                <g id="\uD68C\uC6D0\uAC00\uC785-\uAC00\uC774\uB4DC"
+                                                   stroke="none"
                                                    stroke-width="1" fill="none" fill-rule="evenodd">
                                                     <g id="\uD68C\uC6D0\uAC00\uC785-\uC57D\uAD00\uB3D9\uC758"
-                                                       transform="translate(-311.000000, -599.000000)" fill="#B2B2B2">
-                                                        <g id="Group-10" transform="translate(0.000000, 383.000000)">
+                                                       transform="translate(-311.000000, -599.000000)"
+                                                       fill="#B2B2B2">
+                                                        <g id="Group-10"
+                                                           transform="translate(0.000000, 383.000000)">
                                                             <g id="\uC57D\uAD00s"
                                                                transform="translate(0.000000, 159.000000)">
                                                                 <g id="Group-10"
@@ -933,7 +1010,8 @@
                                         <div class="AgreementAccordionSummary__AgreementAccordionSummaryTitle-sc-us3kjk-1 dvEVAn">
                                             <label for="isCollectionPrivacyPolicyAgreed"
                                                    class="AgreementCheckbox__AgreementCheckboxLabel-sc-1ortua9-0 cNjkIc">
-                                                <input type="checkbox" id="isCollectionPrivacyPolicyAgreed"/><span>개인정보 수집 이용 동의 (필수)</span>
+                                                <input type="checkbox"
+                                                       id="isCollectionPrivacyPolicyAgreed"/><span>개인정보 수집 이용 동의 (필수)</span>
                                                 <svg width="20" height="20" viewBox="0 0 20 20"
                                                      xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M6.326 16.674a.897.897 0 0 0 1.273 0L18.737 5.536a.9.9 0 1 0-1.273-1.272L6.963 14.765l-4.426-4.426a.9.9 0 1 0-1.273 1.273l5.062 5.062z"
@@ -952,11 +1030,14 @@
                                                     class="AgreementAccordionSummary__StyledIcChevron-sc-us3kjk-3 koyCPe"
                                             >
                                                 <title>E311C035-759D-4EB5-BD86-939BB9992164</title>
-                                                <g id="\uD68C\uC6D0\uAC00\uC785-\uAC00\uC774\uB4DC" stroke="none"
+                                                <g id="\uD68C\uC6D0\uAC00\uC785-\uAC00\uC774\uB4DC"
+                                                   stroke="none"
                                                    stroke-width="1" fill="none" fill-rule="evenodd">
                                                     <g id="\uD68C\uC6D0\uAC00\uC785-\uC57D\uAD00\uB3D9\uC758"
-                                                       transform="translate(-311.000000, -599.000000)" fill="#B2B2B2">
-                                                        <g id="Group-10" transform="translate(0.000000, 383.000000)">
+                                                       transform="translate(-311.000000, -599.000000)"
+                                                       fill="#B2B2B2">
+                                                        <g id="Group-10"
+                                                           transform="translate(0.000000, 383.000000)">
                                                             <g id="\uC57D\uAD00s"
                                                                transform="translate(0.000000, 159.000000)">
                                                                 <g id="Group-10"
@@ -1015,11 +1096,14 @@
                                                     class="AgreementAccordionSummary__StyledIcChevron-sc-us3kjk-3 koyCPe"
                                             >
                                                 <title>E311C035-759D-4EB5-BD86-939BB9992164</title>
-                                                <g id="\uD68C\uC6D0\uAC00\uC785-\uAC00\uC774\uB4DC" stroke="none"
+                                                <g id="\uD68C\uC6D0\uAC00\uC785-\uAC00\uC774\uB4DC"
+                                                   stroke="none"
                                                    stroke-width="1" fill="none" fill-rule="evenodd">
                                                     <g id="\uD68C\uC6D0\uAC00\uC785-\uC57D\uAD00\uB3D9\uC758"
-                                                       transform="translate(-311.000000, -599.000000)" fill="#B2B2B2">
-                                                        <g id="Group-10" transform="translate(0.000000, 383.000000)">
+                                                       transform="translate(-311.000000, -599.000000)"
+                                                       fill="#B2B2B2">
+                                                        <g id="Group-10"
+                                                           transform="translate(0.000000, 383.000000)">
                                                             <g id="\uC57D\uAD00s"
                                                                transform="translate(0.000000, 159.000000)">
                                                                 <g id="Group-10"
@@ -1040,7 +1124,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="sc-jdeSqf ehWOTM accordion-detail-close" role="region" height="0"></div>
+                                <div class="sc-jdeSqf ehWOTM accordion-detail-close" role="region"
+                                     height="0"></div>
                             </div>
                             <div class="SignupAgreement__SignupAgreementItem-sc-12hmw0l-1 blWSnp">
                                 <div class="sc-jGxEUC eqaZD accordion-summary-close" role="button">
@@ -1067,11 +1152,14 @@
                                                     class="AgreementAccordionSummary__StyledIcChevron-sc-us3kjk-3 koyCPe"
                                             >
                                                 <title>E311C035-759D-4EB5-BD86-939BB9992164</title>
-                                                <g id="\uD68C\uC6D0\uAC00\uC785-\uAC00\uC774\uB4DC" stroke="none"
+                                                <g id="\uD68C\uC6D0\uAC00\uC785-\uAC00\uC774\uB4DC"
+                                                   stroke="none"
                                                    stroke-width="1" fill="none" fill-rule="evenodd">
                                                     <g id="\uD68C\uC6D0\uAC00\uC785-\uC57D\uAD00\uB3D9\uC758"
-                                                       transform="translate(-311.000000, -599.000000)" fill="#B2B2B2">
-                                                        <g id="Group-10" transform="translate(0.000000, 383.000000)">
+                                                       transform="translate(-311.000000, -599.000000)"
+                                                       fill="#B2B2B2">
+                                                        <g id="Group-10"
+                                                           transform="translate(0.000000, 383.000000)">
                                                             <g id="\uC57D\uAD00s"
                                                                transform="translate(0.000000, 159.000000)">
                                                                 <g id="Group-10"
@@ -1130,11 +1218,14 @@
                                                     class="AgreementAccordionSummary__StyledIcChevron-sc-us3kjk-3 koyCPe"
                                             >
                                                 <title>E311C035-759D-4EB5-BD86-939BB9992164</title>
-                                                <g id="\uD68C\uC6D0\uAC00\uC785-\uAC00\uC774\uB4DC" stroke="none"
+                                                <g id="\uD68C\uC6D0\uAC00\uC785-\uAC00\uC774\uB4DC"
+                                                   stroke="none"
                                                    stroke-width="1" fill="none" fill-rule="evenodd">
                                                     <g id="\uD68C\uC6D0\uAC00\uC785-\uC57D\uAD00\uB3D9\uC758"
-                                                       transform="translate(-311.000000, -599.000000)" fill="#B2B2B2">
-                                                        <g id="Group-10" transform="translate(0.000000, 383.000000)">
+                                                       transform="translate(-311.000000, -599.000000)"
+                                                       fill="#B2B2B2">
+                                                        <g id="Group-10"
+                                                           transform="translate(0.000000, 383.000000)">
                                                             <g id="\uC57D\uAD00s"
                                                                transform="translate(0.000000, 159.000000)">
                                                                 <g id="Group-10"
@@ -1157,7 +1248,8 @@
                                 </div>
                                 <div class="sc-jdeSqf ehWOTM accordion-detail-close" role="region" height="0">
                                     <div class="SignupAgreement__SignupAgreementItemContent-sc-12hmw0l-2 jSuuWY">
-                                        <a href="https://terms.bunjang.co.kr/terms/location.html" target="_blank"
+                                        <a href="https://terms.bunjang.co.kr/terms/location.html"
+                                           target="_blank"
                                            rel="noopener noreferrer"
                                            class="Link__Anchor-sc-11w5riw-0 gNJSOt SignupAgreement__SignupAgreementLink-sc-12hmw0l-3 jhCFfy">
                                             위치정보 이용약관 동의
@@ -1191,11 +1283,14 @@
                                                     class="AgreementAccordionSummary__StyledIcChevron-sc-us3kjk-3 koyCPe"
                                             >
                                                 <title>E311C035-759D-4EB5-BD86-939BB9992164</title>
-                                                <g id="\uD68C\uC6D0\uAC00\uC785-\uAC00\uC774\uB4DC" stroke="none"
+                                                <g id="\uD68C\uC6D0\uAC00\uC785-\uAC00\uC774\uB4DC"
+                                                   stroke="none"
                                                    stroke-width="1" fill="none" fill-rule="evenodd">
                                                     <g id="\uD68C\uC6D0\uAC00\uC785-\uC57D\uAD00\uB3D9\uC758"
-                                                       transform="translate(-311.000000, -599.000000)" fill="#B2B2B2">
-                                                        <g id="Group-10" transform="translate(0.000000, 383.000000)">
+                                                       transform="translate(-311.000000, -599.000000)"
+                                                       fill="#B2B2B2">
+                                                        <g id="Group-10"
+                                                           transform="translate(0.000000, 383.000000)">
                                                             <g id="\uC57D\uAD00s"
                                                                transform="translate(0.000000, 159.000000)">
                                                                 <g id="Group-10"
@@ -1235,7 +1330,8 @@
                                         <div class="AgreementAccordionSummary__AgreementAccordionSummaryTitle-sc-us3kjk-1 dvEVAn">
                                             <label for="isEventAgreed"
                                                    class="AgreementCheckbox__AgreementCheckboxLabel-sc-1ortua9-0 cNjkIc">
-                                                <input type="checkbox" id="isEventAgreed"/><span>마케팅 수신 동의 (선택)</span>
+                                                <input type="checkbox"
+                                                       id="isEventAgreed"/><span>마케팅 수신 동의 (선택)</span>
                                                 <svg width="20" height="20" viewBox="0 0 20 20"
                                                      xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M6.326 16.674a.897.897 0 0 0 1.273 0L18.737 5.536a.9.9 0 1 0-1.273-1.272L6.963 14.765l-4.426-4.426a.9.9 0 1 0-1.273 1.273l5.062 5.062z"
@@ -1254,11 +1350,14 @@
                                                     class="AgreementAccordionSummary__StyledIcChevron-sc-us3kjk-3 koyCPe"
                                             >
                                                 <title>E311C035-759D-4EB5-BD86-939BB9992164</title>
-                                                <g id="\uD68C\uC6D0\uAC00\uC785-\uAC00\uC774\uB4DC" stroke="none"
+                                                <g id="\uD68C\uC6D0\uAC00\uC785-\uAC00\uC774\uB4DC"
+                                                   stroke="none"
                                                    stroke-width="1" fill="none" fill-rule="evenodd">
                                                     <g id="\uD68C\uC6D0\uAC00\uC785-\uC57D\uAD00\uB3D9\uC758"
-                                                       transform="translate(-311.000000, -599.000000)" fill="#B2B2B2">
-                                                        <g id="Group-10" transform="translate(0.000000, 383.000000)">
+                                                       transform="translate(-311.000000, -599.000000)"
+                                                       fill="#B2B2B2">
+                                                        <g id="Group-10"
+                                                           transform="translate(0.000000, 383.000000)">
                                                             <g id="\uC57D\uAD00s"
                                                                transform="translate(0.000000, 159.000000)">
                                                                 <g id="Group-10"
@@ -1317,11 +1416,14 @@
                                                     class="AgreementAccordionSummary__StyledIcChevron-sc-us3kjk-3 koyCPe"
                                             >
                                                 <title>E311C035-759D-4EB5-BD86-939BB9992164</title>
-                                                <g id="\uD68C\uC6D0\uAC00\uC785-\uAC00\uC774\uB4DC" stroke="none"
+                                                <g id="\uD68C\uC6D0\uAC00\uC785-\uAC00\uC774\uB4DC"
+                                                   stroke="none"
                                                    stroke-width="1" fill="none" fill-rule="evenodd">
                                                     <g id="\uD68C\uC6D0\uAC00\uC785-\uC57D\uAD00\uB3D9\uC758"
-                                                       transform="translate(-311.000000, -599.000000)" fill="#B2B2B2">
-                                                        <g id="Group-10" transform="translate(0.000000, 383.000000)">
+                                                       transform="translate(-311.000000, -599.000000)"
+                                                       fill="#B2B2B2">
+                                                        <g id="Group-10"
+                                                           transform="translate(0.000000, 383.000000)">
                                                             <g id="\uC57D\uAD00s"
                                                                transform="translate(0.000000, 159.000000)">
                                                                 <g id="Group-10"
@@ -1344,7 +1446,8 @@
                                 </div>
                                 <div class="sc-jdeSqf ehWOTM accordion-detail-close" role="region" height="0">
                                     <div class="SignupAgreement__SignupAgreementItemContent-sc-12hmw0l-2 jSuuWY">
-                                        <a href="https://terms.bunjang.co.kr/terms/ad-agreement.html" target="_blank"
+                                        <a href="https://terms.bunjang.co.kr/terms/ad-agreement.html"
+                                           target="_blank"
                                            rel="noopener noreferrer"
                                            class="Link__Anchor-sc-11w5riw-0 gNJSOt SignupAgreement__SignupAgreementLink-sc-12hmw0l-3 jhCFfy">
                                             개인정보 광고활용 동의
