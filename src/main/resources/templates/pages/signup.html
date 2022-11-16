@@ -700,11 +700,20 @@
 
         $(function () {
             $(".ksuikN > input").on("focus", function (e) {
-                if ($(e.target).val() === '') {
+                if ($(e.target).val() === ''){
                     $(e.target).parent().children(".emXoKq").css("top", "0")
                         .css("font-size", "0.75rem")
                         .css("transform", "translateY(0px)");
                     $(e.target).parent().children(".NXXDp").css("opacity", "1");
+                }
+            });
+
+            $(".ksuikN > input").on("focusout", function (e) {
+                if ($(e.target).val() === '') {
+                    $(e.target).parent().children(".emXoKq").css("top", "50%")
+                        .css("font-size", "1rem")
+                        .css("transform", "translateY(-50%)");
+                    $(e.target).parent().children(".NXXDp").css("opacity", "0");
                 }
             });
 
@@ -720,7 +729,7 @@
                     setTimeout(function () {
                         check_box[0] = 1
                         $(".ksuikN[id='birthday_first']").trigger("click");
-                    }, 500);
+                    }, 770);
                 }
             });
 
@@ -742,7 +751,7 @@
                     setTimeout(function () {
                         $(".ksuikN[id='birthday_last']").trigger("click");
                         check_box[1] = 1
-                    }, 500);
+                    }, 250);
                 }
             });
 
@@ -757,7 +766,7 @@
                 if (trans_num.length === 1) {
                     setTimeout(function () {
                         $(".ksuikN[id='phone_num']").trigger("click");
-                    }, 500);
+                    }, 250);
                 }
 
             });
@@ -782,10 +791,12 @@
             });
 
             $(".dNnGOs > select").on("focus", function (e) {
-                $(e.target).parent().children(".jzcnMC").css("top", "0")
-                    .css("font-size", "0.75rem")
-                    .css("transform", "translateY(0px)");
-                $(e.target).parent().children(".NXXDp").css("opacity", "1");
+                if ($(e.target).val() === '') {
+                    $(e.target).parent().children(".jzcnMC").css("top", "0")
+                        .css("font-size", "0.75rem")
+                        .css("transform", "translateY(0px)");
+                    $(e.target).parent().children(".NXXDp").css("opacity", "1");
+                }
             });
 
             $(".dNnGOs > select").on("focusout", function (e) {
@@ -808,7 +819,7 @@
 
         $(function () {
             function check_function() {
-                if (sum === 9) {
+                if (check_box[0] === 1 && check_box[1] === 1 && check_box[2] === 1 && check_box[3] ===1 && sum >=5) {
                     $('.kLryzS').attr('disabled', false)
                     $(".bEjDza").closest(".bEjDza").find('svg path').css('fill', "rgb(216, 12, 24)")
                     $(".bEjDza").addClass('bwJmtg')
