@@ -818,6 +818,22 @@
         });
 
         $(function () {
+            let checking = false
+            $(".koyCPe").on("click", function(e) {
+                if (checking === false) {
+                    $(e.target).parent().parent().parent().attr('class', 'sc-jdeSqf jmzupQ accordion-summary-open');
+                    $(".ehWOTM").height('36');
+                    checking = true
+                } else {
+                    $(e.target).parent().parent().parent().attr('class', 'sc-jGxEUC eqaZD accordion-summary-close');
+                    checking = false
+                }
+
+            })
+
+        })
+
+        $(function () {
             function check_function() {
                 if (check_box[0] === 1 && check_box[1] === 1 && check_box[2] === 1 && check_box[3] ===1 && sum >=5) {
                     $('.kLryzS').attr('disabled', false)
