@@ -699,12 +699,18 @@
             will-change: max-height;
         }
 
+        .gWGTMR {
+            overflow: hidden;
+            width: 100%;
+            max-height: 0rem;
+            transition: max-height 0.6s ease 0s;
+            will-change: max-height;
+        }
+
     </style>
 
     <script>
-        let check_box = [0, 0, 0, 0]
         let total_check = false
-        let sum = 0
 
         $(function () {
             $(".ksuikN > input").on("focus", function (e) {
@@ -735,7 +741,6 @@
 
                 if (trans_num.length === 3) {
                     setTimeout(function () {
-                        check_box[0] = 1
                         $(".ksuikN[id='birthday_first']").trigger("click");
                     }, 770);
                 }
@@ -758,7 +763,7 @@
                 if (trans_num.length === 6) {
                     setTimeout(function () {
                         $(".ksuikN[id='birthday_last']").trigger("click");
-                        check_box[1] = 1
+
                     }, 250);
                 }
             });
@@ -785,10 +790,6 @@
 
                 if (trans_num.length > 11) {
                     $(this).val($(this).val().substring(0, 11));
-                }
-
-                if (trans_num.length === 11) {
-                    check_box[2] = 1
                 }
 
                 if ($(e.target).val() === '') {
@@ -831,10 +832,10 @@
                 if (checking === false) {
                     $(e.target).parent().parent().parent().attr('class', 'sc-jdeSqf jmzupQ accordion-summary-open');
                     $(e.target).parent().parent().parent().siblings().attr('class', 'sc-cBrjTV lduyKo accordion-detail-open');
-
                     checking = true
                 } else {
-                    $(e.target).parent().parent().parent().attr('class', 'sc-jGxEUC eqaZD accordion-summary-close');
+                    $(e.target).parent().parent().parent().attr('class', 'sc-jtggT lnYYwT accordion-summary-close');
+                    $(e.target).parent().parent().parent().siblings().attr('class', 'sc-cBrjTV gWGTMR accordion-detail-close');
                     checking = false
                 }
 
@@ -844,7 +845,7 @@
 
         $(function () {
             function check_function() {
-                if (check_box[0] === 1 && check_box[1] === 1 && check_box[2] === 1 && check_box[3] === 1 && sum >=5) {
+                if () {
                     $('.kLryzS').attr('disabled', false)
                     $(".bEjDza").closest(".bEjDza").find('svg path').css('fill', "rgb(216, 12, 24)")
                     $(".bEjDza").addClass('bwJmtg')
