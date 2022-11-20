@@ -71,6 +71,9 @@ public class WebSecurityConfig {
     @Bean
     public ShopAuthenticationFilter shopAuthenticationFilter() {
         ShopAuthenticationFilter filter = new ShopAuthenticationFilter(new AntPathRequestMatcher("/v1/login"));
+        filter.setAuthenticationSuccessHandler(customAuthenticationSuccessHandler);
+        filter.setAuthenticationFailureHandler(customAuthenticationFailureHandler);
+        filter.setAuthenticationManager(customAuthenticationManager());
         return filter;
     }
 

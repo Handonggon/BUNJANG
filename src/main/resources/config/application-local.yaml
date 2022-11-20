@@ -52,7 +52,7 @@ spring:
       username: root
       password: root!@345
       maximumPoolSize: 10
-      maxLifetime: 1000
+      maxLifetime: 30000
       connectionTimeout: 3000
       leakDetectionThreshold: 10000
       dataSourceProperties:
