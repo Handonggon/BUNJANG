@@ -8,7 +8,7 @@ import javax.persistence.Embeddable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import kr.co.study.bunjang.mvc.dto.ShopDetailsDto;
+import kr.co.study.bunjang.mvc.dto.ShopDetails;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,8 +27,8 @@ import lombok.NoArgsConstructor;
 
     public void change() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication.getPrincipal() instanceof ShopDetailsDto) {
-            ShopDetailsDto shopDetailsDto = (ShopDetailsDto) authentication.getPrincipal();
+        if (authentication.getPrincipal() instanceof ShopDetails) {
+            ShopDetails shopDetailsDto = (ShopDetails) authentication.getPrincipal();
             this.id = shopDetailsDto.getShopNo();
             this.nm = shopDetailsDto.getShopNm();
         } else {

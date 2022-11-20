@@ -11,7 +11,8 @@ import org.springframework.stereotype.Service;
 import kr.co.study.bunjang.component.utility.MessageUtils;
 import kr.co.study.bunjang.component.utility.ObjUtils;
 import kr.co.study.bunjang.mvc.domain.home.repository.ShopRepository;
-import kr.co.study.bunjang.mvc.dto.ShopDetailsDto;
+import kr.co.study.bunjang.mvc.dto.ShopDetails;
+import kr.co.study.bunjang.mvc.dto.ShopDto;
 
 @Service
 public class ShopService implements UserDetailsService {
@@ -21,7 +22,7 @@ public class ShopService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        ShopDetailsDto userDetailsDto = new ShopDetailsDto(userRepository.findAll().get(0));
+        ShopDetails userDetailsDto = new ShopDetails(userRepository.findAll().get(0));
         if (ObjUtils.isEmpty(userDetailsDto)) {
             throw new UsernameNotFoundException(MessageUtils.getMessage("exception.UsernameNotFound"));
         }
@@ -29,7 +30,7 @@ public class ShopService implements UserDetailsService {
     }
 
     @Transactional
-    public ShopDetailsDto save(ShopDetailsDto shopDetailsDto) {
-        return new ShopDetailsDto(userRepository.save(shopDetailsDto.toEntity()));
+    public ShopDto save(ShopDto shopDto) {
+        return new ShopDto(userRepository.save(shopDto.toEntity()));
     }
 }

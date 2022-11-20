@@ -18,7 +18,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
-import kr.co.study.bunjang.mvc.dto.ShopDetailsDto;
+import kr.co.study.bunjang.mvc.dto.ShopDto;
 import kr.co.study.bunjang.mvc.service.ShopService;
 
 
@@ -32,8 +32,8 @@ public class ShopController {
 
     @ApiOperation(value = "회원 가입", notes = "<big>회원가입</big>을 한다.")
     @PostMapping
-    public ResponseEntity<ShopDetailsDto> save(@RequestBody @ApiParam(value = "회원 정보", required = true) ShopDetailsDto shopDetailsDto) {
-        return ResponseEntity.ok(shopService.save(shopDetailsDto));
+    public ResponseEntity<ShopDto> save(@RequestBody @ApiParam(value = "회원 정보", required = true) ShopDto shopDto) {
+        return ResponseEntity.ok(shopService.save(shopDto));
     }
 
     @GetMapping(value="/kakao/callback")
