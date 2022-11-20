@@ -86,6 +86,7 @@ public class ShopDto extends AbstractDto {
 					.identiNumber(this.identiNumber)
 					.phoneNumber(this.phoneNumber)
 					.telecom(this.telecom)
+					.authenticationYn(this.authenticationYn)
 					.termsYn(this.termsYn)
 					.collectionPrivacyPolicyYn(this.collectionPrivacyPolicyYn)
 					.phoneIdentificationYn(this.phoneIdentificationYn)

@@ -44,9 +44,6 @@ import lombok.NoArgsConstructor;
     @Comment("상점 이름")
     private String shopNm;
 
-
-
-
     @Column(length = 20, nullable = false, unique = true)
     @Comment("사용자 이름")
     private String userNm;
