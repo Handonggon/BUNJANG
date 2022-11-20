@@ -23,14 +23,30 @@ public class SwaggerConfig {
 	}
 
 	@Bean
-	public Docket swaggerApi() {
+	public Docket shop() {
 		return new Docket(DocumentationType.SWAGGER_2)
+			.groupName("shop")
 			.consumes(getConsumeContentTypes())
 			.produces(getProduceContentTypes())
+			//.globalOperationParameters()
 			.apiInfo(swaggerInfo())
 			.select()
-			.apis(RequestHandlerSelectors.any())
-			.paths(PathSelectors.any())
+			.apis(RequestHandlerSelectors.basePackage("kr.co.study.bunjang.mvc.controller.v1"))
+			.paths(PathSelectors.ant("/v1/shop/**"))
+			.build()
+			.useDefaultResponseMessages(false);
+	}
+
+	public Docket category() {
+		return new Docket(DocumentationType.SWAGGER_2)
+			.groupName("category")
+			.consumes(getConsumeContentTypes())
+			.produces(getProduceContentTypes())
+			//.globalOperationParameters()
+			.apiInfo(swaggerInfo())
+			.select()
+			.apis(RequestHandlerSelectors.basePackage("kr.co.study.bunjang.mvc.controller.v1"))
+			.paths(PathSelectors.ant("/v1/category/**"))
 			.build()
 			.useDefaultResponseMessages(false);
 	}

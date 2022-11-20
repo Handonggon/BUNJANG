@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import io.swagger.annotations.ApiModelProperty;
 import kr.co.study.bunjang.mvc.domain.home.model.entity.Shop;
 import kr.co.study.bunjang.mvc.vo.Role;
 import kr.co.study.bunjang.mvc.vo.Yn;
@@ -22,13 +23,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class ShopDetailsDto extends AbstractDto implements UserDetails {
-	//TODO shopDetailsDto Refactoring
 
+	@ApiModelProperty(value = "상점 번호", notes = "순번 데이터", example = "1")
 	private Long shopNo;
 
+	@ApiModelProperty(value = "상점 이름", example = "상점0호", required = true)
 	private String shopNm;
 
-	
 	private String userNm;
 
 	private String identiNumber;
@@ -49,13 +50,16 @@ public class ShopDetailsDto extends AbstractDto implements UserDetails {
 
 	private Yn locationInfoYn;
 
+	@ApiModelProperty(hidden=true)
 	private Yn privacyYn;
 
+	@ApiModelProperty(hidden=true)
 	private Yn eventYn;
 
+	@ApiModelProperty(hidden=true)
 	private Yn adUtilizationYn;
 	
-
+	@ApiModelProperty(hidden=true)
 	public final Collection<Role> authorities = new ArrayList<Role>();
 
 	public ShopDetailsDto(Shop shop) {

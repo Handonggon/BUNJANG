@@ -5,30 +5,32 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import kr.co.study.bunjang.mvc.dto.ShopDetailsDto;
 import kr.co.study.bunjang.mvc.service.ShopService;
-import org.springframework.web.bind.annotation.GetMapping;
 
 
-@Controller
-@RequestMapping("/signup")
+@RestController
+@RequestMapping("/v1/shop")
 public class ShopController {
 
     @Autowired
     private ShopService shopService;
 
+    @ApiOperation(value = "회원 가입", notes = "<big>회원가입</big>을 한다.")
     @PostMapping
-    @ResponseBody
-    public ResponseEntity<ShopDetailsDto> save(@RequestBody ShopDetailsDto shopDetailsDto) {
+    public ResponseEntity<ShopDetailsDto> save(@RequestBody @ApiParam(value = "회원 정보", required = true) ShopDetailsDto shopDetailsDto) {
         return ResponseEntity.ok(shopService.save(shopDetailsDto));
     }
 
