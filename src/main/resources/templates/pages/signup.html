@@ -710,12 +710,12 @@
     </style>
 
     <script>
-        let total_check = false
         let sum = 0
+        let checking = [0, 0, 0, 0, 0]
 
         $(function () {
             $(".ksuikN > input").on("focus", function (e) {
-                if ($(e.target).val() === ''){
+                if ($(e.target).val() === '') {
                     $(e.target).parent().children(".emXoKq").css("top", "0")
                         .css("font-size", "0.75rem")
                         .css("transform", "translateY(0px)");
@@ -828,44 +828,84 @@
         });
 
         $(function () {
-            let checking = false
-            $(".ehOmiS").on("click", function(e) {
-                if (checking === false) {
+            let turn_checking = false
+            $(".ehOmiS, koyCPe").on("click", function (e) {
+                if (turn_checking === false) {
                     $(e.target).parent().parent().parent().attr('class', 'sc-jdeSqf jmzupQ accordion-summary-open');
                     $(e.target).parent().parent().parent().siblings().attr('class', 'sc-cBrjTV lduyKo accordion-detail-open');
-                    checking = true
+                    turn_checking = true
                 } else {
                     $(e.target).parent().parent().parent().attr('class', 'sc-jtggT lnYYwT accordion-summary-close');
                     $(e.target).parent().parent().parent().siblings().attr('class', 'sc-cBrjTV gWGTMR accordion-detail-close');
-                    checking = false
+                    turn_checking = false
                 }
-
             })
-
         })
 
-        $(function () {
-            function check_function() {
-                if (sum >= 5) {
-                    $('.kLryzS').attr('disabled', false)
-                    $(".bEjDza").closest(".bEjDza").find('svg path').css('fill', "rgb(216, 12, 24)")
-                    $(".bEjDza").addClass('bwJmtg')
-                    $(".bEjDza").removeClass('bEjDza')
-                    total_check = true;
-                } else {
-                    $('.kLryzS').attr('disabled', true)
-                    $(".bwJmtg").closest(".bwJmtg").find('svg path').css('fill', "rgb(229, 229, 229)")
-                    $(".bwJmtg").addClass('bEjDza')
-                    $(".bwJmtg").removeClass('bwJmtg')
-                    total_check = false;
-                }
+        function check_function() {
+            if (checking[0] === 1 && checking[1] === 1 && checking[2] === 1 && checking[3] === 1 && checking[4] === 1 && sum >= 5) {
+                $('.kLryzS').attr('disabled', false)
+                $(".bEjDza").closest(".bEjDza").find('svg path').css('fill', "rgb(216, 12, 24)")
+                $(".bEjDza").addClass('bwJmtg')
+                $(".bEjDza").removeClass('bEjDza')
+            } else {
+                $('.kLryzS').attr('disabled', true)
+                $(".bwJmtg").closest(".bwJmtg").find('svg path').css('fill', "rgb(229, 229, 229)")
+                $(".bwJmtg").addClass('bEjDza')
+                $(".bwJmtg").removeClass('bwJmtg')
             }
+        }
+
+        $(function () {
+            $("input, select").on("change", function () {
+                for (let e of $("input, select")) {
+                    if ($(e).hasClass("required_1")) {
+                        if ($(e).val().length === 3) {
+                            checking[0] = 1
+                        } else {
+                            checking[0] = 0
+                        }
+                    }
+                    if ($(e).hasClass("required_2")) {
+                        if ($(e).val().length === 6) {
+                            checking[1] = 1
+                        } else {
+                            checking[1] = 0
+                        }
+                    }
+                    if ($(e).hasClass("required_3")) {
+                        if ($(e).val().length === 1) {
+                            checking[2] = 1
+                        } else {
+                            checking[2] = 0
+                        }
+                    }
+                    if ($(e).hasClass("required_4")) {
+                        if ($(e).val().length === 11) {
+                            checking[3] = 1
+                        } else {
+                            checking[3] = 0
+                        }
+                    }
+                    if ($(e).hasClass("required_5")) {
+                        if ($(e).val() !== '') {
+                            checking[4] = 1
+                        } else {
+                            checking[4] = 0
+                        }
+                    }
+                    check_function()
+                }
+            })
+        });
+
+        $(function () {
 
             $('.bEjDza').on("click", function (e) {
-                if (total_check === false) {
+                if (sum !== 8) {
                     $('input:checkbox').prop('checked', true);
                     $(".dvEVAn").closest(".dvEVAn").find('svg path').css('fill', "rgb(216, 12, 24)")
-                    sum = 9
+                    sum = 8
                 } else {
                     $('input:checkbox').prop('checked', false);
                     $(".dvEVAn").closest(".dvEVAn").find('svg path').css('fill', "rgb(229, 229, 229)")
@@ -903,7 +943,7 @@
                     <div>
                         <div class="sc-kkbgRg dMoNMm">
                             <label class="ValidationInput__ValidationInputRoot-sc-104cih6-0 ksuikN" id="user_id">
-                                <input value=""/>
+                                <input value="" class="required_1">
                                 <span class="ValidationInput__Label-sc-104cih6-1 emXoKq"
                                       style="top: 0; font-size: 0.75rem; transform: translateY(0px);">이름</span>
                             </label>
@@ -913,7 +953,7 @@
                                 <div>
                                     <label class="ValidationInput__ValidationInputRoot-sc-104cih6-0 ksuikN"
                                            id="birthday_first">
-                                        <input type="text" pattern="\d*" value=""/><span
+                                        <input type="text" pattern="\d*" value="" class="required_2"><span
                                             class="ValidationInput__Label-sc-104cih6-1 emXoKq"
                                             style="top: 50%; font-size: 1rem; transform: translateY(-50%);">생년월일</span>
                                         <span class="ValidationInput__Placeholder-sc-104cih6-2 NXXDp"
@@ -924,20 +964,22 @@
                                 <div>
                                     <label class="ValidationInput__ValidationInputRoot-sc-104cih6-0 ksuikN"
                                            id="birthday_last"><input
-                                            type="text" pattern="\d*" value=""/></label><span class="sc-gbzWSY HePFF">●●●●●●</span>
+                                            type="text" pattern="\d*" value="" class="required_3"></label><span
+                                        class="sc-gbzWSY HePFF">●●●●●●</span>
                                 </div>
                             </div>
                         </div>
                         <div class="sc-kkbgRg dMoNMm">
                             <label class="ValidationInput__ValidationInputRoot-sc-104cih6-0 ksuikN" id="phone_num">
-                                <input value=""/><span class="ValidationInput__Label-sc-104cih6-1 emXoKq"
-                                                       style="top: 50%; font-size: 1rem; transform: translateY(-50%);">휴대폰번호</span>
+                                <input value="" class="required_4"><span
+                                    class="ValidationInput__Label-sc-104cih6-1 emXoKq"
+                                    style="top: 50%; font-size: 1rem; transform: translateY(-50%);">휴대폰번호</span>
                                 <span class="ValidationInput__Placeholder-sc-104cih6-2 NXXDp" style="opacity: 0;">01012345678</span>
                             </label>
                         </div>
                         <div class="sc-kkbgRg dMoNMm">
                             <label class="ValidationSelect__ValidationSelectRoot-sc-16d3732-0 dNnGOs">
-                                <select id="Telecom">
+                                <select id="Telecom" class="required_5">
                                     <option value="" hidden="">통신사</option>
                                     <option value="SKT">SKT</option>
                                     <option value="KT">KT</option>
@@ -977,7 +1019,7 @@
                                             <label for="isTermsAgreed"
                                                    class="AgreementCheckbox__AgreementCheckboxLabel-sc-1ortua9-0 cNjkIc">
                                                 <input type="checkbox"
-                                                       id="isTermsAgreed"/><span>번개장터 이용약관 (필수)</span>
+                                                       id="isTermsAgreed" class="required"><span>번개장터 이용약관 (필수)</span>
                                                 <svg width="20" height="20" viewBox="0 0 20 20"
                                                      xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M6.326 16.674a.897.897 0 0 0 1.273 0L18.737 5.536a.9.9 0 1 0-1.273-1.272L6.963 14.765l-4.426-4.426a.9.9 0 1 0-1.273 1.273l5.062 5.062z"
@@ -1041,7 +1083,7 @@
                                             <label for="isCollectionPrivacyPolicyAgreed"
                                                    class="AgreementCheckbox__AgreementCheckboxLabel-sc-1ortua9-0 cNjkIc">
                                                 <input type="checkbox"
-                                                       id="isCollectionPrivacyPolicyAgreed"/><span>개인정보 수집 이용 동의 (필수)</span>
+                                                       id="isCollectionPrivacyPolicyAgreed" class="required"><span>개인정보 수집 이용 동의 (필수)</span>
                                                 <svg width="20" height="20" viewBox="0 0 20 20"
                                                      xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M6.326 16.674a.897.897 0 0 0 1.273 0L18.737 5.536a.9.9 0 1 0-1.273-1.272L6.963 14.765l-4.426-4.426a.9.9 0 1 0-1.273 1.273l5.062 5.062z"
@@ -1107,7 +1149,8 @@
                                         <div class="AgreementAccordionSummary__AgreementAccordionSummaryTitle-sc-us3kjk-1 dvEVAn">
                                             <label for="isPhoneIdentificationAgreed"
                                                    class="AgreementCheckbox__AgreementCheckboxLabel-sc-1ortua9-0 cNjkIc">
-                                                <input type="checkbox" id="isPhoneIdentificationAgreed"/><span>휴대폰 본인확인서비스 (필수)</span>
+                                                <input type="checkbox" id="isPhoneIdentificationAgreed"
+                                                       class="required"><span>휴대폰 본인확인서비스 (필수)</span>
                                                 <svg width="20" height="20" viewBox="0 0 20 20"
                                                      xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M6.326 16.674a.897.897 0 0 0 1.273 0L18.737 5.536a.9.9 0 1 0-1.273-1.272L6.963 14.765l-4.426-4.426a.9.9 0 1 0-1.273 1.273l5.062 5.062z"
@@ -1163,7 +1206,8 @@
                                         <div class="AgreementAccordionSummary__AgreementAccordionSummaryTitle-sc-us3kjk-1 dvEVAn">
                                             <label for="isPrivacyArchivingAgreed"
                                                    class="AgreementCheckbox__AgreementCheckboxLabel-sc-1ortua9-0 cNjkIc">
-                                                <input type="checkbox" id="isPrivacyArchivingAgreed"/><span>휴면 개인정보 분리보관 동의 (필수)</span>
+                                                <input type="checkbox" id="isPrivacyArchivingAgreed"
+                                                       class="required"><span>휴면 개인정보 분리보관 동의 (필수)</span>
                                                 <svg width="20" height="20" viewBox="0 0 20 20"
                                                      xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M6.326 16.674a.897.897 0 0 0 1.273 0L18.737 5.536a.9.9 0 1 0-1.273-1.272L6.963 14.765l-4.426-4.426a.9.9 0 1 0-1.273 1.273l5.062 5.062z"
@@ -1229,7 +1273,7 @@
                                         <div class="AgreementAccordionSummary__AgreementAccordionSummaryTitle-sc-us3kjk-1 dvEVAn">
                                             <label for="isLocationInfoAgreed"
                                                    class="AgreementCheckbox__AgreementCheckboxLabel-sc-1ortua9-0 cNjkIc">
-                                                <input type="checkbox" id="isLocationInfoAgreed"/><span>위치정보 이용약관 동의 (필수)</span>
+                                                <input type="checkbox" id="isLocationInfoAgreed" class="required"><span>위치정보 이용약관 동의 (필수)</span>
                                                 <svg width="20" height="20" viewBox="0 0 20 20"
                                                      xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M6.326 16.674a.897.897 0 0 0 1.273 0L18.737 5.536a.9.9 0 1 0-1.273-1.272L6.963 14.765l-4.426-4.426a.9.9 0 1 0-1.273 1.273l5.062 5.062z"
