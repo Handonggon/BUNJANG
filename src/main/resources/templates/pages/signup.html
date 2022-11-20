@@ -711,6 +711,7 @@
 
     <script>
         let total_check = false
+        let sum = 0
 
         $(function () {
             $(".ksuikN > input").on("focus", function (e) {
@@ -821,7 +822,7 @@
                 $("#Telecom").change(function () {
                     let v = $("#Telecom").val();
                     $('input[name=inputValue]').attr('value', v);
-                    check_box[3] = 1
+
                 });
             });
         });
@@ -845,7 +846,7 @@
 
         $(function () {
             function check_function() {
-                if () {
+                if (sum >= 5) {
                     $('.kLryzS').attr('disabled', false)
                     $(".bEjDza").closest(".bEjDza").find('svg path').css('fill', "rgb(216, 12, 24)")
                     $(".bEjDza").addClass('bwJmtg')
