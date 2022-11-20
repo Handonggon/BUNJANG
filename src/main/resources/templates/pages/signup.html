@@ -710,8 +710,14 @@
     </style>
 
     <script>
-        let sum = 0
-        let checking = [0, 0, 0, 0, 0]
+        let sum_1 = 0
+        let sum_2 = 0
+        let checking = {name:'', birth_first:'', birth_last:'', telecom:''}
+        let name = ''
+        let birth_first = ''
+        let birth_last = ''
+        let telecom = ''
+        let telecom_where = ''
 
         $(function () {
             $(".ksuikN > input").on("focus", function (e) {
@@ -742,6 +748,7 @@
 
                 if (trans_num.length === 3) {
                     setTimeout(function () {
+                        name = trans_num
                         $(".ksuikN[id='birthday_first']").trigger("click");
                     }, 770);
                 }
@@ -763,6 +770,7 @@
 
                 if (trans_num.length === 6) {
                     setTimeout(function () {
+                        birth_first = trans_num
                         $(".ksuikN[id='birthday_last']").trigger("click");
 
                     }, 250);
@@ -779,6 +787,7 @@
 
                 if (trans_num.length === 1) {
                     setTimeout(function () {
+                        birth_last = trans_num
                         $(".ksuikN[id='phone_num']").trigger("click");
                     }, 250);
                 }
@@ -797,6 +806,12 @@
                     $(e.target).parent().children(".NXXDp").css("opacity", "1");
                 } else {
                     $(e.target).parent().children(".NXXDp").css("opacity", "0");
+                }
+
+                if (trans_num.length === 11) {
+                    setTimeout(function () {
+                        telecom = trans_num
+                    }, 250);
                 }
             });
 
@@ -822,6 +837,7 @@
                 $("#Telecom").change(function () {
                     let v = $("#Telecom").val();
                     $('input[name=inputValue]').attr('value', v);
+                    telecom_where = v
 
                 });
             });
@@ -843,19 +859,22 @@
         })
 
         function check_function() {
-            if (checking[0] === 1 && checking[1] === 1 && checking[2] === 1 && checking[3] === 1 && checking[4] === 1 && sum >= 5) {
+            if (checking[0] === 1 && checking[1] === 1 && checking[2] === 1 && checking[3] === 1 && checking[4] === 1 && sum_2 === 5) {
                 $('.kLryzS').attr('disabled', false)
-                $(".bEjDza").closest(".bEjDza").find('svg path').css('fill', "rgb(216, 12, 24)")
-                $(".bEjDza").addClass('bwJmtg')
-                $(".bEjDza").removeClass('bEjDza')
             } else {
                 $('.kLryzS').attr('disabled', true)
                 $(".bwJmtg").closest(".bwJmtg").find('svg path').css('fill', "rgb(229, 229, 229)")
                 $(".bwJmtg").addClass('bEjDza')
                 $(".bwJmtg").removeClass('bwJmtg')
             }
+            if (sum_1 === 8) {
+                $(".bEjDza").closest(".bEjDza").find('svg path').css('fill', "rgb(216, 12, 24)")
+                $(".bEjDza").addClass('bwJmtg')
+                $(".bEjDza").removeClass('bEjDza')
+            }
         }
 
+        // 전체 동의
         $(function () {
             $("input, select").on("change", function () {
                 for (let e of $("input, select")) {
@@ -900,16 +919,17 @@
         });
 
         $(function () {
-
             $('.bEjDza').on("click", function (e) {
-                if (sum !== 8) {
+                if (sum_1 !== 8) {
                     $('input:checkbox').prop('checked', true);
                     $(".dvEVAn").closest(".dvEVAn").find('svg path').css('fill', "rgb(216, 12, 24)")
-                    sum = 8
+                    sum_1 = 8
+                    sum_2 = 5
                 } else {
                     $('input:checkbox').prop('checked', false);
                     $(".dvEVAn").closest(".dvEVAn").find('svg path').css('fill', "rgb(229, 229, 229)")
-                    sum = 0
+                    sum_1 = 0
+                    sum_2 = 0
                 }
                 check_function()
             })
@@ -922,15 +942,45 @@
                 if (click_id.checked === false) {
                     $("input:checkbox[id=" + click_id_id + "]").prop("checked", true);
                     Target.closest(".dvEVAn").find('svg path').css('fill', "rgb(216, 12, 24)")
-                    sum += 1
+                    sum_1 += 1
+                    if ($("input:checkbox[id=" + click_id_id + "]").hasClass('required')) {
+                        sum_2 += 1
+                    }
+
                 } else {
                     $("input:checkbox[id=" + click_id_id + "]").prop("checked", false);
                     Target.closest(".dvEVAn").find('svg path').css('fill', "rgb(229, 229, 229)")
-                    sum -= 1
+                    sum_1 -= 1
+                    if ($("input:checkbox[id=" + click_id_id + "]").hasClass('required')) {
+                        sum_2 -= 1
+                    }
                 }
                 check_function()
             })
         });
+
+        $(function () {
+            $('.kLryzS').on("click", function(e) {
+                axios({
+                    method: "POST",
+                    url: "/v1/shop",
+                    data: {authenticationYn : "Y",
+                    collectionPrivacyPolicyYn : "Y",
+                        identiNumber : birth_first + birth_last,
+                        locationInfoYn : "Y",
+                        phoneIdentificationYn : "Y",
+                        phoneNumber : telecom,
+                        shopNm : "",
+                        privacyArchivingYn : "Y",
+                        telecom : telecom_where,
+                        termsYn : "Y",
+                        userNm : name
+                    }
+                }).then(response=>{
+                    console.log(response)
+                });
+            })
+        })
 
     </script>
 
@@ -1531,7 +1581,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" disabled="" class="sc-jMMfwr kLryzS">다음</button>
+                    <button type="button" disabled="" class="sc-jMMfwr kLryzS">다음</button>
                 </form>
             </div>
             <div class="sc-ESoVU kEuYPw">
