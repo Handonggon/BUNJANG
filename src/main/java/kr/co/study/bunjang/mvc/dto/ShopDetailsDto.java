@@ -24,42 +24,52 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 public class ShopDetailsDto extends AbstractDto implements UserDetails {
 
-	@ApiModelProperty(value = "상점 번호", notes = "순번 데이터", example = "1")
+	@ApiModelProperty(position = 1, value = "상점 번호", notes = "순번 데이터", example = "1")
 	private Long shopNo;
 
-	@ApiModelProperty(value = "상점 이름", example = "상점0호", required = true)
+	@ApiModelProperty(position = 2, value = "상점 이름", example = "상점0호", required = true)
 	private String shopNm;
 
+	@ApiModelProperty(position = 3, value = "사용자 이름", example = "홍길동", required = true)
 	private String userNm;
 
+	@ApiModelProperty(position = 4, value = "주민등록번호", example = "123456-1*****", required = true)
 	private String identiNumber;
 
+	@ApiModelProperty(position = 5, value = "휴대폰 번호", example = "010-1234-5678", required = true)
 	private String phoneNumber;
 
+	@ApiModelProperty(position = 6, value = "통신사", required = true)
 	private String telecom;
 
+	@ApiModelProperty(position = 7, value = "본인 인증 여부", required = true)
 	private Yn authenticationYn;
 
+	@ApiModelProperty(position = 8, value = "번개장터 이용약관 (필수)", required = true)
 	private Yn termsYn;
 
+	@ApiModelProperty(position = 9, value = "개인정보 수집 이용 동의 (필수)", required = true)
 	private Yn collectionPrivacyPolicyYn;
 
+	@ApiModelProperty(position = 10, value = "휴대폰 본인확인서비스 (필수)", required = true)
 	private Yn phoneIdentificationYn;
 
+	@ApiModelProperty(position = 11, value = "휴면 개인정보 분리보관 동의 (필수)", required = true)
 	private Yn privacyArchivingYn;
 
+	@ApiModelProperty(position = 12, value = "위치정보 이용약관 동의 (필수)", required = true)
 	private Yn locationInfoYn;
 
-	@ApiModelProperty(hidden=true)
+	@ApiModelProperty(position = 13, value = "개인정보 수집 이용 동의 (선택)", hidden=true)
 	private Yn privacyYn;
 
-	@ApiModelProperty(hidden=true)
+	@ApiModelProperty(position = 14, value = "마케팅 수신 동의 (선택)", hidden=true)
 	private Yn eventYn;
 
-	@ApiModelProperty(hidden=true)
+	@ApiModelProperty(position = 15, value = "개인정보 광고활용 동의 (선택)", hidden=true)
 	private Yn adUtilizationYn;
 	
-	@ApiModelProperty(hidden=true)
+	@ApiModelProperty(position = 16, hidden=true)
 	public final Collection<Role> authorities = new ArrayList<Role>();
 
 	public ShopDetailsDto(Shop shop) {
@@ -82,40 +92,48 @@ public class ShopDetailsDto extends AbstractDto implements UserDetails {
 	}
 
 	@Override
+	@ApiModelProperty(hidden=true)
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return this.authorities;
 	}
 
+	// @ApiModelProperty(hidden=true)
 	public Boolean hasRole(Role role) {
 		return this.authorities.stream().filter(o -> o.equals(role)).findAny().isPresent();
 	}
 
 	@Override
+	@ApiModelProperty(hidden=true)
 	public String getPassword() {
 		return StringUtils.EMPTY;
 	}
 
 	@Override
+	@ApiModelProperty(hidden=true)
 	public String getUsername() {
 		return this.shopNm + " " + this.userNm;
 	}
 
 	@Override
+	@ApiModelProperty(hidden=true)
 	public boolean isAccountNonExpired() {
 		return false;
 	}
 
 	@Override
+	@ApiModelProperty(hidden=true)
 	public boolean isAccountNonLocked() {
 		return false;
 	}
 
 	@Override
+	@ApiModelProperty(hidden=true)
 	public boolean isCredentialsNonExpired() {
 		return false;
 	}
 
 	@Override
+	@ApiModelProperty(hidden=true)
 	public boolean isEnabled() {
 		return false;
 	}
