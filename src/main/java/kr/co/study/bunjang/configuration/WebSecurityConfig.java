@@ -10,8 +10,8 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -19,16 +19,16 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import kr.co.study.bunjang.component.authentication.CustomAccessDeniedHandler;
 import kr.co.study.bunjang.component.authentication.CustomAuthenticationEntryPoint;
 import kr.co.study.bunjang.component.authentication.CustomAuthenticationFailureHandler;
+import kr.co.study.bunjang.component.authentication.CustomAuthenticationManager;
 import kr.co.study.bunjang.component.authentication.CustomAuthenticationSuccessHandler;
-import kr.co.study.bunjang.servlet.filter.TokenValidationFilter;
+import kr.co.study.bunjang.component.authentication.ShopAuthenticationProvider;
+import kr.co.study.bunjang.servlet.filter.ShopAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig {
-
-    private static final RequestMatcher LOGIN_REQUEST_MATCHER = new AntPathRequestMatcher("/v1/login");
-
+    
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.httpBasic().and().cors().and().csrf().disable();
@@ -37,14 +37,13 @@ public class WebSecurityConfig {
 
         http.authorizeRequests()
             .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-            .antMatchers("/login", "/v1/login").permitAll()
+            .antMatchers("/login").permitAll()
             .antMatchers("/error/**").permitAll()
             .antMatchers("/swagger-ui/**").permitAll()
             .antMatchers("/v1/**").permitAll()
             .antMatchers("/**").permitAll();//.authenticated();
 
-        //http.formLogin().disable().addFilterAt(ssoAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
-        //http.addFilterBefore(tokenValidationFilter(), KakaoAuthenticationFilter.class);
+        http.formLogin().disable().addFilterAt(shopAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
         
         http.exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler())
             .and()
@@ -59,11 +58,27 @@ public class WebSecurityConfig {
     @Autowired
     CustomAuthenticationFailureHandler customAuthenticationFailureHandler;
 
+    @Autowired
+    ShopAuthenticationProvider shopAuthenticationProvider;
+
     @Bean
-    public TokenValidationFilter tokenValidationFilter() {
-        TokenValidationFilter filter = new TokenValidationFilter(new AntPathRequestMatcher("/*"));
+    public CustomAuthenticationManager customAuthenticationManager() {
+        CustomAuthenticationManager authenticationManager = new CustomAuthenticationManager();
+        authenticationManager.setAuthenticationProvider(shopAuthenticationProvider);
+        return authenticationManager;
+    }
+
+    @Bean
+    public ShopAuthenticationFilter shopAuthenticationFilter() {
+        ShopAuthenticationFilter filter = new ShopAuthenticationFilter(new AntPathRequestMatcher("/v1/login"));
         return filter;
     }
+
+    //카카오 로그인 필터
+
+    //페이스북 로그인 필터
+
+    //네이버 로그인 필터
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {

@@ -1,5 +1,8 @@
 package kr.co.study.bunjang.component.authentication;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.Authentication;
@@ -9,17 +12,19 @@ import kr.co.study.bunjang.component.utility.ObjUtils;
 
 public class CustomAuthenticationManager implements AuthenticationManager {
 
-	private AuthenticationProvider authenticationProvider;
+	private final List<AuthenticationProvider> authenticationProviders = new ArrayList<AuthenticationProvider>();
 
-	public CustomAuthenticationManager(AuthenticationProvider authenticationProvider) {
-		this.authenticationProvider = authenticationProvider;
+	public void setAuthenticationProvider(AuthenticationProvider authenticationProvider) {
+		this.authenticationProviders.add(authenticationProvider);
 	}
 
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 		if (!ObjUtils.isEmpty(authentication)) {
-			if (authenticationProvider.supports(authentication.getClass())) {
-				return authenticationProvider.authenticate(authentication);
+			for(AuthenticationProvider authenticationProvider : authenticationProviders) {
+				if (authenticationProvider.supports(authentication.getClass())) {
+					return authenticationProvider.authenticate(authentication);
+				}
 			}
 		}
 		return null;
