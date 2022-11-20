@@ -691,6 +691,14 @@
             text-decoration: underline;
         }
 
+        .lduyKo {
+            overflow: hidden;
+            width: 100%;
+            max-height: 2.25rem;
+            transition: max-height 0.6s ease 0s;
+            will-change: max-height;
+        }
+
     </style>
 
     <script>
@@ -819,10 +827,11 @@
 
         $(function () {
             let checking = false
-            $(".koyCPe").on("click", function(e) {
+            $(".ehOmiS").on("click", function(e) {
                 if (checking === false) {
                     $(e.target).parent().parent().parent().attr('class', 'sc-jdeSqf jmzupQ accordion-summary-open');
-                    $(".ehWOTM").height('36');
+                    $(e.target).parent().parent().parent().siblings().attr('class', 'sc-cBrjTV lduyKo accordion-detail-open');
+
                     checking = true
                 } else {
                     $(e.target).parent().parent().parent().attr('class', 'sc-jGxEUC eqaZD accordion-summary-close');
@@ -835,7 +844,7 @@
 
         $(function () {
             function check_function() {
-                if (check_box[0] === 1 && check_box[1] === 1 && check_box[2] === 1 && check_box[3] ===1 && sum >=5) {
+                if (check_box[0] === 1 && check_box[1] === 1 && check_box[2] === 1 && check_box[3] === 1 && sum >=5) {
                     $('.kLryzS').attr('disabled', false)
                     $(".bEjDza").closest(".bEjDza").find('svg path').css('fill', "rgb(216, 12, 24)")
                     $(".bEjDza").addClass('bwJmtg')
