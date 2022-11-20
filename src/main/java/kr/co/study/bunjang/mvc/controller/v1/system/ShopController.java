@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
@@ -21,6 +22,7 @@ import kr.co.study.bunjang.mvc.dto.ShopDetailsDto;
 import kr.co.study.bunjang.mvc.service.ShopService;
 
 
+@Api(tags = {"Shop Controller"}, description = "상점")
 @RestController
 @RequestMapping("/v1/shop")
 public class ShopController {

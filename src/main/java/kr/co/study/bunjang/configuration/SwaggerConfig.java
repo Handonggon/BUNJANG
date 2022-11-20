@@ -25,7 +25,7 @@ public class SwaggerConfig {
 	@Bean
 	public Docket shop() {
 		return new Docket(DocumentationType.SWAGGER_2)
-			.groupName("shop")
+			.groupName("Shop")
 			.consumes(getConsumeContentTypes())
 			.produces(getProduceContentTypes())
 			//.globalOperationParameters()
@@ -37,9 +37,10 @@ public class SwaggerConfig {
 			.useDefaultResponseMessages(false);
 	}
 
+	@Bean
 	public Docket category() {
 		return new Docket(DocumentationType.SWAGGER_2)
-			.groupName("category")
+			.groupName("Category")
 			.consumes(getConsumeContentTypes())
 			.produces(getProduceContentTypes())
 			//.globalOperationParameters()
@@ -50,6 +51,13 @@ public class SwaggerConfig {
 			.build()
 			.useDefaultResponseMessages(false);
 	}
+
+
+
+
+
+
+
 
 	private Set<String> getConsumeContentTypes() {
 		Set<String> consumes = new HashSet<>();
