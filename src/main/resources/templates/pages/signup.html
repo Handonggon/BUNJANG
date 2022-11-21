@@ -961,11 +961,9 @@
 
         $(function () {
             $('.kLryzS').on("click", function(e) {
-                axios({
-                    method: "POST",
-                    url: "/v1/shop",
-                    data: {authenticationYn : "Y",
-                    collectionPrivacyPolicyYn : "Y",
+                axios.post("/v1/shop", null, {params: {
+                        authenticationYn : "Y",
+                        collectionPrivacyPolicyYn : "Y",
                         identiNumber : birth_first + birth_last,
                         locationInfoYn : "Y",
                         phoneIdentificationYn : "Y",
@@ -977,7 +975,7 @@
                         userNm : name,
                         privacyYn : "Y",
                         eventYn : "Y",
-                        adUtilizationYn : "Y"
+                        adUtilizationYn : "Y",
                     }
                 }).then(response=>{
                     console.log(response)

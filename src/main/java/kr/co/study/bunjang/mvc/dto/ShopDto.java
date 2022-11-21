@@ -68,7 +68,7 @@ public class ShopDto extends AbstractDto {
 		this.identiNumber = shop.getIdentiNumber();
 		this.phoneNumber = shop.getPhoneNumber();
 		this.telecom = shop.getTelecom();
-		this.authenticationYn = shop.getAdUtilizationYn();
+		this.authenticationYn = shop.getAuthenticationYn();
 		this.termsYn = shop.getTermsYn();
 		this.collectionPrivacyPolicyYn = shop.getCollectionPrivacyPolicyYn();
 		this.phoneIdentificationYn = shop.getPhoneIdentificationYn();
