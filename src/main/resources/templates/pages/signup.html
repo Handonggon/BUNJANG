@@ -718,6 +718,7 @@
         let birth_last = ''
         let telecom = ''
         let telecom_where = ''
+        let next_turn = 100
 
         $(function () {
             $(".ksuikN > input").on("focus", function (e) {
@@ -961,6 +962,13 @@
 
         $(function () {
             $('.kLryzS').on("click", function(e) {
+
+                $(".kEuYPw").show();
+                $(".fbjTxY").hide();
+                $(".krhfdR").hide();
+
+                next_turn = 123;
+
                 axios.post("/v1/shop", null, {params: {
                         authenticationYn : "Y",
                         collectionPrivacyPolicyYn : "Y",
@@ -981,6 +989,14 @@
                     console.log(response)
                 });
             })
+        })
+
+
+        $(function() {
+            if (next_turn === 123) {
+                console.log("next page");
+                $("input[id^='target_value']").trigger("click");
+            }
         })
 
     </script>
@@ -1592,7 +1608,7 @@
                     <form>
                         <label class="ValidationInput__ValidationInputRoot-sc-104cih6-0 ksuikN">
 
-                            <input value=""/>
+                            <input id="target_value" value=""/>
 
                             <span class="ValidationInput__Label-sc-104cih6-1 krhfdR"
                                   style="top: 0px; font-size: 0.75rem; transform: translateY(0px);">인증번호가 올바르지 않습니다.</span>
