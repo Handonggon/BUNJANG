@@ -40,23 +40,23 @@ import lombok.NoArgsConstructor;
     @Comment("상점 키값")
     private Long shopNo;
 
-    @Column(length = 100, nullable = true)
+    @Column(length = 100, nullable = false)
     @Comment("상점 이름")
     private String shopNm;
 
-    @Column(length = 20, nullable = false, unique = true)
+    @Column(length = 20)
     @Comment("사용자 이름")
     private String userNm;
 
-    @Column(length = 20, nullable = false, unique = true)
+    @Column(length = 20)
     @Comment("주민등록번호")
     private String identiNumber;
 
-    @Column(length = 20, nullable = false, unique = true)
+    @Column(length = 20)
     @Comment("휴대폰 번호")
     private String phoneNumber;
 
-    @Column(length = 10, nullable = false, unique = true)
+    @Column(length = 10)
     @Comment("통신사")
     private String telecom;
 
