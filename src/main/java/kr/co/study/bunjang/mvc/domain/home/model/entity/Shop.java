@@ -40,7 +40,7 @@ import lombok.NoArgsConstructor;
     @Comment("상점 키값")
     private Long shopNo;
 
-    @Column(length = 100, nullable = false)
+    @Column(length = 100)
     @Comment("상점 이름")
     private String shopNm;
 
