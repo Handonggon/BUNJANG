@@ -1026,23 +1026,38 @@
                         adUtilizationYn: "Y",
                     }
                 }).then(response => {
-                    console.log(response)
+                    console.log("ok")
+                    $(".kEuYPw").show().trigger("show");
                 });
-
-                $(".kEuYPw").show();
-                $(".fbjTxY").hide();
-                $(".krhfdR").hide();
-
-                // 다음페이지
-                $(".ksuikN[id='check_page']").click();
-                turn_on = 2;
-                $(".kxJbCH").hide()
-
-                setInterval(function () {
-                    $(".kxJbCH").show()
-                    $("#manryo").hide()
-                }, 20000)
             })
+
+            $(".fbjTxY").hide();
+            $(".krhfdR").hide();
+
+            $(".ksuikN[id='check_page']").click();
+            turn_on = 2;
+            $(".kxJbCH").hide()
+
+            setInterval(function () {
+                $(".kxJbCH").show()
+                $("#manryo").hide()
+            }, 20000)
+
+        })
+
+        $(function () {
+            $(".fbjTxY").hide();
+            $(".krhfdR").hide();
+
+            // 다음페이지
+            $(".ksuikN[id='check_page']").click();
+            turn_on = 2;
+            $(".kxJbCH").hide()
+
+            setInterval(function () {
+                $(".kxJbCH").show()
+                $("#manryo").hide()
+            }, 20000)
         })
 
         $(function () {
