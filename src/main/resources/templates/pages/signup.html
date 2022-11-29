@@ -1029,28 +1029,38 @@
                 }).then(response => {
                     console.log(response)
                     $(".kEuYPw").show();
+                    $(".kEuYPw").trigger("show")
                 });
+            })
 
+            $(".kEuYPw").on("show", function () {
                 $(".fbjTxY").hide();
                 $(".krhfdR").hide();
-                $(".kxJbCH").hide();
-                $("#target_value").click();
+                $("#ohgi").hide();
+                $("#manryo").hide();
+                $("#re_button").hide();
 
-                turn_on = 2
+                $("#check_page").trigger("click");
+
+                turn_on = 2;
 
                 $(document).ready(function(){
+                    setTimeout(function () {
+                        timeSecond -= 1;
+                    }, 1000)
                     $("#timer").html(getTimeString(timeSecond));
-                        intervalVar = setInterval(function() {
-                            $("#timer").html(getTimeString(timeSecond));
+                    intervalVar = setInterval(function() {
+                        $("#timer").html(getTimeString(timeSecond));
 
-                            if (timeSecond != 0) {
-                                timeSecond = timeSecond -1;
-                            } else {
-                                $("#ohgi").hide()
-                                $("#manryo").show()
-                                clearInterval(intervalVar);
-                            }
-                        }, 1000)
+                        if (timeSecond != 0) {
+                            timeSecond = timeSecond -1;
+                        } else {
+                            $("#ohgi").hide()
+                            $("#manryo").show()
+                            clearInterval(intervalVar);
+                        }
+                    }, 1000)
+
                 });
 
                 function getTimeString(second) {
@@ -1063,23 +1073,21 @@
                 }
 
                 setTimeout(function () {
-                    $(".kxJbCH").show()
-                    $("#manryo").hide()
+                    $("#ohgi").show()
+                    $("#re_button").show()
                 }, 20000)
             })
         })
 
-        //TODO  코드 자체를 따로 빼둬야함. 지금은 그냥 버튼만 눌렀을 때 타임 인터벌이 180초로 바뀌는 로직만. 조금 더 로직을 키우려고 노력할 것.
-        //TODO  함수를 다시 불러와서 위에 있는 코드를 다시 실행하고 싶음.
-        //TODO  ERROR : 1초 후에 카운트다운이 시작된다. 이거 고쳐야함.
-
         $(function () {
             $("#re_button").on("click", function (e) {
+                clearInterval(intervalVar)
                 timeSecond = 180;
-                $(".kEuYPw").show();
                 $(".fbjTxY").hide();
                 $(".krhfdR").hide();
-                $(".kxJbCH").hide();
+                $("#ohgi").hide();
+                $("#re_button").hide();
+                $(".kEuYPw").trigger("show")
             })
         })
 
