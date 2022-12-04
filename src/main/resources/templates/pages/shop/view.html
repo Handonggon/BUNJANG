@@ -291,6 +291,7 @@
         .gvENLM:first-child {
             border-left: 1px solid rgb(33, 33, 33);
         }
+
         /*맨 처음 화면*/
         .kUoNla:first-child {
             border-left: 1px solid rgb(238, 238, 238);
@@ -1463,82 +1464,68 @@
         });
 
         $(function () {
-            $("#comment").on("click", function (e) {
+            $("#box").on("click", function () {
+                history.pushState(null, null, "/shop/80273265/products")
+                page_control()
+            })
+            $("#comment").on("click", function () {
+                history.pushState(null, null, "/shop/80273265/reviews")
+                page_control()
+            })
+            $("#jjim").on("click", function () {
+                history.pushState(null, null, "/shop/80273265/favorites")
+                page_control()
+            })
+            $("#following").on("click", function () {
+                history.pushState(null, null, "/shop/80273265/followings")
+                page_control()
+            })
+            $("#follower").on("click", function () {
+                history.pushState(null, null, "/shop/80273265/followers")
+                page_control()
+            })
+        })
+
+        function page_control() {
+            let location_ = ''
+            location_ = location.href.split("/")[5]
+
+            if (location_ == 'reviews') {
                 $(".kNvYNv").attr('class', 'fFqBOd')
                 $("#comment_").attr('class', 'kNvYNv')
-            })
-
-            $("#jjim").on("click", function (e) {
+                $(".gvENLM").attr('class', 'kUoNla')
+                $('.gSDKkf').attr('class', 'kUoNla')
+                $("#comment").attr('class', 'gvENLM')
+                $("#box").attr('class', 'gSDKkf')
+            } else if (location_ == 'favorites') {
                 $(".kNvYNv").attr('class', 'fFqBOd')
                 $("#jjim_").attr('class', 'kNvYNv')
-            })
-        })
-
-        $(function () {
-            $("#box").on("click", function() {
-                history.pushState(null, null, "/shop/80273265/products")
-                $("#trigger_on").trigger("show")
-            })
-            $("#comment").on("click", function() {
-                history.pushState(null, null, "/shop/80273265/reviews")
-                $("#trigger_on").trigger("show")
-            })
-            $("#jjim").on("click", function() {
-                history.pushState(null, null, "/shop/80273265/favorites")
-                $("#trigger_on").trigger("show")
-            })
-            $("#following").on("click", function() {
-                history.pushState(null, null, "/shop/80273265/followings")
-                $("#trigger_on").trigger("show")
-            })
-            $("#follower").on("click", function() {
-                history.pushState(null, null, "/shop/80273265/followers")
-                $("#trigger_on").trigger("show")
-            })
-        })
-
-        let location_ = ''
-        $(function () {
-            $("#trigger_on").on("show", function () {
-                location_ = location.href.split("/")[5]
-
-                if (location_ == 'reviews') {
-                    $(".kNvYNv").attr('class', 'fFqBOd')
-                    $("#comment_").attr('class', 'kNvYNv')
-                    $(".gvENLM").attr('class', 'kUoNla')
-                    $('.gSDKkf').attr('class', '.kUoNla')
-                    $("#comment").attr('class', 'gvENLM')
-                    $("#box").attr('class', 'gSDKkf')
-                } else if (location_ == 'favorites') {
-                    $(".kNvYNv").attr('class', 'fFqBOd')
-                    $("#jjim_").attr('class', 'kNvYNv')
-                    $(".gvENLM").attr('class', 'kUoNla')
-                    $('.gSDKkf').attr('class', '.kUoNla')
-                    $("#jjim").attr('class', 'gvENLM')
-                    $("#comment").attr('class', 'gSDKkf')
-                } else if (location_ == 'followings') {
-                    $(".kNvYNv").attr('class', 'fFqBOd')
-                    $("#following_").attr('class', 'kNvYNv')
-                    $(".gvENLM").attr('class', 'kUoNla')
-                    $('.gSDKkf').attr('class', '.kUoNla')
-                    $("#following").attr('class', 'gvENLM')
-                    $("#jjim").attr('class', 'gSDKkf')
-                } else if (location_ == 'followers') {
-                    $(".kNvYNv").attr('class', 'fFqBOd')
-                    $("#follower_").attr('class', 'kNvYNv')
-                    $(".gvENLM").attr('class', 'kUoNla')
-                    $('.gSDKkf').attr('class', '.kUoNla')
-                    $("#follower").attr('class', 'gvENLM')
-                    $("#following").attr('class', 'gSDKkf')
-                } else {
-                    $(".kNvYNv").attr('class', 'fFqBOd')
-                    $("#box_").attr('class', 'kNvYNv')
-                    $(".gvENLM").attr('class', 'kUoNla')
-                    $('.gSDKkf').attr('class', '.kUoNla')
-                    $("#box").attr('class', 'gvENLM')
-                }
-            })
-        })
+                $(".gvENLM").attr('class', 'kUoNla')
+                $('.gSDKkf').attr('class', 'kUoNla')
+                $("#jjim").attr('class', 'gvENLM')
+                $("#comment").attr('class', 'gSDKkf')
+            } else if (location_ == 'followings') {
+                $(".kNvYNv").attr('class', 'fFqBOd')
+                $("#following_").attr('class', 'kNvYNv')
+                $(".gvENLM").attr('class', 'kUoNla')
+                $('.gSDKkf').attr('class', 'kUoNla')
+                $("#following").attr('class', 'gvENLM')
+                $("#jjim").attr('class', 'gSDKkf')
+            } else if (location_ == 'followers') {
+                $(".kNvYNv").attr('class', 'fFqBOd')
+                $("#follower_").attr('class', 'kNvYNv')
+                $(".gvENLM").attr('class', 'kUoNla')
+                $('.gSDKkf').attr('class', 'kUoNla')
+                $("#follower").attr('class', 'gvENLM')
+                $("#following").attr('class', 'gSDKkf')
+            } else {
+                $(".kNvYNv").attr('class', 'fFqBOd')
+                $("#box_").attr('class', 'kNvYNv')
+                $(".gvENLM").attr('class', 'kUoNla')
+                $('.gSDKkf').attr('class', 'kUoNla')
+                $("#box").attr('class', 'gvENLM')
+            }
+        }
 
     </script>
 
