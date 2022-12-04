@@ -291,7 +291,12 @@
         .gvENLM:first-child {
             border-left: 1px solid rgb(33, 33, 33);
         }
+        /*맨 처음 화면*/
+        .kUoNla:first-child {
+            border-left: 1px solid rgb(238, 238, 238);
+        }
 
+        /*킬 때 화면*/
         .gvENLM {
             flex: 1 1 0%;
             -webkit-box-align: center;
@@ -307,10 +312,7 @@
             font-weight: 600;
         }
 
-        .bbtZXi {
-            margin-left: 10px;
-        }
-
+        /*안 킬 때 화면*/
         .kUoNla {
             flex: 1 1 0%;
             -webkit-box-align: center;
@@ -323,6 +325,25 @@
             border-bottom: 1px solid rgb(33, 33, 33);
             background: rgb(250, 250, 250);
             color: rgb(136, 136, 136);
+        }
+
+        /*중간 화면*/
+        .gSDKkf {
+            flex: 1 1 0%;
+            -webkit-box-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            justify-content: center;
+            display: flex;
+            border-top: 1px solid rgb(238, 238, 238);
+            border-bottom: 1px solid rgb(33, 33, 33);
+            background: rgb(250, 250, 250);
+            color: rgb(136, 136, 136);
+            border-right: 1px solid rgb(33, 33, 33);
+        }
+
+        .bbtZXi {
+            margin-left: 10px;
         }
 
         .bbtZXi {
@@ -1443,15 +1464,79 @@
 
         $(function () {
             $("#comment").on("click", function (e) {
-                e.preventDefault();
                 $(".kNvYNv").attr('class', 'fFqBOd')
                 $("#comment_").attr('class', 'kNvYNv')
             })
 
             $("#jjim").on("click", function (e) {
-                e.preventDefault();
                 $(".kNvYNv").attr('class', 'fFqBOd')
                 $("#jjim_").attr('class', 'kNvYNv')
+            })
+        })
+
+        $(function () {
+            $("#box").on("click", function() {
+                history.pushState(null, null, "/shop/80273265/products")
+                $("#trigger_on").trigger("show")
+            })
+            $("#comment").on("click", function() {
+                history.pushState(null, null, "/shop/80273265/reviews")
+                $("#trigger_on").trigger("show")
+            })
+            $("#jjim").on("click", function() {
+                history.pushState(null, null, "/shop/80273265/favorites")
+                $("#trigger_on").trigger("show")
+            })
+            $("#following").on("click", function() {
+                history.pushState(null, null, "/shop/80273265/followings")
+                $("#trigger_on").trigger("show")
+            })
+            $("#follower").on("click", function() {
+                history.pushState(null, null, "/shop/80273265/followers")
+                $("#trigger_on").trigger("show")
+            })
+        })
+
+        let location_ = ''
+        $(function () {
+            $("#trigger_on").on("show", function () {
+                location_ = location.href.split("/")[5]
+
+                if (location_ == 'reviews') {
+                    $(".kNvYNv").attr('class', 'fFqBOd')
+                    $("#comment_").attr('class', 'kNvYNv')
+                    $(".gvENLM").attr('class', 'kUoNla')
+                    $('.gSDKkf').attr('class', '.kUoNla')
+                    $("#comment").attr('class', 'gvENLM')
+                    $("#box").attr('class', 'gSDKkf')
+                } else if (location_ == 'favorites') {
+                    $(".kNvYNv").attr('class', 'fFqBOd')
+                    $("#jjim_").attr('class', 'kNvYNv')
+                    $(".gvENLM").attr('class', 'kUoNla')
+                    $('.gSDKkf').attr('class', '.kUoNla')
+                    $("#jjim").attr('class', 'gvENLM')
+                    $("#comment").attr('class', 'gSDKkf')
+                } else if (location_ == 'followings') {
+                    $(".kNvYNv").attr('class', 'fFqBOd')
+                    $("#following_").attr('class', 'kNvYNv')
+                    $(".gvENLM").attr('class', 'kUoNla')
+                    $('.gSDKkf').attr('class', '.kUoNla')
+                    $("#following").attr('class', 'gvENLM')
+                    $("#jjim").attr('class', 'gSDKkf')
+                } else if (location_ == 'followers') {
+                    $(".kNvYNv").attr('class', 'fFqBOd')
+                    $("#follower_").attr('class', 'kNvYNv')
+                    $(".gvENLM").attr('class', 'kUoNla')
+                    $('.gSDKkf').attr('class', '.kUoNla')
+                    $("#follower").attr('class', 'gvENLM')
+                    $("#following").attr('class', 'gSDKkf')
+                } else {
+                    $(".kNvYNv").attr('class', 'fFqBOd')
+                    $("#box_").attr('class', 'kNvYNv')
+                    $(".gvENLM").attr('class', 'kUoNla')
+                    $('.gSDKkf').attr('class', '.kUoNla')
+                    $("#box").attr('class', 'gvENLM')
+                }
             })
         })
 
@@ -1549,15 +1634,15 @@
             <div class="sc-kMBllD joZquB">
                 <div class="sc-hZeNU bvuNQb">
                     <div class="sc-iBmynh lkccQJ">
-                        <a class="sc-fKGOjr gvENLM" id="box" href="/shop/80273265/products">상품
+                        <a class="sc-fKGOjr gvENLM" id="box">상품
                             <span class="sc-hycgNl bbtZXi">0</span></a>
-                        <a class="sc-fKGOjr kUoNla" id="comment" href="/shop/80273265/reviews">상점후기 <span
+                        <a class="sc-fKGOjr kUoNla" id="comment">상점후기 <span
                                 class="sc-hycgNl bbtZXi">0</span></a>
-                        <a class="sc-fKGOjr kUoNla" id="jjim" href="/shop/80273265/favorites">찜 <span
+                        <a class="sc-fKGOjr kUoNla" id="jjim">찜 <span
                                 class="sc-hycgNl bbtZXi">1</span></a>
-                        <a class="sc-fKGOjr kUoNla" id="following" href="/shop/80273265/followings">팔로잉 <span
+                        <a class="sc-fKGOjr kUoNla" id="following">팔로잉 <span
                                 class="sc-hycgNl bbtZXi">0</span></a>
-                        <a class="sc-fKGOjr kUoNla" id="follower" href="/shop/80273265/followers">팔로워 <span
+                        <a class="sc-fKGOjr kUoNla" id="follower">팔로워 <span
                                 class="sc-hycgNl bbtZXi">0</span></a>
                     </div>
                 </div>
