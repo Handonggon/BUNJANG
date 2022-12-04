@@ -19,14 +19,14 @@ public class ShopAuthenticationProvider implements AuthenticationProvider {
 
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-		String phoneNumber = authentication.getName();
+		String shopNo = authentication.getName();
 
 		// TODO 탈퇴 후 경과일 확인, 로그인 횟수 확인
 		// if (false) {
 		// 	throw new InsufficientAuthenticationException(MessageUtils.getMessage(""));
 		// }
 
-		UserDetails userDetails = shopService.loadUserByUsername(phoneNumber);
+		UserDetails userDetails = shopService.loadUserByUsername(shopNo);
 
 		String credentials = ObjUtils.objToString(authentication.getCredentials());
 		if (!userDetails.getPassword().equals(credentials)) {

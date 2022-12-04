@@ -24,18 +24,18 @@ public class ShopAuthenticationFilter extends AbstractAuthenticationProcessingFi
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
         if (requiresAuthentication(request, response)) {
-            String phoneNumber = ObjUtils.objToString(ObjUtils.nvl(obtainPhoneNumber(request).trim(), ""));
+            Long shopNo = ObjUtils.objToLong(ObjUtils.nvl(obtainShopNo(request).trim(), 0));
             String credentials = ObjUtils.objToString(ObjUtils.nvl(obtainCredentials(request).trim(), ""));
 
-            Authentication authResult = getAuthenticationManager().authenticate(new ShopAuthenticationToken(phoneNumber, credentials));
+            Authentication authResult = getAuthenticationManager().authenticate(new ShopAuthenticationToken(shopNo, credentials));
             SecurityContextHolder.getContext().setAuthentication(authResult);
             return authResult;
         }
         return null;
     }
 
-	protected String obtainPhoneNumber(HttpServletRequest request) {
-		return request.getParameter("phoneNumber");
+	protected String obtainShopNo(HttpServletRequest request) {
+		return request.getParameter("shopNo");
 	}
 
 	protected String obtainCredentials(HttpServletRequest request) {

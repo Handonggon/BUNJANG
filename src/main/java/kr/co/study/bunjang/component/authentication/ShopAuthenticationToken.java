@@ -7,9 +7,9 @@ public class ShopAuthenticationToken extends AbstractAuthenticationToken {
 
     private final String credentials;
 
-    public ShopAuthenticationToken(String phoneNumber, String credentials) {
+    public ShopAuthenticationToken(Long shopNo, String credentials) {
 		super(null);
-		this.setDetails(phoneNumber);
+		this.setDetails(shopNo);
         this.credentials = credentials;
 	}
 

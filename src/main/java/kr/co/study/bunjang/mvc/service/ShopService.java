@@ -23,7 +23,7 @@ public class ShopService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        ShopDetails userDetailsDto = new ShopDetails(userRepository.findOneByPhoneNumber(username));
+        ShopDetails userDetailsDto = new ShopDetails(userRepository.findById(ObjUtils.objToLong(username)).get());
         if (ObjUtils.isEmpty(userDetailsDto)) {
             throw new UsernameNotFoundException(MessageUtils.getMessage("exception.UsernameNotFound"));
         }
