@@ -35,7 +35,7 @@ import lombok.NoArgsConstructor;
         private LocalDateTime CDT;
 
         @LastModifiedDate
-        @Column(name = "MDT", nullable = true)
+        @Column(name = "MDT",nullable = true)
         @Convert(converter = LocalDateTimeConverter.class)
         @Comment("수정일")
         private LocalDateTime MDT;

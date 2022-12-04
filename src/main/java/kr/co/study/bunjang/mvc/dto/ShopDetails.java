@@ -3,12 +3,12 @@ package kr.co.study.bunjang.mvc.dto;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import kr.co.study.bunjang.mvc.domain.home.model.entity.Shop;
 import kr.co.study.bunjang.mvc.vo.Role;
+import kr.co.study.bunjang.mvc.vo.Yn;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,12 +25,17 @@ public class ShopDetails extends AbstractDto implements UserDetails {
 	private Long shopNo;
 
 	private String shopNm;
+
+	private Yn authenticationYn;
+
+	private final String credentials = "1111";
 	
 	public final Collection<Role> authorities = new ArrayList<Role>();
 
 	public ShopDetails(Shop shop) {
 		this.shopNo = shop.getShopNo();
 		this.shopNm = shop.getShopNm();
+		this.authenticationYn = shop.getAuthenticationYn();
 		this.authorities.add(Role.USER);
 	}
 
@@ -45,7 +50,7 @@ public class ShopDetails extends AbstractDto implements UserDetails {
 
 	@Override
 	public String getPassword() {
-		return StringUtils.EMPTY;
+		return this.credentials;
 	}
 
 	@Override
@@ -55,21 +60,21 @@ public class ShopDetails extends AbstractDto implements UserDetails {
 
 	@Override
 	public boolean isAccountNonExpired() {
-		return false;
+		return authenticationYn.equals(Yn.Y);
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
-		return false;
+		return authenticationYn.equals(Yn.Y);
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-		return false;
+		return authenticationYn.equals(Yn.Y);
 	}
 
 	@Override
 	public boolean isEnabled() {
-		return false;
+		return authenticationYn.equals(Yn.Y);
 	}
 }

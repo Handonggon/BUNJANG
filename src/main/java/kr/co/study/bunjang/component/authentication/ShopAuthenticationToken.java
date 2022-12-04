@@ -7,17 +7,17 @@ public class ShopAuthenticationToken extends AbstractAuthenticationToken {
 
     private final String credentials;
 
-    public ShopAuthenticationToken(String OAuth) {
+    public ShopAuthenticationToken(String phoneNumber, String credentials) {
 		super(null);
-		this.setDetails(OAuth);
-        this.credentials = null;
+		this.setDetails(phoneNumber);
+        this.credentials = credentials;
 	}
 
-	public ShopAuthenticationToken(UserDetails userDetails, String OAuth) {
+	public ShopAuthenticationToken(UserDetails userDetails, String credentials) {
 		super(userDetails.getAuthorities());
 		this.setAuthenticated(true);
 		this.setDetails(userDetails);
-        this.credentials = OAuth;
+        this.credentials = credentials;
 	}
 
     @Override

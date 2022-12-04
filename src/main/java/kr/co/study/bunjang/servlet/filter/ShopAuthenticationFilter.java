@@ -12,6 +12,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
+import kr.co.study.bunjang.component.authentication.ShopAuthenticationToken;
+import kr.co.study.bunjang.component.utility.ObjUtils;
+
 public class ShopAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
 
     public ShopAuthenticationFilter(RequestMatcher requiresAuthenticationRequestMatcher) {
@@ -21,11 +24,21 @@ public class ShopAuthenticationFilter extends AbstractAuthenticationProcessingFi
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
         if (requiresAuthentication(request, response)) {
-            //String jwtToken = ObjUtils.objToString(ObjUtils.nvl(HttpUtils.getAuthorization("Bearer"), request.getParameter("JWTRequest")));
-            Authentication authResult = null; //getAuthenticationManager().authenticate(new UserAuthenticationToken(jwtToken));
+            String phoneNumber = ObjUtils.objToString(ObjUtils.nvl(obtainPhoneNumber(request).trim(), ""));
+            String credentials = ObjUtils.objToString(ObjUtils.nvl(obtainCredentials(request).trim(), ""));
+
+            Authentication authResult = getAuthenticationManager().authenticate(new ShopAuthenticationToken(phoneNumber, credentials));
             SecurityContextHolder.getContext().setAuthentication(authResult);
             return authResult;
         }
         return null;
     }
+
+	protected String obtainPhoneNumber(HttpServletRequest request) {
+		return request.getParameter("phoneNumber");
+	}
+
+	protected String obtainCredentials(HttpServletRequest request) {
+		return request.getParameter("credentials");
+	}
 }

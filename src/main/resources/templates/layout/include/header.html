@@ -216,7 +216,7 @@
         <div class="sc-gxMtzJ kaFNmQ">
             <div class="sc-dfVpRl jYMzIJ">
                 <a class="sc-hwwEjo hvNQEV" th:href="@{/splash}"><img th:src="@{/image/icon/app.svg}" width="16" height="17" alt="앱다운로드버튼 이미지"/>앱다운로드</a>
-                <button class="sc-iyvyFf bNBtQ"><img th:src="@{/image/icon/favorites.svg}" width="16" height="15" alt="즐겨찾기버튼 이미지"/>즐겨찾기</button>
+                <button id="fvrtBtn" class="sc-iyvyFf bNBtQ"><img th:src="@{/image/icon/favorites.svg}" width="16" height="15" alt="즐겨찾기버튼 이미지"/>즐겨찾기</button>
             </div>
             <div class="sc-dfVpRl jYMzIJ" sec:authorize-expr="!isAuthenticated()">
                 <button class="sc-iyvyFf bNBtQ" id="loginBtn">로그인/회원가입</button>
@@ -244,7 +244,9 @@
             </div>
         </div>
         <script>
-            
+            $("#fvrtBtn").on("click", function() {
+                alert("Ctrl+D 키를 누르면 즐겨찾기에 추가하실 수 있습니다.");
+            });
         </script>
     </th:block>
 </html>

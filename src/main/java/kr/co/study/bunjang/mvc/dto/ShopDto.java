@@ -1,6 +1,7 @@
 package kr.co.study.bunjang.mvc.dto;
 
 import io.swagger.annotations.ApiModelProperty;
+import kr.co.study.bunjang.component.utility.ObjUtils;
 import kr.co.study.bunjang.mvc.domain.home.model.entity.Shop;
 import kr.co.study.bunjang.mvc.vo.Yn;
 import lombok.AllArgsConstructor;
@@ -63,7 +64,7 @@ public class ShopDto extends AbstractDto {
 
 	public ShopDto(Shop shop) {
 		this.shopNo = shop.getShopNo();
-		this.shopNm = shop.getShopNm();
+		this.shopNm = ObjUtils.objToString(ObjUtils.nvl(shop.getShopNm(), "상점" + shop.getShopNo() + "호"));
 		this.userNm = shop.getUserNm();
 		this.identiNumber = shop.getIdentiNumber();
 		this.phoneNumber = shop.getPhoneNumber();

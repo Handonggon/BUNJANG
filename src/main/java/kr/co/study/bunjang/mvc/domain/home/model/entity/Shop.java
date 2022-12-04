@@ -40,7 +40,7 @@ import lombok.NoArgsConstructor;
     @Comment("상점 키값")
     private Long shopNo;
 
-    @Column(length = 100)
+    @Column(length = 100, insertable = false, nullable = true)
     @Comment("상점 이름")
     private String shopNm;
 
@@ -52,7 +52,7 @@ import lombok.NoArgsConstructor;
     @Comment("주민등록번호")
     private String identiNumber;
 
-    @Column(length = 20)
+    @Column(length = 20, unique = true)
     @Comment("휴대폰 번호")
     private String phoneNumber;
 

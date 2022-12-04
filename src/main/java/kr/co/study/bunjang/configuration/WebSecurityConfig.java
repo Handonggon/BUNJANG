@@ -37,13 +37,13 @@ public class WebSecurityConfig {
 
         http.authorizeRequests()
             .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-            .antMatchers("/login").permitAll()
             .antMatchers("/error/**").permitAll()
             .antMatchers("/swagger-ui/**").permitAll()
             .antMatchers("/v1/**").permitAll()
             .antMatchers("/**").permitAll();//.authenticated();
 
         http.formLogin().disable().addFilterAt(shopAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+
         
         http.exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler())
             .and()
@@ -70,18 +70,18 @@ public class WebSecurityConfig {
 
     @Bean
     public ShopAuthenticationFilter shopAuthenticationFilter() {
-        ShopAuthenticationFilter filter = new ShopAuthenticationFilter(new AntPathRequestMatcher("/v1/login"));
+        ShopAuthenticationFilter filter = new ShopAuthenticationFilter(new AntPathRequestMatcher("/v1/login/shop"));
         filter.setAuthenticationSuccessHandler(customAuthenticationSuccessHandler);
         filter.setAuthenticationFailureHandler(customAuthenticationFailureHandler);
         filter.setAuthenticationManager(customAuthenticationManager());
         return filter;
     }
 
-    //카카오 로그인 필터
+    //카카오 로그인 필터        /v1/login/kakao
 
-    //페이스북 로그인 필터
+    //페이스북 로그인 필터      /v1/login/facebook
 
-    //네이버 로그인 필터
+    //네이버 로그인 필터        /v1/login/naver
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {

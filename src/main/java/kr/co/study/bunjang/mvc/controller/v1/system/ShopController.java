@@ -31,9 +31,9 @@ public class ShopController {
     private ShopService shopService;
 
     @ApiOperation(value = "회원 가입", notes = "<big>회원가입</big>을 한다.")
-    @PostMapping
-    public ResponseEntity<ShopDto> save(@RequestBody @ApiParam(value = "회원 정보", required = true) ShopDto shopDto) {
-        return ResponseEntity.ok(shopService.save(shopDto));
+    @PostMapping("/signup")
+    public ResponseEntity<ShopDto> signUp(@RequestBody @ApiParam(value = "회원 정보", required = true) ShopDto shopDto) {
+        return ResponseEntity.ok(shopService.signUp(shopDto));
     }
 
     @GetMapping(value="/kakao/callback")

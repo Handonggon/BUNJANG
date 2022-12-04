@@ -17,7 +17,7 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
 		// TODO 로그인 이력관리
 
-		setDefaultFailureUrl("/login");
+		setDefaultFailureUrl("/");
 		super.onAuthenticationFailure(request, response, exception);
 	}
 }
