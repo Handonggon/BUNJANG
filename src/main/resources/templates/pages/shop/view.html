@@ -1527,6 +1527,18 @@
             }
         }
 
+        $(function () {
+            $('.bjcMSP').hover(
+                function () {
+                    $(".bijeec").slideDown()
+                },
+                function() {
+                    $(".bijeec").slideUp()
+                }
+            )
+        })
+
+
     </script>
 
     <div class="sc-hgzKov gpbLRu">
@@ -1642,8 +1654,10 @@
                                     <div class="sc-gGCbJM LgHNH">전체<img
                                             th:src="@{/image/icon/shop_down.png}" width="10" height="6"
                                             alt="카테고리 화살표 아이콘"></div>
-                                    <div class="sc-ciodno bijeec"><a class="sc-lcpuFF efgGVV">전체</a><a
-                                            class="sc-lcpuFF dpXylw">남성의류</a><a class="sc-lcpuFF dpXylw">디지털/가전</a>
+                                    <div class="sc-ciodno bijeec">
+                                        <a class="sc-lcpuFF efgGVV">전체</a>
+                                        <a class="sc-lcpuFF dpXylw">남성의류</a>
+                                        <a class="sc-lcpuFF dpXylw">디지털/가전</a>
                                     </div>
                                 </div>
                             </div>
