@@ -35,6 +35,31 @@ public class ShopService implements UserDetailsService {
         return new ShopDto(userRepository.save(shopDto.toEntity()));
     }
 
+    // @Transactional
+    // public ShopDto update(Long shopNo, String shopNm, String profile_image, String context) {
+    //     Shop persistence = shopRepository.findById(shopNo).get();
+
+    //     persistence.setShopNm(shopNm);
+    //     persistence.setProfile_image(profile_image);
+    //     persistence.setContext(context);
+
+    //     return new ShopDto(persistence);
+    // }
+
+    @Transactional
+    public ShopDto update(ShopDto shopDto) {
+        Shop persistence = userRepository.findById(shopDto.getShopNo())
+            .orElseThrow(() -> {
+                return new IllegalArgumentException("회원 찾기 실패 : 아이디를 찾을 수 없습니다.");
+            });
+
+        persistence.setShopNm(shopDto.getShopNm());
+        persistence.setProfile_image(shopDto.getProfile_image());
+        persistence.setContext(shopDto.getContext());
+
+        return new ShopDto(persistence);
+    }
+
     @Transactional
     public ShopDto signUp(ShopDto shopDto) {
         Shop target = userRepository.findOneByPhoneNumber(shopDto.getPhoneNumber());

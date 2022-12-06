@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Comment;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -104,6 +105,22 @@ import lombok.NoArgsConstructor;
     @Column(nullable = false, columnDefinition = "CHAR(1) default 'N'")
     @Comment("개인정보 광고활용 동의 (선택)")
     private Yn adUtilizationYn;
+
+    @ColumnDefault("0")
+    @Comment("방문 수")
+    private int count;
+
+    @ColumnDefault("0")
+    @Comment("평점")
+    private int grade;
+
+    @Column(length = 250)
+    @Comment("프로필 이미지")
+    private String profile_image;
+
+    @Column(length = 200)
+    @Comment("소개글")
+    private String context;
     
     @Embedded
     private Modif modif;

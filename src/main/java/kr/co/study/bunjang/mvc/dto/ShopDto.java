@@ -62,6 +62,18 @@ public class ShopDto extends AbstractDto {
 	@ApiModelProperty(position = 15, value = "개인정보 광고활용 동의 (선택)")
 	private Yn adUtilizationYn;
 
+	@ApiModelProperty(position = 16, value = "방문 수", required = true)
+	private Integer count;
+
+	@ApiModelProperty(position = 17, value = "평점", required = true)
+	private Integer grade;
+
+	@ApiModelProperty(position = 18, value = "프로필 이미지", required = true)
+	private String profile_image;
+
+	@ApiModelProperty(position = 19, value = "소개글", required = true)
+	private String context;
+
 	public ShopDto(Shop shop) {
 		this.shopNo = shop.getShopNo();
 		this.shopNm = ObjUtils.objToString(ObjUtils.nvl(shop.getShopNm(), "상점" + shop.getShopNo() + "호"));
@@ -78,6 +90,10 @@ public class ShopDto extends AbstractDto {
 		this.privacyYn = shop.getPrivacyYn();
 		this.eventYn = shop.getEventYn();
 		this.adUtilizationYn = shop.getAdUtilizationYn();
+		this.count = shop.getCount();
+		this.grade = shop.getGrade();
+		this.profile_image = shop.getProfile_image();
+		this.context = shop.getContext();
 	}
 	
 	public Shop toEntity() {
@@ -96,6 +112,10 @@ public class ShopDto extends AbstractDto {
 					.privacyYn(this.privacyYn)
 					.eventYn(this.eventYn)
 					.adUtilizationYn(this.adUtilizationYn)
+					.count(this.count)
+					.grade(this.grade)
+					.profile_image(this.profile_image)
+					.context(this.context)
 					.build();
 	}
 }

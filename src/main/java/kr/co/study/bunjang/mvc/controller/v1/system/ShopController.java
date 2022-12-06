@@ -9,6 +9,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,6 +35,12 @@ public class ShopController {
     @PostMapping("/signup")
     public ResponseEntity<ShopDto> signUp(@RequestBody @ApiParam(value = "회원 정보", required = true) ShopDto shopDto) {
         return ResponseEntity.ok(shopService.signUp(shopDto));
+    }
+
+    @ApiOperation(value = "회원 정보 수정", notes = "<big>회원 정보 수정</big>을 한다.")
+    @PutMapping
+    public ResponseEntity<ShopDto> update(@RequestBody @ApiParam(value = "회원 정보 수정", required = true) ShopDto shopDto) {
+        return ResponseEntity.ok(shopService.update(shopDto));
     }
 
     @GetMapping(value="/kakao/callback")
