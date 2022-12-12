@@ -6,30 +6,30 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
-import kr.co.study.bunjang.component.authentication.ShopAuthenticationToken;
+import kr.co.study.bunjang.component.authentication.mobile.MobileAuthenticationToken;
 import kr.co.study.bunjang.component.utility.ObjUtils;
 
-public class ShopAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
+public class MobileAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
 
-    public ShopAuthenticationFilter(RequestMatcher requiresAuthenticationRequestMatcher) {
+    public MobileAuthenticationFilter(RequestMatcher requiresAuthenticationRequestMatcher) {
         super(requiresAuthenticationRequestMatcher);
     }
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
         if (requiresAuthentication(request, response)) {
-            Long shopNo = ObjUtils.objToLong(ObjUtils.nvl(obtainShopNo(request).trim(), 0));
-            String credentials = ObjUtils.objToString(ObjUtils.nvl(obtainCredentials(request).trim(), ""));
-
-            Authentication authResult = getAuthenticationManager().authenticate(new ShopAuthenticationToken(shopNo, credentials));
-            SecurityContextHolder.getContext().setAuthentication(authResult);
-            return authResult;
+            if (!request.getMethod().equals("POST")) {
+                throw new AuthenticationServiceException("Authentication method not supported: " + request.getMethod());
+            }
+            Long shopNo = ObjUtils.objToLong(ObjUtils.nvl(obtainShopNo(request), 0));
+            String credentials = ObjUtils.objToString(ObjUtils.nvl(obtainCredentials(request), 0));
+            return getAuthenticationManager().authenticate(new MobileAuthenticationToken(shopNo, credentials));
         }
         return null;
     }

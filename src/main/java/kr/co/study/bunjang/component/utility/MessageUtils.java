@@ -5,24 +5,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.NoSuchMessageException;
 import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
-import lombok.experimental.UtilityClass;
-
-@UtilityClass
+@Component
 public class MessageUtils {
     
     private static MessageSource messageSource;
 	
 	@Autowired
-	public void setHistoryService(MessageSource messageSource) {
+	public void setMessageSource(MessageSource messageSource) {
 		MessageUtils.messageSource = messageSource;
 	}
 
-    public String getMessage(String code, @Nullable Object[] args) throws NoSuchMessageException {
+    public static String getMessage(String code, @Nullable Object[] args) throws NoSuchMessageException {
 		return messageSource.getMessage(code, args, HttpUtils.getLocale());
 	}
 
-    public String getMessage(String code) throws NoSuchMessageException {
+    public static String getMessage(String code) throws NoSuchMessageException {
 		return MessageUtils.getMessage(code, null);
 	}
 }

@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -16,13 +17,13 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import kr.co.study.bunjang.component.authentication.CustomAccessDeniedHandler;
-import kr.co.study.bunjang.component.authentication.CustomAuthenticationEntryPoint;
-import kr.co.study.bunjang.component.authentication.CustomAuthenticationFailureHandler;
-import kr.co.study.bunjang.component.authentication.CustomAuthenticationManager;
-import kr.co.study.bunjang.component.authentication.CustomAuthenticationSuccessHandler;
-import kr.co.study.bunjang.component.authentication.ShopAuthenticationProvider;
-import kr.co.study.bunjang.servlet.filter.ShopAuthenticationFilter;
+import kr.co.study.bunjang.component.authentication.AccessDeniedHandlerImpl;
+import kr.co.study.bunjang.component.authentication.AuthenticationEntryPointImpl;
+import kr.co.study.bunjang.component.authentication.AuthenticationFailureHandlerImpl;
+import kr.co.study.bunjang.component.authentication.AuthenticationManagerImpl;
+import kr.co.study.bunjang.component.authentication.AuthenticationSuccessHandlerImpl;
+import kr.co.study.bunjang.component.authentication.mobile.MobileAuthenticationProvider;
+import kr.co.study.bunjang.servlet.filter.MobileAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -31,9 +32,13 @@ public class WebSecurityConfig {
     
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.httpBasic().and().cors().and().csrf().disable();
+        http.httpBasic().disable()
+            .cors().disable()
+            .csrf().disable();
 
         http.headers().frameOptions().deny();
+
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         http.authorizeRequests()
             .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
@@ -44,36 +49,35 @@ public class WebSecurityConfig {
 
         http.formLogin().disable().addFilterAt(shopAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
-        
-        http.exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler())
-            .and()
-            .exceptionHandling().authenticationEntryPoint(new CustomAuthenticationEntryPoint());
+        http.exceptionHandling()
+            .accessDeniedHandler(new AccessDeniedHandlerImpl())
+            .authenticationEntryPoint(new AuthenticationEntryPointImpl());
 
         return http.build();
     }
 
     @Autowired
-    CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
+    AuthenticationSuccessHandlerImpl authenticationSuccessHandlerImpl;
 
     @Autowired
-    CustomAuthenticationFailureHandler customAuthenticationFailureHandler;
+    AuthenticationFailureHandlerImpl authenticationFailureHandlerImpl;
 
     @Autowired
-    ShopAuthenticationProvider shopAuthenticationProvider;
+    MobileAuthenticationProvider mobileAuthenticationProvider;
 
     @Bean
-    public CustomAuthenticationManager customAuthenticationManager() {
-        CustomAuthenticationManager authenticationManager = new CustomAuthenticationManager();
-        authenticationManager.setAuthenticationProvider(shopAuthenticationProvider);
+    public AuthenticationManagerImpl authenticationManager() {
+        AuthenticationManagerImpl authenticationManager = new AuthenticationManagerImpl();
+        authenticationManager.setAuthenticationProvider(mobileAuthenticationProvider);
         return authenticationManager;
     }
 
     @Bean
-    public ShopAuthenticationFilter shopAuthenticationFilter() {
-        ShopAuthenticationFilter filter = new ShopAuthenticationFilter(new AntPathRequestMatcher("/v1/login/shop"));
-        filter.setAuthenticationSuccessHandler(customAuthenticationSuccessHandler);
-        filter.setAuthenticationFailureHandler(customAuthenticationFailureHandler);
-        filter.setAuthenticationManager(customAuthenticationManager());
+    public MobileAuthenticationFilter shopAuthenticationFilter() {
+        MobileAuthenticationFilter filter = new MobileAuthenticationFilter(new AntPathRequestMatcher("/v1/login/mobile"));
+        filter.setAuthenticationSuccessHandler(authenticationSuccessHandlerImpl);
+        filter.setAuthenticationFailureHandler(authenticationFailureHandlerImpl);
+        filter.setAuthenticationManager(authenticationManager());
         return filter;
     }
 

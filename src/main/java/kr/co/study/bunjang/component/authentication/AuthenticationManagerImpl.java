@@ -10,7 +10,7 @@ import org.springframework.security.core.AuthenticationException;
 
 import kr.co.study.bunjang.component.utility.ObjUtils;
 
-public class CustomAuthenticationManager implements AuthenticationManager {
+public class AuthenticationManagerImpl implements AuthenticationManager {
 
 	private final List<AuthenticationProvider> authenticationProviders = new ArrayList<AuthenticationProvider>();
 

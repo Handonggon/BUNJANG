@@ -1,5 +1,10 @@
 package kr.co.study.bunjang.component.utility;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+
 import org.apache.commons.lang3.ObjectUtils;
 
 import lombok.experimental.UtilityClass;
@@ -65,6 +70,21 @@ public class ObjUtils extends ObjectUtils {
 			return Long.parseLong(obj.toString());
 		} catch (NullPointerException e) {
 			log.info("ObjUtils - objToLong: return null");
+		}
+		return null;
+	}
+
+	public List<?> objToList(Object obj) {
+		try {
+			List<?> list = new ArrayList<>();
+			if (obj.getClass().isArray()) {
+				list = Arrays.asList((Object[]) obj);
+			} else if (obj instanceof Collection) {
+				list = new ArrayList<>((Collection<?>) obj);
+			}
+			return list;
+		} catch (NullPointerException e) {
+			log.debug("ObjUtils - objToLong: return null");
 		}
 		return null;
 	}

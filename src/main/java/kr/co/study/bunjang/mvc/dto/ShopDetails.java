@@ -28,7 +28,7 @@ public class ShopDetails extends AbstractDto implements UserDetails {
 
 	private Yn authenticationYn;
 
-	private final String credentials = "1111";
+	private final String credentials = "111111";
 	
 	public final Collection<Role> authorities = new ArrayList<Role>();
 

@@ -1,8 +1,9 @@
-package kr.co.study.bunjang.component.authentication;
+package kr.co.study.bunjang.component.authentication.mobile;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,7 +13,7 @@ import kr.co.study.bunjang.component.utility.ObjUtils;
 import kr.co.study.bunjang.mvc.service.ShopService;
 
 @Component
-public class ShopAuthenticationProvider implements AuthenticationProvider {
+public class MobileAuthenticationProvider implements AuthenticationProvider {
 
 	@Autowired
     private ShopService shopService;
@@ -35,15 +36,15 @@ public class ShopAuthenticationProvider implements AuthenticationProvider {
 		}
 
 		if (!userDetails.isEnabled()) {
-			throw new BadCredentialsException("인증 되지 않은 업체");
+			throw new DisabledException("인증 되지 않은 업체");
 			// throw new DisabledException(MessageUtils.getMessage(""));
 		}
 
-		return new ShopAuthenticationToken(userDetails, credentials);
+		return new MobileAuthenticationToken(userDetails, credentials);
 	}
 
 	@Override
 	public boolean supports(Class<?> authentication) {
-		return ShopAuthenticationToken.class.isAssignableFrom(authentication);
+		return MobileAuthenticationToken.class.isAssignableFrom(authentication);
 	}
 }
