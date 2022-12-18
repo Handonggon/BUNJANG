@@ -1,252 +1,278 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <th:block th:fragment="headerFragment">
-        <style>
-            
-
-            .kaFNmQ {
-                width: 1024px;
-                display: flex;
-                -webkit-box-pack: justify;
-                justify-content: space-between;
-            }
-
-            .jYMzIJ {
-                display: flex;
-                flex-shrink: 0;
-            }
-
-            .hvNQEV {
-                display: flex;
-                -webkit-box-align: center;
-                align-items: center;
-                font-size: 13px;
-                color: rgb(102, 102, 102);
-                padding: 0px 15px;
-                position: relative;
-                line-height: 1.4;
-            }
-
-            .hvNQEV > img {
-                margin-right: 5px;
-            }
-
-            .bNBtQ {
-                display: flex;
-                -webkit-box-align: center;
-                align-items: center;
-                font-size: 13px;
-                color: rgb(102, 102, 102);
-                padding: 0px 15px;
-                position: relative;
-                line-height: 1.4;
-            }
-
-            .bNBtQ > img {
-                margin-right: 5px;
-            }
+<th:block th:fragment="headerFragment">
+    <style>
 
 
-            .bKQRTB {
-                display: flex;
-                -webkit-box-align: center;
-                align-items: center;
-                font-size: 13px;
-                color: rgb(102, 102, 102);
-                padding: 0px 15px;
-                position: relative;
-                line-height: 1.4;
-            }
+        .kaFNmQ {
+            width: 1024px;
+            display: flex;
+            -webkit-box-pack: justify;
+            justify-content: space-between;
+        }
 
-            .ffbqaN {
-                position: relative;
-                width: 100%;
-                height: 100%;
-                display: flex;
-                -webkit-box-align: center;
-                align-items: center;
-            }
+        .jYMzIJ {
+            display: flex;
+            flex-shrink: 0;
+        }
 
-            .bKQRTB {
-                display: flex;
-                -webkit-box-align: center;
-                align-items: center;
-                font-size: 13px;
-                color: rgb(102, 102, 102);
-                padding: 0px 15px;
-                position: relative;
-                line-height: 1.4;
-            }
+        .hvNQEV {
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            font-size: 13px;
+            color: rgb(102, 102, 102);
+            padding: 0px 15px;
+            position: relative;
+            line-height: 1.4;
+        }
 
-            .bKQRTB::after {
-                content: "";
-                background-image: url(/pc-static/resource/7bbef4f….png);
-                background-size: 10px 5px;
-                position: absolute;
-                top: 18px;
-                right: 0px;
-                width: 10px;
-                height: 5px;
-                cursor: default;
-            }
+        .hvNQEV > img {
+            margin-right: 5px;
+        }
 
-            .kpkpDl {
-                position: relative;
-                width: 100%;
-                height: 100%;
-                display: flex;
-                -webkit-box-align: center;
-                align-items: center;
-            }
+        .bNBtQ {
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            font-size: 13px;
+            color: rgb(102, 102, 102);
+            padding: 0px 15px;
+            position: relative;
+            line-height: 1.4;
+        }
 
-            .bKQRTB::after {
-                content: "";
-                background-image: url(/image/icon/drow.png);
-                background-size: 10px 5px;
-                position: absolute;
-                top: 18px;
-                right: 0px;
-                width: 10px;
-                height: 5px;
-                cursor: default;
-            }
-            .ffbqaN {
-                position: relative;
-                width: 100%;
-                height: 100%;
-                display: flex;
-                -webkit-box-align: center;
-                align-items: center;
-            }
-
-            .bHteAL {
-                display: block;
-                font-size: 13px;
-                color: rgb(102, 102, 102);
-            }
-            .foyUln {
-                position: absolute;
-                width: 400px;
-                max-height: 450px;
-                overflow-y: auto;
-                top: 100%;
-                left: calc(50% - 200px);
-                border: 1px solid rgb(238, 238, 238);
-                background: rgb(249, 249, 249);
-                display: none;
-                z-index: 30;
-            }
-            .duGyZI {
-                display: flex;
-                flex-direction: column;
-                -webkit-box-align: center;
-                align-items: center;
-                color: rgb(204, 204, 204);
-                font-size: 12px;
-                padding: 40px;
-            }
-
-            .kpkpDl {
-                position: relative;
-                width: 100%;
-                height: 100%;
-                display: flex;
-                -webkit-box-align: center;
-                align-items: center;
-            }
-
-            .aFoEk {
-                display: block;
-                font-size: 13px;
-                color: rgb(102, 102, 102);
-            }
-
-            .ldCzwX {
-                position: absolute;
-                width: 88px;
-                top: 100%;
-                left: calc(50% - 44px);
-                border: 1px solid rgb(238, 238, 238);
-                display: none;
-                z-index: 20;
-                padding: 15px 20px;
-                background: rgb(255, 255, 255);
-            }
-            .bnUMcA {
-                display: block;
-                text-align: center;
-                margin-bottom: 10px;
-                color: rgb(136, 136, 136);
-            }
-
-            .fwCvrI:last-child {
-                margin-bottom: 0px;
-            }
-
-            .fwCvrI {
-                display: block;
-                text-align: center;
-                margin-bottom: 10px;
-                color: rgb(136, 136, 136);
-            }
-
-            .bNBtQ {
-                display: flex;
-                -webkit-box-align: center;
-                align-items: center;
-                font-size: 13px;
-                color: rgb(102, 102, 102);
-                padding: 0px 15px;
-                position: relative;
-                line-height: 1.4;
-            }
-            .hvNQEV {
-                display: flex;
-                -webkit-box-align: center;
-                align-items: center;
-                font-size: 13px;
-                color: rgb(102, 102, 102);
-                padding: 0px 15px;
-                position: relative;
-                line-height: 1.4;
-            }
-        </style>
+        .bNBtQ > img {
+            margin-right: 5px;
+        }
 
 
-        <div class="sc-gxMtzJ kaFNmQ">
-            <div class="sc-dfVpRl jYMzIJ">
-                <a class="sc-hwwEjo hvNQEV" th:href="@{/splash}"><img th:src="@{/image/icon/app.svg}" width="16" height="17" alt="앱다운로드버튼 이미지"/>앱다운로드</a>
-                <button id="fvrtBtn" class="sc-iyvyFf bNBtQ"><img th:src="@{/image/icon/favorites.svg}" width="16" height="15" alt="즐겨찾기버튼 이미지"/>즐겨찾기</button>
-            </div>
-            <div class="sc-dfVpRl jYMzIJ" sec:authorize-expr="!isAuthenticated()">
-                <button class="sc-iyvyFf bNBtQ" id="loginBtn">로그인/회원가입</button>
-                <a class="sc-hwwEjo hvNQEV" href="/shop/products">내상점</a>
-            </div>
-            <div class="sc-dfVpRl jYMzIJ" sec:authorize-expr="isAuthenticated()">
-                <button class="sc-iyvyFf bNBtQ" id="logoutBtn">로그아웃</button>
-                <div class="sc-gzOgki bKQRTB">
-                    <div class="sc-bdVaJa ffbqaN">
-                        <a class="sc-bwzfXH bHteAL">알림</a>
-                        <div class="sc-htpNat foyUln">
-                            <div class="sc-htoDjs duGyZI"><img th:src="@{/image/icon/notice.png}" width="20" height="23" alt="빈 알림 이미지" />최근 알림이 없습니다.</div>
+        .bKQRTB {
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            font-size: 13px;
+            color: rgb(102, 102, 102);
+            padding: 0px 15px;
+            position: relative;
+            line-height: 1.4;
+        }
+
+        .ffbqaN {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+        }
+
+        .bKQRTB {
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            font-size: 13px;
+            color: rgb(102, 102, 102);
+            padding: 0px 15px;
+            position: relative;
+            line-height: 1.4;
+        }
+
+        .bKQRTB::after {
+            content: "";
+            background-image: url(/pc-static/resource/7bbef4f….png);
+            background-size: 10px 5px;
+            position: absolute;
+            top: 18px;
+            right: 0px;
+            width: 10px;
+            height: 5px;
+            cursor: default;
+        }
+
+        .kpkpDl {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+        }
+
+        .bKQRTB::after {
+            content: "";
+            background-image: url(/image/icon/drow.png);
+            background-size: 10px 5px;
+            position: absolute;
+            top: 18px;
+            right: 0px;
+            width: 10px;
+            height: 5px;
+            cursor: default;
+        }
+
+        .ffbqaN {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+        }
+
+        .bHteAL {
+            display: block;
+            font-size: 13px;
+            color: rgb(102, 102, 102);
+        }
+
+        .foyUln {
+            position: absolute;
+            width: 400px;
+            max-height: 450px;
+            overflow-y: auto;
+            top: 100%;
+            left: calc(50% - 200px);
+            border: 1px solid rgb(238, 238, 238);
+            background: rgb(249, 249, 249);
+            display: none;
+            z-index: 30;
+        }
+
+        .duGyZI {
+            display: flex;
+            flex-direction: column;
+            -webkit-box-align: center;
+            align-items: center;
+            color: rgb(204, 204, 204);
+            font-size: 12px;
+            padding: 40px;
+        }
+
+        .kpkpDl {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+        }
+
+        .aFoEk {
+            display: block;
+            font-size: 13px;
+            color: rgb(102, 102, 102);
+        }
+
+        .ldCzwX {
+            position: absolute;
+            width: 88px;
+            top: 100%;
+            left: calc(50% - 44px);
+            border: 1px solid rgb(238, 238, 238);
+            display: none;
+            z-index: 20;
+            padding: 15px 20px;
+            background: rgb(255, 255, 255);
+        }
+
+        .bnUMcA {
+            display: block;
+            text-align: center;
+            margin-bottom: 10px;
+            color: rgb(136, 136, 136);
+        }
+
+        .fwCvrI:last-child {
+            margin-bottom: 0px;
+        }
+
+        .fwCvrI {
+            display: block;
+            text-align: center;
+            margin-bottom: 10px;
+            color: rgb(136, 136, 136);
+        }
+
+        .bNBtQ {
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            font-size: 13px;
+            color: rgb(102, 102, 102);
+            padding: 0px 15px;
+            position: relative;
+            line-height: 1.4;
+        }
+
+        .hvNQEV {
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            font-size: 13px;
+            color: rgb(102, 102, 102);
+            padding: 0px 15px;
+            position: relative;
+            line-height: 1.4;
+        }
+    </style>
+
+    <script>
+
+        $(function () {
+            if (Cookie.getCookie('cookie_monster')) {
+                $("#login").show()
+                $("#logout").hide()
+            } else {
+                $("#login").hide()
+                $("#logout").show()
+            }
+        })
+
+    </script>
+
+
+    <div class="sc-gxMtzJ kaFNmQ">
+        <div class="sc-dfVpRl jYMzIJ">
+            <a class="sc-hwwEjo hvNQEV" th:href="@{/splash}"><img th:src="@{/image/icon/app.svg}" width="16" height="17"
+                                                                  alt="앱다운로드버튼 이미지"/>앱다운로드</a>
+            <button id="fvrtBtn" class="sc-iyvyFf bNBtQ"><img th:src="@{/image/icon/favorites.svg}" width="16"
+                                                              height="15" alt="즐겨찾기버튼 이미지"/>즐겨찾기
+            </button>
+        </div>
+        <div class="sc-dfVpRl jYMzIJ" id="logout" style="display:none">
+            <button class="sc-iyvyFf bNBtQ" id="loginBtn">로그인/회원가입</button>
+            <a class="sc-hwwEjo hvNQEV" href="/shop/products">내상점</a>
+        </div>
+        <div class="sc-dfVpRl jYMzIJ" id="login" style="display:none">
+            <button class="sc-iyvyFf bNBtQ" id="logoutBtn">로그아웃</button>
+            <div class="sc-gzOgki bKQRTB">
+                <div class="sc-bdVaJa ffbqaN">
+                    <a class="sc-bwzfXH bHteAL">알림</a>
+                    <div class="sc-htpNat foyUln">
+                        <div class="sc-htoDjs duGyZI"><img th:src="@{/image/icon/notice.png}" width="20" height="23"
+                                                           alt="빈 알림 이미지"/>최근 알림이 없습니다.
                         </div>
                     </div>
                 </div>
-                <div class="sc-gzOgki bKQRTB">
-                    <div class="sc-dnqmqq kpkpDl">
-                        <a class="sc-iwsKbI aFoEk" href="/shop/80273265/products">내 상점</a>
-                        <div class="sc-gZMcBi ldCzwX">
-                            <a class="sc-gqjmRU bnUMcA" href="/shop/80273265/products">내 상품</a><a class="sc-gqjmRU bnUMcA" href="/shop/80273265/favorites">찜한상품</a><a class="sc-gqjmRU bnUMcA" href="/settings">계정설정</a>
-                            <a href="https://help.bunjang.co.kr/home" class="sc-VigVT fwCvrI">고객센터</a>
-                        </div>
+            </div>
+            <div class="sc-gzOgki bKQRTB">
+                <div class="sc-dnqmqq kpkpDl">
+                    <a class="sc-iwsKbI aFoEk" href="/shop/80273265/products">내 상점</a>
+                    <div class="sc-gZMcBi ldCzwX">
+                        <a class="sc-gqjmRU bnUMcA" href="/shop/80273265/products">내 상품</a><a class="sc-gqjmRU bnUMcA"
+                                                                                              href="/shop/80273265/favorites">찜한상품</a><a
+                            class="sc-gqjmRU bnUMcA" href="/settings">계정설정</a>
+                        <a href="https://help.bunjang.co.kr/home" class="sc-VigVT fwCvrI">고객센터</a>
                     </div>
                 </div>
             </div>
         </div>
-        <script>
-            $("#fvrtBtn").on("click", function() {
-                alert("Ctrl+D 키를 누르면 즐겨찾기에 추가하실 수 있습니다.");
-            });
-        </script>
-    </th:block>
+    </div>
+    <script>
+        $("#fvrtBtn").on("click", function () {
+            alert("Ctrl+D 키를 누르면 즐겨찾기에 추가하실 수 있습니다.");
+        });
+    </script>
+</th:block>
 </html>

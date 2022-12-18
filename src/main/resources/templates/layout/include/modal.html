@@ -1,6 +1,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
-    <th:block th:fragment="modalFragment">
-        <style>
+<th:block th:fragment="modalFragment">
+    <style>
 
         .bynjYU {
             width: 100%;
@@ -16,6 +16,7 @@
             justify-content: center;
             display: none;
         }
+
         .gSsteC {
             width: 100%;
             height: 100%;
@@ -317,7 +318,6 @@
         }
 
 
-
         .hWqodb {
             font-size: 18px;
             margin-bottom: 1rem;
@@ -341,197 +341,221 @@
         }
 
         .gMGqhC {
-    position: fixed;
-    inset: 0px;
-}
+            position: fixed;
+            inset: 0px;
+        }
 
-.eMPcVs {
-    display: flex;
-    flex-direction: column;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    z-index: 3100;
-    -webkit-box-orient: vertical;
-}
+        .eMPcVs {
+            display: flex;
+            flex-direction: column;
+            -webkit-box-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            z-index: 3100;
+            -webkit-box-orient: vertical;
+        }
 
 
-.hLkUSB {
-    position: relative;
-    border-radius: 2px 2px 0px 0px;
-    padding: 1.5rem 1.5rem 0px;
-    max-width: 18.5rem;
-    width: 75%;
-    background-color: rgb(255, 255, 255);
-    overflow: hidden auto;
-    z-index: 3102;
-}
+        .hLkUSB {
+            position: relative;
+            border-radius: 2px 2px 0px 0px;
+            padding: 1.5rem 1.5rem 0px;
+            max-width: 18.5rem;
+            width: 75%;
+            background-color: rgb(255, 255, 255);
+            overflow: hidden auto;
+            z-index: 3102;
+        }
 
-.fjZjoV {
-    margin-bottom: 5px;
-    white-space: pre-wrap;
-    font-size: 15px;
-    text-align: center;
-    line-height: 1.4;
-}
+        .fjZjoV {
+            margin-bottom: 5px;
+            white-space: pre-wrap;
+            font-size: 15px;
+            text-align: center;
+            line-height: 1.4;
+        }
 
-.gJQhqh {
-    position: relative;
-    border-radius: 0px 0px 2px 2px;
-    padding: 1.5rem;
-    max-width: 18.5rem;
-    width: 75%;
-    background-color: rgb(255, 255, 255);
-    z-index: 3102;
-}
+        .gJQhqh {
+            position: relative;
+            border-radius: 0px 0px 2px 2px;
+            padding: 1.5rem;
+            max-width: 18.5rem;
+            width: 75%;
+            background-color: rgb(255, 255, 255);
+            z-index: 3102;
+        }
 
-.kqveTA {
-    border-radius: 2px;
-    width: 100%;
-    height: 3rem;
-    background-color: rgb(255, 80, 88);
-    font-weight: bold;
-    color: rgb(255, 255, 255);
-    text-align: center;
-}
+        .kqveTA {
+            border-radius: 2px;
+            width: 100%;
+            height: 3rem;
+            background-color: rgb(255, 80, 88);
+            font-weight: bold;
+            color: rgb(255, 255, 255);
+            text-align: center;
+        }
 
-.kqVnBu {
-    position: absolute;
-    inset: 0px;
-    background-color: rgba(0, 0, 0, 0.4);
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-    user-select: none;
-    z-index: 3101;
-}
+        .kqVnBu {
+            position: absolute;
+            inset: 0px;
+            background-color: rgba(0, 0, 0, 0.4);
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+            user-select: none;
+            z-index: 3101;
+        }
 
-        </style>
+    </style>
 
-        <div id="bunjang_login" class="sc-jwKygS bynjYU">
-            <div class="sc-fYiAbW kbvSGu">
-                <button class="sc-gFaPwZ bkcPmx"><img th:src="@{/image/icon/close.png}" width="24" height="24" alt="로그인 모달 닫기 버튼 아이콘" /></button>
-                <div class="sc-eilVRo gcrUzx">
-                    <img th:src="@{/image/icon/bun_jang.png}" width="30" height="34" class="sc-fOKMvo gBrrkj" />
-                    <div class="sc-dUjcNx cHwItl">번개장터로 중고거래 시작하기</div>
-                    <div class="sc-gHboQg llsWuF">간편하게 가입하고 상품을 확인하세요</div>
-                    <div class="sc-eerKOB caeGkJ">
-                        <button class="sc-cpmLhU fNMOeS">
-                            <div class="sc-emmjRN hhygwv"></div>
-                            카카오로 이용하기
-                        </button>
-                        <button class="sc-cpmLhU exvIJc">
-                            <div class="sc-emmjRN hhygwv"></div>
-                            페이스북으로 이용하기
-                        </button>
-                        <button class="sc-cpmLhU eAIGCf">
-                            <div class="sc-emmjRN hhygwv"></div>
-                            네이버로 이용하기
-                        </button>
-                        <a class="sc-dymIpo hIiBui" href="/signup?rd_url=%2F">
-                            <div class="sc-emmjRN hhygwv"></div>
-                            본인인증으로 이용하기
-                        </a>
-                    </div>
-                    <div class="sc-bnXvFD eByTGV">
-                        <p>
-                            도움이 필요하면 <a href="mailto:help@bunjang.co.kr">이메일</a> 또는 고객센터<b>1670-2910</b>로 문의 부탁드립니다.<br />
-                            고객센터 운영시간: 09~18시 (점심시간 12~13시, 주말/공휴일 제외)
-                        </p>
-                    </div>
+    <script>
+        $(function () {
+            $("#logoutBtn_").on("click", function () {
+                Cookie.delCookie('cookie_monster')
+                location.href = "index.html"
+            })
+        })
+    </script>
+
+    <div id="bunjang_login" class="sc-jwKygS bynjYU">
+        <div class="sc-fYiAbW kbvSGu">
+            <button class="sc-gFaPwZ bkcPmx"><img th:src="@{/image/icon/close.png}" width="24" height="24"
+                                                  alt="로그인 모달 닫기 버튼 아이콘"/></button>
+            <div class="sc-eilVRo gcrUzx">
+                <img th:src="@{/image/icon/bun_jang.png}" width="30" height="34" class="sc-fOKMvo gBrrkj"/>
+                <div class="sc-dUjcNx cHwItl">번개장터로 중고거래 시작하기</div>
+                <div class="sc-gHboQg llsWuF">간편하게 가입하고 상품을 확인하세요</div>
+                <div class="sc-eerKOB caeGkJ">
+                    <button class="sc-cpmLhU fNMOeS">
+                        <div class="sc-emmjRN hhygwv"></div>
+                        카카오로 이용하기
+                    </button>
+                    <button class="sc-cpmLhU exvIJc">
+                        <div class="sc-emmjRN hhygwv"></div>
+                        페이스북으로 이용하기
+                    </button>
+                    <button class="sc-cpmLhU eAIGCf">
+                        <div class="sc-emmjRN hhygwv"></div>
+                        네이버로 이용하기
+                    </button>
+                    <a class="sc-dymIpo hIiBui" href="/signup?rd_url=%2F">
+                        <div class="sc-emmjRN hhygwv"></div>
+                        본인인증으로 이용하기
+                    </a>
                 </div>
-                <div class="sc-jwKygS gSsteC">
-                    <div class="sc-btzYZH loGZtw">
-                        <p class="sc-bYSBpT kYaBSe"></p>
-                        <div class="sc-elJkPf cgZVKM"><button type="button" class="sc-jtRfpW caPtxQ">확인</button><button type="button" class="sc-kTUwUJ cFsfis">취소</button></div>
-                    </div>
+                <div class="sc-bnXvFD eByTGV">
+                    <p>
+                        도움이 필요하면 <a href="mailto:help@bunjang.co.kr">이메일</a> 또는 고객센터<b>1670-2910</b>로 문의 부탁드립니다.<br/>
+                        고객센터 운영시간: 09~18시 (점심시간 12~13시, 주말/공휴일 제외)
+                    </p>
                 </div>
             </div>
-        </div>
-
-
-        <div id="bunjang_logout" class="sc-jwKygS bynjYU">
-            <div class="sc-btzYZH loGZtw">
-                <h2 class="sc-lhVmIH hWqodb">로그아웃</h2>
-                <p class="sc-bYSBpT kYaBSe">로그아웃 하시겠습니까?</p>
-                <div class="sc-elJkPf cgZVKM"><button type="button" class="sc-jtRfpW caPtxQ">확인</button><button type="button" class="sc-kTUwUJ cFsfis">취소</button></div>
-            </div>
-        </div>
-
-        <div class="sc-jwKygS gSsteC">
-            <div class="sc-fhYwyz kPhXzn">
-                <button class="sc-gJWqzi gxKXEL"><img th:src="@{/image/icon/close.png}" width="16" height="16" alt="닫기 버튼 이미지" /></button>
-                <div class="sc-jzgbtB gmctze">
-                    <img th:src="@{/image/icon/bun_follow.png}" width="90" height="91" alt="팔로우 이미지" class="sc-rBLzX docUfu" />
-                    <div class="sc-bMvGRv dmDKSG">팔로우 상점 알림</div>
-                    <div class="sc-CtfFt frvyYd">
-                        팔로우 상점이 상품 등록을 하면<br />
-                        앱에서 바로 알려드려요!
-                    </div>
-                    <div class="sc-laTMn gUbicK"><input type="tel" placeholder="핸드폰 번호를 입력해 주세요." value="" /></div>
-                    <button class="sc-hGoxap gtSViQ">앱 링크 받기</button>
-                </div>
-                <a class="sc-fjmCvl ciawh">하루동안 보지 않기</a>
-            </div>
-        </div>
-
-        <div id="modal" style="display: none;">
-            <div class="sc-krvtoX ccqEkD" style="transition: opacity 150ms ease-out 0s; opacity: 1; will-change: opacity;">
-                <div class="sc-bAeIUo gMGqhC">
-                    <div class="sc-iujRgT eMPcVs">
-                        <div class="sc-GMQeP hLkUSB"><div class="sc-gojNiO fjZjoV">이미 인증처리가 완료된 건입니다.</div></div>
-                        <div class="sc-lkqHmb gJQhqh"><button class="sc-eLExRp kqveTA">확인</button></div>
-                        <div class="sc-cbkKFq kqVnBu"></div>
+            <div class="sc-jwKygS gSsteC">
+                <div class="sc-btzYZH loGZtw">
+                    <p class="sc-bYSBpT kYaBSe"></p>
+                    <div class="sc-elJkPf cgZVKM">
+                        <button type="button" class="sc-jtRfpW caPtxQ">확인</button>
+                        <button type="button" class="sc-kTUwUJ cFsfis">취소</button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div id="modal" style="display: none;">
-            <div class="sc-krvtoX ccqEkD" style="transition: opacity 150ms ease-out 0s; opacity: 1; will-change: opacity;">
-                <div class="sc-bAeIUo gMGqhC">
-                    <div class="sc-iujRgT eMPcVs">
-                        <div class="sc-GMQeP hLkUSB"><div class="sc-gojNiO fjZjoV">탈퇴 후 7일간은 다시 가입하실 수 없습니다. 2022-11-14 22:27:12부터 가입을 시도해주세요</div></div>
-                        <div class="sc-lkqHmb gJQhqh"><button class="sc-eLExRp kqveTA">확인</button></div>
-                        <div class="sc-cbkKFq kqVnBu"></div>
+
+    <div id="bunjang_logout" class="sc-jwKygS bynjYU">
+        <div class="sc-btzYZH loGZtw">
+            <h2 class="sc-lhVmIH hWqodb">로그아웃</h2>
+            <p class="sc-bYSBpT kYaBSe">로그아웃 하시겠습니까?</p>
+            <div class="sc-elJkPf cgZVKM">
+                <button type="button" class="sc-jtRfpW caPtxQ" id="logoutBtn_">확인</button>
+                <button type="button" class="sc-kTUwUJ cFsfis">취소</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="sc-jwKygS gSsteC">
+        <div class="sc-fhYwyz kPhXzn">
+            <button class="sc-gJWqzi gxKXEL"><img th:src="@{/image/icon/close.png}" width="16" height="16"
+                                                  alt="닫기 버튼 이미지"/></button>
+            <div class="sc-jzgbtB gmctze">
+                <img th:src="@{/image/icon/bun_follow.png}" width="90" height="91" alt="팔로우 이미지"
+                     class="sc-rBLzX docUfu"/>
+                <div class="sc-bMvGRv dmDKSG">팔로우 상점 알림</div>
+                <div class="sc-CtfFt frvyYd">
+                    팔로우 상점이 상품 등록을 하면<br/>
+                    앱에서 바로 알려드려요!
+                </div>
+                <div class="sc-laTMn gUbicK"><input type="tel" placeholder="핸드폰 번호를 입력해 주세요." value=""/></div>
+                <button class="sc-hGoxap gtSViQ">앱 링크 받기</button>
+            </div>
+            <a class="sc-fjmCvl ciawh">하루동안 보지 않기</a>
+        </div>
+    </div>
+
+    <div id="modal" style="display: none;">
+        <div class="sc-krvtoX ccqEkD" style="transition: opacity 150ms ease-out 0s; opacity: 1; will-change: opacity;">
+            <div class="sc-bAeIUo gMGqhC">
+                <div class="sc-iujRgT eMPcVs">
+                    <div class="sc-GMQeP hLkUSB">
+                        <div class="sc-gojNiO fjZjoV">이미 인증처리가 완료된 건입니다.</div>
                     </div>
+                    <div class="sc-lkqHmb gJQhqh">
+                        <button class="sc-eLExRp kqveTA">확인</button>
+                    </div>
+                    <div class="sc-cbkKFq kqVnBu"></div>
                 </div>
             </div>
         </div>
-        
-        
-        
-        
-        <script>
-            $('#loginBtn').click(function () {
-                $('#bunjang_login').css({
-                    display: 'flex'
-                });
+    </div>
+
+    <div id="modal" style="display: none;">
+        <div class="sc-krvtoX ccqEkD" style="transition: opacity 150ms ease-out 0s; opacity: 1; will-change: opacity;">
+            <div class="sc-bAeIUo gMGqhC">
+                <div class="sc-iujRgT eMPcVs">
+                    <div class="sc-GMQeP hLkUSB">
+                        <div class="sc-gojNiO fjZjoV">탈퇴 후 7일간은 다시 가입하실 수 없습니다. 2022-11-14 22:27:12부터 가입을 시도해주세요</div>
+                    </div>
+                    <div class="sc-lkqHmb gJQhqh">
+                        <button class="sc-eLExRp kqveTA">확인</button>
+                    </div>
+                    <div class="sc-cbkKFq kqVnBu"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        $('#loginBtn').click(function () {
+            $('#bunjang_login').css({
+                display: 'flex'
             });
+        });
 
-            $('#logoutBtn').click(function () {
-                $('#bunjang_logout').css({
-                    display: 'flex'
-                });
+        $('#logoutBtn').click(function () {
+            $('#bunjang_logout').css({
+                display: 'flex'
             });
+        });
 
-            $('.sc-gFaPwZ').on("click", () => {
-                closeModal();
+        $('.sc-gFaPwZ').on("click", () => {
+            closeModal();
+        });
+
+        function closeModal() {
+            $('.sc-jwKygS').css({
+                display: 'none'
             });
-
-            function closeModal() {
-                $('.sc-jwKygS').css({
-                    display : 'none'
-                });
-                $(document.body).css({
-                    overflow : 'visible'
-                });
-            };
-
-            $('.fNMOeS').on("click", () => {
-                var popup = window.open('https://kauth.kakao.com/oauth/authorize?client_id=e1d46938686c263ed90f533d37bed141&redirect_uri=http://localhost:20000/signup/kakao/callback&response_type=code', '카카오 로그인', 'width=700px,height=800px,scrollbars=yes');
+            $(document.body).css({
+                overflow: 'visible'
             });
-        </script>
-    </th:block>
+        };
+
+        $('.fNMOeS').on("click", () => {
+            var popup = window.open('https://kauth.kakao.com/oauth/authorize?client_id=e1d46938686c263ed90f533d37bed141&redirect_uri=http://localhost:20000/signup/kakao/callback&response_type=code', '카카오 로그인', 'width=700px,height=800px,scrollbars=yes');
+        });
+    </script>
+</th:block>
 </html>

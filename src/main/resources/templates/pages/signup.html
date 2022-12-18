@@ -1007,28 +1007,44 @@
 
         let timeSecond = 180;
         let intervalVar = undefined;
+        let shop_num = ''
         $(function () {
             $('.kLryzS').on("click", function (e) {
-                axios.post("/v1/shop", null, {
-                    params: {
-                        authenticationYn: "Y",
-                        collectionPrivacyPolicyYn: "Y",
-                        identiNumber: birth_first + birth_last,
-                        locationInfoYn: "Y",
-                        phoneIdentificationYn: "Y",
-                        phoneNumber: telecom,
-                        shopNm: "",
-                        privacyArchivingYn: "Y",
-                        telecom: telecom_where,
-                        termsYn: "Y",
-                        userNm: name,
-                        privacyYn: "Y",
-                        eventYn: "Y",
-                        adUtilizationYn: "Y",
-                    }
-                }).then( response => {
+                axios.post("/v1/shop/signup", {
+                    authenticationYn: "Y",
+                    collectionPrivacyPolicyYn: "Y",
+                    identiNumber: birth_first + birth_last,
+                    locationInfoYn: "Y",
+                    phoneIdentificationYn: "Y",
+                    phoneNumber: telecom,
+                    shopNm: "",
+                    privacyArchivingYn: "Y",
+                    telecom: telecom_where,
+                    termsYn: "Y",
+                    userNm: name,
+                    privacyYn: "Y",
+                    eventYn: "Y",
+                    adUtilizationYn: "Y",
+                }).then(response => {
+                    console.log(response);
+                    $("#shop_no").val(response["data"]["shopNo"])
                     $(".kEuYPw").show();
                     $(".kEuYPw").trigger("show")
+                });
+            })
+
+            $('#button_tag').on("click", function () {
+                axios.post("v1/login/mobile", {
+                    credentials: next_value,
+                    shopNo: $("#shop_no").val()
+                }).then(response => {
+                    console.log(response)
+                    if (response["status"] === 200) {
+                        Cookie.setCookie('cookie_monster', response["data"]["accessToken"], {'expires': new Date(new Date().getTime() + response["data"]["expiresIn"])})
+                        location.href = 'index.html'
+                    } else {
+                        alert("다시 입력하세요")
+                    }
                 });
             })
 
@@ -1043,16 +1059,16 @@
 
                 turn_on = 2;
 
-                $(document).ready(function(){
+                $(document).ready(function () {
                     setTimeout(function () {
                         timeSecond -= 1;
                     }, 1000)
                     $("#timer").html(getTimeString(timeSecond));
-                    intervalVar = setInterval(function() {
+                    intervalVar = setInterval(function () {
                         $("#timer").html(getTimeString(timeSecond));
 
                         if (timeSecond != 0) {
-                            timeSecond = timeSecond -1;
+                            timeSecond = timeSecond - 1;
                         } else {
                             $("#ohgi").hide()
                             $("#manryo").show()
@@ -1090,18 +1106,20 @@
             })
         })
 
-        $(function () {
-            $(".bBXFjp").on("click", function (e) {
 
-                if (next_value === "777777") {
-                    alert("회원 가입 성공")
-                    location.href = 'index.html'
-                } else {
-                    $("#origin").hide()
-                    $("#not_").show()
+        function getCookie(name) {
+            let x, y;
+            let val = document.cookie.split(';');
+
+            for (let i = 0; i < val.length; i++) {
+                x = val[i].substr(0, val[i].indexOf('='));
+                y = val[i].substr(val[i].indexOf('=') + 1);
+                x = x.replace(/^\s+|\s+$/g, '');
+                if (x == name) {
+                    return unescape(y);
                 }
-            })
-        })
+            }
+        }
 
     </script>
 
@@ -1709,9 +1727,9 @@
 
                 <h1>인증번호를 입력해주세요</h1>
                 <div>
-                    <form>
+                    <form method="post" action="/v1/shop/signup" id="login-form">
                         <label class="ValidationInput__ValidationInputRoot-sc-104cih6-0 ksuikN" id="check_page">
-
+                            <input type="hidden" id="shop_no" value=shop_num>
                             <input id="target_value" value=""/>
 
                             <span id="not_" class="ValidationInput__Label-sc-104cih6-1 krhfdR"
@@ -1726,7 +1744,7 @@
                             <button type="button" id="re_button">인증번호 재전송</button>
                         </div>
                         <button type="button" disabled=""
-                                class="BunjangIdentificationNumber__ConfirmButton-sc-bw4zs4-2 bBXFjp">확인
+                                class="BunjangIdentificationNumber__ConfirmButton-sc-bw4zs4-2 bBXFjp" id="button_tag">확인
                         </button>
                     </form>
                 </div>
