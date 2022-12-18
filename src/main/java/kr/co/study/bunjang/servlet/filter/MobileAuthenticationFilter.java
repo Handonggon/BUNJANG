@@ -1,6 +1,8 @@
 package kr.co.study.bunjang.servlet.filter;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,10 +14,14 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import kr.co.study.bunjang.component.authentication.mobile.MobileAuthenticationToken;
 import kr.co.study.bunjang.component.utility.ObjUtils;
 
 public class MobileAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
+
+    ObjectMapper mapper = new ObjectMapper();
 
     public MobileAuthenticationFilter(RequestMatcher requiresAuthenticationRequestMatcher) {
         super(requiresAuthenticationRequestMatcher);
@@ -27,8 +33,9 @@ public class MobileAuthenticationFilter extends AbstractAuthenticationProcessing
             if (!request.getMethod().equals("POST")) {
                 throw new AuthenticationServiceException("Authentication method not supported: " + request.getMethod());
             }
-            Long shopNo = ObjUtils.objToLong(ObjUtils.nvl(obtainShopNo(request), 0));
-            String credentials = ObjUtils.objToString(ObjUtils.nvl(obtainCredentials(request), 0));
+            Map<String, Object> body = mapper.readValue(request.getInputStream(), HashMap.class);
+            Long shopNo = ObjUtils.objToLong(body.get("shopNo"));
+            String credentials = ObjUtils.objToString(body.get("credentials"));
             return getAuthenticationManager().authenticate(new MobileAuthenticationToken(shopNo, credentials));
         }
         return null;
