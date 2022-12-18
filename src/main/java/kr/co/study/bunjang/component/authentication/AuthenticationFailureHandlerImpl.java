@@ -52,6 +52,8 @@ public class AuthenticationFailureHandlerImpl implements AuthenticationFailureHa
         responseMap.put("error", exception.getClass().getName());
         responseMap.put("error_description", exception.getMessage());
         responseMap.put("timestamp", LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+
+		response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         new ObjectMapper().writeValue(response.getWriter(), responseMap);
 	}   
 }
