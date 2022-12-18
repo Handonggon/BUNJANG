@@ -116,7 +116,7 @@ import lombok.NoArgsConstructor;
 
     @Column(length = 250)
     @Comment("프로필 이미지")
-    private String profile_image;
+    private String profileImage;
 
     @Column(length = 200)
     @Comment("소개글")

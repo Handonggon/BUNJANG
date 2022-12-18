@@ -54,7 +54,7 @@ public class ShopService implements UserDetailsService {
             });
 
         persistence.setShopNm(shopDto.getShopNm());
-        persistence.setProfile_image(shopDto.getProfile_image());
+        persistence.setProfileImage(shopDto.getProfileImage());
         persistence.setContext(shopDto.getContext());
 
         return new ShopDto(persistence);
