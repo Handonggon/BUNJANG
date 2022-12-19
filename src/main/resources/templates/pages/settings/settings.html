@@ -343,6 +343,15 @@
         }
     </style>
 
+    <script>
+        $(function () {
+            $("#logoutBtn_").on("click", function () {
+                Cookie.delCookie('cookie_monster')
+                location.href = "index.html"
+            })
+        })
+    </script>
+
     <div class="sc-giadOv gvnzUM">
         <div class="sc-kkbgRg qzafb">
             <header class="sc-hUMlYv cwkjCq">
