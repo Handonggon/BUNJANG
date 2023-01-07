@@ -68,13 +68,14 @@ public class WebSecurityConfig {
     @Autowired
     MobileAuthenticationProvider mobileAuthenticationProvider;
 
-        @Autowired
-        KakaoAuthenticationProvider kakaoAuthenticationProvider;
+    @Autowired
+    KakaoAuthenticationProvider kakaoAuthenticationProvider;
 
     @Bean
     public AuthenticationManagerImpl authenticationManager() {
         AuthenticationManagerImpl authenticationManager = new AuthenticationManagerImpl();
         authenticationManager.setAuthenticationProvider(mobileAuthenticationProvider);
+        authenticationManager.setAuthenticationProvider(kakaoAuthenticationProvider);
         return authenticationManager;
     }
 
