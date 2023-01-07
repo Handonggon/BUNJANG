@@ -7,9 +7,8 @@ public class KakaoAuthenticationToken extends AbstractAuthenticationToken {
 
     private final String credentials;
 
-    public KakaoAuthenticationToken(Long shopNo, String credentials) {
+    public KakaoAuthenticationToken(String credentials) {
 		super(null);
-		this.setDetails(shopNo);
         this.credentials = credentials;
 	}
 
