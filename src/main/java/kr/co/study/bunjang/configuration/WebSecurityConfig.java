@@ -22,7 +22,9 @@ import kr.co.study.bunjang.component.authentication.AuthenticationEntryPointImpl
 import kr.co.study.bunjang.component.authentication.AuthenticationFailureHandlerImpl;
 import kr.co.study.bunjang.component.authentication.AuthenticationManagerImpl;
 import kr.co.study.bunjang.component.authentication.AuthenticationSuccessHandlerImpl;
+import kr.co.study.bunjang.component.authentication.kakao.KakaoAuthenticationProvider;
 import kr.co.study.bunjang.component.authentication.mobile.MobileAuthenticationProvider;
+import kr.co.study.bunjang.servlet.filter.KakaoAuthenticationFilter;
 import kr.co.study.bunjang.servlet.filter.MobileAuthenticationFilter;
 
 @Configuration
@@ -47,7 +49,8 @@ public class WebSecurityConfig {
             .antMatchers("/v1/**").permitAll()
             .antMatchers("/**").permitAll();//.authenticated();
 
-        http.formLogin().disable().addFilterAt(shopAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.formLogin().disable().addFilterAt(mobileAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+            .addFilterAt(kakaoAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
         http.exceptionHandling()
             .accessDeniedHandler(new AccessDeniedHandlerImpl())
@@ -65,6 +68,9 @@ public class WebSecurityConfig {
     @Autowired
     MobileAuthenticationProvider mobileAuthenticationProvider;
 
+        @Autowired
+        KakaoAuthenticationProvider kakaoAuthenticationProvider;
+
     @Bean
     public AuthenticationManagerImpl authenticationManager() {
         AuthenticationManagerImpl authenticationManager = new AuthenticationManagerImpl();
@@ -73,7 +79,7 @@ public class WebSecurityConfig {
     }
 
     @Bean
-    public MobileAuthenticationFilter shopAuthenticationFilter() {
+    public MobileAuthenticationFilter mobileAuthenticationFilter() {
         MobileAuthenticationFilter filter = new MobileAuthenticationFilter(new AntPathRequestMatcher("/v1/login/mobile"));
         filter.setAuthenticationSuccessHandler(authenticationSuccessHandlerImpl);
         filter.setAuthenticationFailureHandler(authenticationFailureHandlerImpl);
@@ -82,6 +88,14 @@ public class WebSecurityConfig {
     }
 
     //카카오 로그인 필터        /v1/login/kakao
+    @Bean
+    public KakaoAuthenticationFilter kakaoAuthenticationFilter() {
+        KakaoAuthenticationFilter filter = new KakaoAuthenticationFilter(new AntPathRequestMatcher("/v1/login/kako"));
+        filter.setAuthenticationSuccessHandler(authenticationSuccessHandlerImpl);
+        filter.setAuthenticationFailureHandler(authenticationFailureHandlerImpl);
+        filter.setAuthenticationManager(authenticationManager());
+        return filter;
+    }
 
     //페이스북 로그인 필터      /v1/login/facebook
 
