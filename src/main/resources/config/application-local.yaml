@@ -87,3 +87,10 @@ spring:
         #implicitStrategy:
         #물리적 명명 전략
         physicalStrategy: kr.co.study.bunjang.configuration.datasource.CamelCaseToUpperUnderscoresNamingStrategy
+
+  security:
+    oauth2:
+      client:
+        registration:
+          kakao:
+            client-id: e1d46938686c263ed90f533d37bed141
