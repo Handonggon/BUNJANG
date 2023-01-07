@@ -21,7 +21,7 @@ import kr.co.study.bunjang.component.utility.ObjUtils;
 
 public class MobileAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
 
-    ObjectMapper mapper = new ObjectMapper();
+    private ObjectMapper mapper = new ObjectMapper();
 
     public MobileAuthenticationFilter(RequestMatcher requiresAuthenticationRequestMatcher) {
         super(requiresAuthenticationRequestMatcher);

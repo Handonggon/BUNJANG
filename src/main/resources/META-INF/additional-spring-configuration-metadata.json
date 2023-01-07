@@ -3,25 +3,35 @@
     "name": "spring.datasource.home",
     "type": "com.zaxxer.hikari.HikariDataSource",
     "description": "Home DB"
-  }, {
+  },
+  {
     "name": "spring.datasource.kzerp",
     "type": "com.zaxxer.hikari.HikariDataSource",
     "description": "KZ ERP DB"
-  }, {
+  },
+  {
     "name": "azure.tenant.id",
     "type": "java.lang.String",
     "description": "Azure Directory(Tenant) ID"
-  }, {
+  },
+  {
     "name": "azure.client.id",
     "type": "java.lang.String",
     "description": "Azure Application(Client) ID"
-  }, {
+  },
+  {
     "name": "azure.client.url",
     "type": "java.lang.String",
     "description": "Azure Application(Client) ID URL"
-  }, {
+  },
+  {
     "name": "azure.client.secret",
     "type": "java.lang.String",
     "description": "Azure Application(Client) Secret Key"
+  },
+  {
+    "name": "system.file.base-upload-path",
+    "type": "java.lang.String",
+    "description": "System Base Upload path"
   }
 ]}

@@ -5,6 +5,10 @@ server:
     whitelabel:
       enabled: false
 
+system:
+  file:
+    baseUploadPath: D:/bunjang/upload
+
 spring:
   config:
     activate:
@@ -12,6 +16,10 @@ spring:
   output:
     ansi:
       enabled: always
+  servlet:
+    multipart:
+      max-file-size: 1MB
+      max-request-size: 10MB
   mvc:
     pathmatch:
       # Swagger 오류로 인해 추가
@@ -87,7 +95,6 @@ spring:
         #implicitStrategy:
         #물리적 명명 전략
         physicalStrategy: kr.co.study.bunjang.configuration.datasource.CamelCaseToUpperUnderscoresNamingStrategy
-
   security:
     oauth2:
       client:
@@ -95,7 +102,7 @@ spring:
           kakao:
             client-id: e1d46938686c263ed90f533d37bed141
             client-secret: GLgQEwFZOK6nHyHY1or1MwsxbGceDLr1
-            redirect-uri: http://localhost:20000/v1/login/kakao/callback/login/oauth2/code/kakao
+            redirect-uri: http://localhost:20000/v1/login/kakao
             authorization-grant-type: authorization_code
             client-authentication-method: POST
             client-name: Kakao
