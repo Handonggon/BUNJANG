@@ -90,7 +90,7 @@ public class WebSecurityConfig {
     //카카오 로그인 필터        /v1/login/kakao
     @Bean
     public KakaoAuthenticationFilter kakaoAuthenticationFilter() {
-        KakaoAuthenticationFilter filter = new KakaoAuthenticationFilter(new AntPathRequestMatcher("/v1/login/kako"));
+        KakaoAuthenticationFilter filter = new KakaoAuthenticationFilter(new AntPathRequestMatcher("/v1/login/kakao"));
         filter.setAuthenticationSuccessHandler(authenticationSuccessHandlerImpl);
         filter.setAuthenticationFailureHandler(authenticationFailureHandlerImpl);
         filter.setAuthenticationManager(authenticationManager());

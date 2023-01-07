@@ -1,6 +1,7 @@
 package kr.co.study.bunjang.component.authentication.kakao;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
@@ -8,7 +9,13 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.reactive.function.BodyInserters;
+import org.springframework.web.reactive.function.client.ExchangeStrategies;
+import org.springframework.web.reactive.function.client.WebClient;
 
+import kr.co.study.bunjang.component.util.CommonMap;
 import kr.co.study.bunjang.component.utility.ObjUtils;
 import kr.co.study.bunjang.mvc.service.ShopService;
 
@@ -23,6 +30,35 @@ public class KakaoAuthenticationProvider implements AuthenticationProvider {
 		String shopNo = authentication.getName();
 
 		UserDetails userDetails = shopService.loadUserByUsername(shopNo);
+
+		WebClient webClient = WebClient.builder()
+			.baseUrl("https://kauth.kakao.com/oauth/token")
+			.exchangeStrategies(ExchangeStrategies.builder()
+                .codecs(configurer -> configurer.defaultCodecs().maxInMemorySize(-1))
+				.build())
+            .build();
+
+		// MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+		// 	params.add("grant_type", "authorization_code");
+		// 	params.add("client_id", "e1d46938686c263ed90f533d37bed141");
+		// 	params.add("redirect_uri", "http://localhost:20000/signup/kakao/callback");
+		// 	params.add("code", ObjUtils.objToString(authentication.getCredentials()));
+
+		CommonMap respones = new CommonMap();
+
+		respones.putAll(webClient.post()
+                .uri(uriBuilder->uriBuilder.path("/oauth/token").build())
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.body(BodyInserters.fromFormData("grant_type", "authorization_code")
+                            .with("client_id", "e1d46938686c263ed90f533d37bed141")
+							.with("redirect_uri", "http://localhost:20000/signup/kakao/callback")
+							.with("code", ObjUtils.objToString(authentication.getCredentials()))
+         		)
+                .exchangeToMono(response->{
+                    return response.bodyToMono(CommonMap.class);
+                }).block());
+
+		
 
 		String credentials = ObjUtils.objToString(authentication.getCredentials());
 		if (!userDetails.getPassword().equals(credentials)) {

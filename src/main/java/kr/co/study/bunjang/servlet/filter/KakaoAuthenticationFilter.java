@@ -16,6 +16,7 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import kr.co.study.bunjang.component.authentication.kakao.KakaoAuthenticationToken;
 import kr.co.study.bunjang.component.authentication.mobile.MobileAuthenticationToken;
 import kr.co.study.bunjang.component.utility.ObjUtils;
 
@@ -30,22 +31,13 @@ public class KakaoAuthenticationFilter extends AbstractAuthenticationProcessingF
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
         if (requiresAuthentication(request, response)) {
-            if (!request.getMethod().equals("POST")) {
-                throw new AuthenticationServiceException("Authentication method not supported: " + request.getMethod());
-            }
-            Map<String, Object> body = mapper.readValue(request.getInputStream(), HashMap.class);
-            Long shopNo = ObjUtils.objToLong(body.get("shopNo"));
-            String credentials = ObjUtils.objToString(body.get("credentials"));
-            return getAuthenticationManager().authenticate(new MobileAuthenticationToken(shopNo, credentials));
+            String credentials = obtainCredentials(request);
+            return getAuthenticationManager().authenticate(new KakaoAuthenticationToken(credentials));
         }
         return null;
     }
 
-	protected String obtainShopNo(HttpServletRequest request) {
-		return request.getParameter("shopNo");
-	}
-
 	protected String obtainCredentials(HttpServletRequest request) {
-		return request.getParameter("credentials");
+		return request.getParameter("code");
 	}
 }
