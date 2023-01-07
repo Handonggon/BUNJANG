@@ -94,3 +94,6 @@ spring:
         registration:
           kakao:
             client-id: e1d46938686c263ed90f533d37bed141
+            scope:
+            - email
+            - profile
