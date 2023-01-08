@@ -35,4 +35,14 @@ public class IndexController {
 
 		return "redirect:" + "https://kauth.kakao.com/oauth/authorize";
 	}
+
+	@RequestMapping(value = "/login/facebook")
+	public String facebookLogin(RedirectAttributes redirectAttributes) {
+		redirectAttributes.addAttribute("client_id", "5773518286057193");
+		redirectAttributes.addAttribute("redirect_uri", "http://localhost:20000/v1/login/facebook");
+		redirectAttributes.addAttribute("response_type", "code");
+
+		return "redirect:" + "https://www.facebook.com/v15.0/dialog/oauth";
+	}
+
 }
