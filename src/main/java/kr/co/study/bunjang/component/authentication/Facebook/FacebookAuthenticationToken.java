@@ -1,4 +1,4 @@
-package kr.co.study.bunjang.component.authentication.Facebook;
+package kr.co.study.bunjang.component.authentication.facebook;
 
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
