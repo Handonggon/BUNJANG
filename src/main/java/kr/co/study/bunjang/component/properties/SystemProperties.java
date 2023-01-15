@@ -1,13 +1,9 @@
 package kr.co.study.bunjang.component.properties;
 
-import org.springframework.beans.factory.annotation.Value;
+import kr.co.study.bunjang.component.utility.PropertyUtils;
 
 public class SystemProperties {
     
-    public static String FILE_BASE_UPLOAD_PATH;
-
-    @Value("${system.file.baseUploadPath}")
-    public void setTenantId(String fileBaseUploadPath) {
-        SystemProperties.FILE_BASE_UPLOAD_PATH = fileBaseUploadPath;
-    }
+    public static final String FILE_BASE_UPLOAD_PATH = PropertyUtils.getProperty("system.file.baseUploadPath");
+    
 }

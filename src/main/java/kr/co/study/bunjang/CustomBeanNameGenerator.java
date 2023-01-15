@@ -10,7 +10,7 @@ import org.springframework.context.annotation.AnnotationBeanNameGenerator;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
-public class CustomBeanNameGenerator implements BeanNameGenerator  {
+public class CustomBeanNameGenerator implements BeanNameGenerator {
 
 	private static final BeanNameGenerator DEFAULT_GENERATOR = new AnnotationBeanNameGenerator();
 

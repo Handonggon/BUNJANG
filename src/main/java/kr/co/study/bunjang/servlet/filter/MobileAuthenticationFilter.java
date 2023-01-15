@@ -40,12 +40,4 @@ public class MobileAuthenticationFilter extends AbstractAuthenticationProcessing
         }
         return null;
     }
-
-	protected String obtainShopNo(HttpServletRequest request) {
-		return request.getParameter("shopNo");
-	}
-
-	protected String obtainCredentials(HttpServletRequest request) {
-		return request.getParameter("credentials");
-	}
 }

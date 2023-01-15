@@ -46,9 +46,8 @@ public class ProductReader implements ItemReader<ProductItem>, StepExecutionList
         params.add("page", "1");
         params.add("size", "100");
 
-        CommonMap respones = new CommonMap();
-  
-        respones.putAll(webClient.get()
+        CommonMap responseBody = new CommonMap();
+        responseBody.putAll(webClient.get()
                 .uri(uriBuilder->uriBuilder.path("/api/rec/v1/products/personalized/main").queryParams(params).build())
                 .accept(MediaType.APPLICATION_JSON)
                 .exchangeToMono(response->{
@@ -56,7 +55,7 @@ public class ProductReader implements ItemReader<ProductItem>, StepExecutionList
                 }).block());
 
         ObjectMapper objectMapper = new ObjectMapper();
-        List<ProductItem> resultData = objectMapper.convertValue(ObjUtils.nvl(respones.getList("data"), new ArrayList<ProductItem>()), new TypeReference<List<ProductItem>>(){});
+        List<ProductItem> resultData = objectMapper.convertValue(ObjUtils.nvl(responseBody.getList("data"), new ArrayList<ProductItem>()), new TypeReference<List<ProductItem>>(){});
         products = resultData.iterator();
     }
 
