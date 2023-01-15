@@ -431,7 +431,7 @@
                         <div class="sc-emmjRN hhygwv"></div>
                         카카오로 이용하기
                     </button>
-                    <button class="sc-cpmLhU exvIJc">
+                    <button class="sc-cpmLhU exvIJc" id="facebook">
                         <div class="sc-emmjRN hhygwv"></div>
                         페이스북으로 이용하기
                     </button>
@@ -555,6 +555,10 @@
 
         $('.fNMOeS').on("click", () => {
             var popup = window.open('/login/kakao', '카카오 로그인', 'width=700px, height=800px');
+        });
+
+        $('#facebook').on("click", () => {
+            let fa_popup = window.open('/login/facebook', '페이스북 로그인', 'width=700px, height=800px');
         });
     </script>
 </th:block>

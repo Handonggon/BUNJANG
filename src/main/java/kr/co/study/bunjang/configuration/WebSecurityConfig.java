@@ -2,6 +2,7 @@ package kr.co.study.bunjang.configuration;
 
 import java.util.Arrays;
 
+import kr.co.study.bunjang.servlet.filter.FacebookAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
@@ -50,7 +51,8 @@ public class WebSecurityConfig {
             .antMatchers("/**").permitAll();//.authenticated();
 
         http.formLogin().disable().addFilterAt(mobileAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
-            .addFilterAt(kakaoAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+            .addFilterAt(kakaoAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+                .addFilterAt(facebookAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
         http.exceptionHandling()
             .accessDeniedHandler(new AccessDeniedHandlerImpl())
@@ -99,6 +101,15 @@ public class WebSecurityConfig {
     }
 
     //페이스북 로그인 필터      /v1/login/facebook
+
+    @Bean
+    public FacebookAuthenticationFilter facebookAuthenticationFilter() {
+        FacebookAuthenticationFilter filter = new FacebookAuthenticationFilter(new AntPathRequestMatcher("/v1/login/facebook"));
+        filter.setAuthenticationSuccessHandler(authenticationSuccessHandlerImpl);
+        filter.setAuthenticationFailureHandler(authenticationFailureHandlerImpl);
+        filter.setAuthenticationManager(authenticationManager());
+        return filter;
+    }
 
     //네이버 로그인 필터        /v1/login/naver
 

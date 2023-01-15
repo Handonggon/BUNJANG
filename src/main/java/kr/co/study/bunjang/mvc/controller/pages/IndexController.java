@@ -1,5 +1,6 @@
 package kr.co.study.bunjang.mvc.controller.pages;
 
+import kr.co.study.bunjang.component.properties.FacebookOAuthProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -36,5 +37,14 @@ public class IndexController {
 		// redirectAttributes.addAttribute("nonce", "");			//OpenID Connect를 통해 ID 토큰을 함께 발급받을 경우, ID 토큰 재생 공격을 방지하기 위해 사용
 
 		return "redirect:" + KakaoOAuthProperties.BASE_URL + "/oauth/authorize";
+	}
+
+	@RequestMapping(value = "/login/facebook")
+	public String facebookLogin(RedirectAttributes redirectAttributes) {
+		redirectAttributes.addAttribute("client_id", FacebookOAuthProperties.CLIENT_ID);
+		redirectAttributes.addAttribute("redirect_uri", FacebookOAuthProperties.REDIRECT_URL);
+		redirectAttributes.addAttribute("response_type", "code");
+
+		return "redirect:" + FacebookOAuthProperties.BASE_URL + "/v15.0/dialog/oauth";
 	}
 }

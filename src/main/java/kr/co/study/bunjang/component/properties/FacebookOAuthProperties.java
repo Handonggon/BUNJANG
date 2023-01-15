@@ -6,7 +6,7 @@ import kr.co.study.bunjang.component.utility.PropertyUtils;
 
 public class FacebookOAuthProperties {
     
-    public static final String BASE_URL = "";
+    public static final String BASE_URL = "https://www.facebook.com";
 
     public static final String CLIENT_ID = PropertyUtils.getProperty("spring.security.oauth2.client.registration.facebook.client-id");
 
