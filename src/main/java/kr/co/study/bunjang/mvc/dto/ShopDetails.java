@@ -22,6 +22,8 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 public class ShopDetails extends AbstractDto implements UserDetails {
 
+	private String email;
+
 	private Long shopNo;
 
 	private String shopNm;
@@ -33,6 +35,7 @@ public class ShopDetails extends AbstractDto implements UserDetails {
 	public final Collection<Role> authorities = new ArrayList<Role>();
 
 	public ShopDetails(Shop shop) {
+		this.email = shop.getEmail();
 		this.shopNo = shop.getShopNo();
 		this.shopNm = shop.getShopNm();
 		this.authenticationYn = shop.getAuthenticationYn();

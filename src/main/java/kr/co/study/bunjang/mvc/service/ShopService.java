@@ -68,4 +68,24 @@ public class ShopService implements UserDetailsService {
         }
         return new ShopDto(target);
     }
+
+    // TODO 이메일 찾기
+    
+    @Override
+    public UserDetails loadUserByEmail(String eamil) throws UsernameNotFoundException {
+        ShopDetails userDetailsDto = new ShopDetails(userRepository.findOneByEmail(ObjUtils.objToLong(eamil)).get());
+        if (ObjUtils.isEmpty(userDetailsDto)) {
+            throw new UsernameNotFoundException(MessageUtils.getMessage("exception.UsernameNotFound"));
+        }
+        return userDetailsDto;
+    }
+
+    // @Transactional
+    // public Shop emailFind(ShopDto shopDto, String email) {
+    //     Shop shopEmail = userRepository.findOneByEmail(shopDto.getEmail())
+    //         .orElseGet(() -> {
+    //             return new Shop();
+    //         });
+    //     return shopEmail;
+    // }
 }

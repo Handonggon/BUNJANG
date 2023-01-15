@@ -38,7 +38,7 @@ import lombok.NoArgsConstructor;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Comment("상점 키값")
+    @Comment("상점 번호")
     private Long shopNo;
 
     @Column(length = 100, insertable = false, nullable = true)
@@ -60,6 +60,10 @@ import lombok.NoArgsConstructor;
     @Column(length = 10)
     @Comment("통신사")
     private String telecom;
+
+    @Column(nullable = false, unique = true)
+    @Comment("이메일")
+    private String email;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, columnDefinition = "CHAR(1) default 'N'")

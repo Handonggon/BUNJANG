@@ -28,6 +28,7 @@ public class KakaoProfile {
 		public Boolean is_email_valid;
 		public Boolean is_email_verified;
 		public String email;
+        public String phone_number;
 		
 		@Data
 		@Generated("jsonschema2pojo")

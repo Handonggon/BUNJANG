@@ -17,6 +17,9 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 public class ShopDto extends AbstractDto {
 
+	@ApiModelProperty(position = 0, value = "이메일", notes = "샵 이메일", example = "***@gmail.com")
+	private String email;
+
 	@ApiModelProperty(position = 1, value = "상점 번호", notes = "순번 데이터", example = "1")
 	private Long shopNo;
 
@@ -75,6 +78,7 @@ public class ShopDto extends AbstractDto {
 	private String context;
 
 	public ShopDto(Shop shop) {
+		this.email = shop.getEmail();
 		this.shopNo = shop.getShopNo();
 		this.shopNm = ObjUtils.objToString(ObjUtils.nvl(shop.getShopNm(), "상점" + shop.getShopNo() + "호"));
 		this.userNm = shop.getUserNm();
@@ -98,6 +102,7 @@ public class ShopDto extends AbstractDto {
 	
 	public Shop toEntity() {
 		return Shop.builder()
+					.email(this.email)
 					.shopNo(this.shopNo)
 					.userNm(this.userNm)
 					.identiNumber(this.identiNumber)
