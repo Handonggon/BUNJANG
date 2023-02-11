@@ -18,6 +18,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import kr.co.study.bunjang.component.util.CommonMap;
 import kr.co.study.bunjang.component.utility.ObjUtils;
+import kr.co.study.bunjang.mvc.dto.ShopDto;
 import kr.co.study.bunjang.mvc.service.ShopService;
 
 @Component
@@ -72,16 +73,23 @@ public class KakaoAuthenticationProvider implements AuthenticationProvider {
                     return response.bodyToMono(KakaoProfile.class);
                 }).block();
 
-		// String credentials = ObjUtils.objToString(authentication.getCredentials());
-		// if (!userDetails.getPassword().equals(credentials)) {
-		// 	throw new BadCredentialsException("인증번호 오류");
-		// }
+		// 추가된 부분
+		UserDetails userDetails = null;
 
-		// if (!userDetails.isEnabled()) {
-		// 	throw new DisabledException("인증 되지 않은 업체");
-		// }
+		try {
+			userDetails = shopService.loadUserByEmail(respones2.getKakao_account().getEmail());
+		} catch (Exception e) {
+			ShopDto kakaoUser = ShopDto.builder()
+					.email(respones2.getKakao_account().getEmail())
+					.userNm(respones2.getKakao_account().getProfile().getNickname())
+					.phoneNumber(respones2.getKakao_account().getPhone_number())
+					.build();
 
-		return new KakaoAuthenticationToken(null, credentials);
+			shopService.signUp(kakaoUser);
+			userDetails = shopService.loadUserByEmail(respones2.getKakao_account().getEmail());
+		}
+
+		return new KakaoAuthenticationToken(userDetails, credentials);
 	}
 
 	@Override

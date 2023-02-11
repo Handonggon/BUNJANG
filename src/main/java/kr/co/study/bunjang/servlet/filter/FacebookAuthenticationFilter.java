@@ -13,7 +13,7 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import kr.co.study.bunjang.component.authentication.facebook.FacebookAuthenticationToken;
+import kr.co.study.bunjang.component.authentication.Facebook.FacebookAuthenticationToken;
 
 public class FacebookAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
 

@@ -71,9 +71,8 @@ public class ShopService implements UserDetailsService {
 
     // TODO 이메일 찾기
     
-    @Override
     public UserDetails loadUserByEmail(String eamil) throws UsernameNotFoundException {
-        ShopDetails userDetailsDto = new ShopDetails(userRepository.findOneByEmail(ObjUtils.objToLong(eamil)).get());
+        ShopDetails userDetailsDto = new ShopDetails(userRepository.findOneByEmail(eamil));
         if (ObjUtils.isEmpty(userDetailsDto)) {
             throw new UsernameNotFoundException(MessageUtils.getMessage("exception.UsernameNotFound"));
         }
