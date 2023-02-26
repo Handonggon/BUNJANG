@@ -17,6 +17,7 @@ version = '0.0.1'
 sourceCompatibility = '11'
 
 configurations {
+	customProvidedRuntime
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
@@ -39,7 +40,7 @@ dependencies {
 	implementation "org.springframework.boot:spring-boot-starter-aop"
 	implementation "org.springframework.boot:spring-boot-starter-security"
 	implementation "org.springframework.boot:spring-boot-starter-webflux"
-	providedRuntime "org.springframework.boot:spring-boot-starter-tomcat"
+	customProvidedRuntime "org.springframework.boot:spring-boot-starter-tomcat"
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude group: "org.junit.vintage", module: "junit-vintage-engine"
 	}
