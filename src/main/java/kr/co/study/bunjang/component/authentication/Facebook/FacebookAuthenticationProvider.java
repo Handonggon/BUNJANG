@@ -1,4 +1,4 @@
-package kr.co.study.bunjang.component.authentication.Facebook;
+package kr.co.study.bunjang.component.authentication.facebook;
 
 import kr.co.study.bunjang.component.authentication.kakao.KakaoAuthenticationToken;
 import kr.co.study.bunjang.component.authentication.kakao.KakaoProfile;

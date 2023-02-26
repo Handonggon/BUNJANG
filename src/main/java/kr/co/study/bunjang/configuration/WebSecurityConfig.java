@@ -2,6 +2,7 @@ package kr.co.study.bunjang.configuration;
 
 import java.util.Arrays;
 
+import kr.co.study.bunjang.component.authentication.facebook.FacebookAuthenticationProvider;
 import kr.co.study.bunjang.servlet.filter.FacebookAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
@@ -73,11 +74,15 @@ public class WebSecurityConfig {
     @Autowired
     KakaoAuthenticationProvider kakaoAuthenticationProvider;
 
+    @Autowired
+    FacebookAuthenticationProvider facebookAuthenticationProvider;
+
     @Bean
     public AuthenticationManagerImpl authenticationManager() {
         AuthenticationManagerImpl authenticationManager = new AuthenticationManagerImpl();
         authenticationManager.setAuthenticationProvider(mobileAuthenticationProvider);
         authenticationManager.setAuthenticationProvider(kakaoAuthenticationProvider);
+        authenticationManager.setAuthenticationProvider(facebookAuthenticationProvider);
         return authenticationManager;
     }
 
