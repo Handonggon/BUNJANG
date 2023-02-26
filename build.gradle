@@ -123,11 +123,11 @@ war {
 	}
 
 	processResources {
-		exclude("config")
+		exclude('application.yaml', 'application-*.yaml')
 	}
 
 	into("WEB-INF/classes") {
-		from "src/main/resources/config/application-${activeProfile}.yaml"
+		from "src/main/resources/application-${activeProfile}.yaml"
 	}
 
 	rename "application-${activeProfile}.yaml", "application.yaml"
