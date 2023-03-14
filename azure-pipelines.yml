@@ -13,7 +13,7 @@ variables:
   dockerRegistryServiceConnection: '047ba8b4-07ae-49d5-9b30-5a52beca31b0'
   imageRepository: 'bunjang'
   containerRegistry: 'sorincr.azurecr.io'
-  dockerfilePath: '**/Dockerfile'
+  dockerfilePath: '$(Build.SourcesDirectory)/DockerFile'
   tag: '$(Build.BuildId)'
 
   # Agent VM image name
