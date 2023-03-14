@@ -1,0 +1,21 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  namespace: tomcat
+  name: spring
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: spring
+  template:
+    metadata:
+      labels:
+        app: spring
+    spec:
+      containers:
+        - name: spring 
+          image: sorincr.azurecr.io/hdg/spring:0.1
+          ports:
+          - containerPort: 8080
+          - containerPort: 8009
