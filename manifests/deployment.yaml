@@ -2,20 +2,20 @@ apiVersion : apps/v1
 kind: Deployment
 metadata:
   namespace: tomcat
-  name: spring
+  name: bunjang
 spec:
   replicas: 5
   selector:
     matchLabels:
-      app: spring
+      app: bunjang
   template:
     metadata:
       labels:
-        app: spring
+        app: bunjang
     spec:
       containers:
-        - name: spring 
-          image: sorincr.azurecr.io/hdg/spring:0.1
+        - name: bunjang 
+          image: sorincr.azurecr.io/bunjang
           ports:
           - containerPort: 8080
           - containerPort: 8009
