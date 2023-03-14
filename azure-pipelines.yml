@@ -15,6 +15,9 @@ variables:
   containerRegistry: 'sorincr.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/DockerFile'
   tag: '$(Build.BuildId)'
+  kubernetesServiceConnection: 'sorin-aks'
+  imagePullSecret: 'MVHvMdxVn83vtAJuJCLwYsSw0damVMXjd1/co1OYN5+ACRCSjbYS'
+
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
