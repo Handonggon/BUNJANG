@@ -58,7 +58,7 @@ stages:
     displayName: Deploy
     pool:
       vmImage: $(vmImageName)
-    environment: 'bunjang'
+    environment: 'sorin-aks'
     strategy:
       runOnce:
         deploy:
