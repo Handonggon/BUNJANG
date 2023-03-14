@@ -15,6 +15,7 @@ variables:
   containerRegistry: 'sorincr.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/DockerFile'
   tag: '$(Build.BuildId)'
+  namespace: tomcat
   kubernetesServiceConnection: 'sorin-aks'
   imagePullSecret: 'sorin-secret'
 
@@ -70,14 +71,16 @@ stages:
             displayName: Create imagePullSecret
             inputs:
               action: createSecret
+              namespace: $(namespace)
               kubernetesServiceConnection: $(kubernetesServiceConnection)
               secretName: $(imagePullSecret)
               dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
- 
+
           - task: KubernetesManifest@0
             displayName: Deploy to Kubernetes cluster
             inputs:
               action: deploy
+              namespace: $(namespace)
               kubernetesServiceConnection: $(kubernetesServiceConnection)
               manifests: |
                 $(Pipeline.Workspace)/manifests/deployment.yaml
