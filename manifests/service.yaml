@@ -2,9 +2,9 @@ apiVersion: v1
 kind: Service
 metadata:
     namespace: tomcat
-    name: spring
+    name: bunjang
     labels:
-      app: spring
+      app: bunjang
 spec:
     type: LoadBalancer
     ports:
@@ -15,4 +15,4 @@ spec:
         port: 8009
         targetPort: 8009
     selector:
-      app: spring
+      app: bunjang
