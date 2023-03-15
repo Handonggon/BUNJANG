@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: bunjang 
-          image: sorincr.azurecr.io/bunjang
+          image: sorincr.azurecr.io/bunjang:29
           ports:
           - containerPort: 8080
           - containerPort: 8009
