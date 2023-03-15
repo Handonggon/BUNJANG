@@ -19,3 +19,5 @@ spec:
           ports:
           - containerPort: 8080
           - containerPort: 8009
+      imagePullSecrets:
+        - name: sorin-secret
