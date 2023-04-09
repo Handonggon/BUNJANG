@@ -397,33 +397,61 @@
         <script>
             $(function () {
                 let products = {};
-                axios.get("https://api.bunjang.co.kr/api/rec/v1/products/personalized/main?page=0&size=100")
-                    .then(function (response) {
-                        products = response.data.data;
-                        let container = document.getElementById('product-container');
+                let d = 0
+                let loading = false;
 
-                        for (const product of products) {
-                            const productDiv = `
-                            <div class="sc-gldTML iOdjti">
-                                <a data-pid="203671777" target="_blank" rel="noopener noreferrer" class="sc-iGrrsa iznGlI" href="/products/203671777">
-                                    <div class="sc-bmyXtO imqoyX">
-                                        <img src="${product['productImage']}" width="194" height="194" alt="상품 이미지"/>
-                                        <div class="sc-kxynE ieWpyX"></div>
-                                    </div>
-                                    <div class="sc-dEoRIm jMQIRF">
-                                        <div class="sc-jtggT hsIUYD">${product['productName']}</div>
-                                        <div class="sc-jKVCRD cYbWFg">
-                                            <div class="sc-ebFjAB lbGJij">${product['price']}</div>
-                                            <div class="sc-kaNhvL dIGHWc"><span>${product['updatedBefore']}</span></div>
+                function loadProducts() {
+                    if (!loading) {
+                        loading = true;
+                        axios.get(`https://api.bunjang.co.kr/api/rec/v1/products/personalized/main?page=${d}&size=100`)
+                            .then(function (response) {
+                                products = response.data.data;
+                                let container = document.getElementById('product-container');
+
+                                for (const product of products) {
+                                    const productDiv = `
+                                <div class="sc-gldTML iOdjti">
+                                    <a data-pid="203671777" target="_blank" rel="noopener noreferrer" class="sc-iGrrsa iznGlI" href="/products/203671777">
+                                        <div class="sc-bmyXtO imqoyX">
+                                            <img src="${product['productImage']}" width="194" height="194" alt="상품 이미지"/>
+                                            <div class="sc-kxynE ieWpyX"></div>
                                         </div>
-                                    </div>
-                                </a>
-                            </div>`;
-                            container.insertAdjacentHTML('beforeend', productDiv);
-                        }
-                    }).catch(function (error) {
-                        console.error(error);
-                })
+                                        <div class="sc-dEoRIm jMQIRF">
+                                            <div class="sc-jtggT hsIUYD">${product['productName']}</div>
+                                            <div class="sc-jKVCRD cYbWFg">
+                                                <div class="sc-ebFjAB lbGJij">${product['price']}</div>
+                                                <div class="sc-kaNhvL dIGHWc"><span>${product['updatedBefore']}</span></div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>`;
+                                    container.insertAdjacentHTML('beforeend', productDiv);
+                                }
+                                loading = false;
+                            })
+                            .catch(function (error) {
+                                console.error(error);
+                                loading = false;
+                            });
+                    }
+                }
+
+                document.addEventListener('DOMContentLoaded', loadProducts);
+
+                loadProducts()
+
+                window.addEventListener('scroll', function () {
+                    let scrollHeight = document.documentElement.scrollHeight;
+                    let scrollTop = document.documentElement.scrollTop;
+                    let clientHeight = document.documentElement.clientHeight;
+                    let threshold = 600;
+
+                    if (scrollHeight - scrollTop - clientHeight <= threshold) {
+                        d+=1
+                        loadProducts();
+                    }
+                });
+
             })
 
             $(function () {
