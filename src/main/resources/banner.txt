@@ -9,4 +9,3 @@
 
 
                              ${AnsiColor.BRIGHT_GREEN}Spring Boot: ${AnsiColor.DEFAULT}${spring-boot.formatted-version}
-

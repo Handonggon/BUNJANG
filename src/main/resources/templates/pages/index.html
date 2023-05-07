@@ -320,6 +320,8 @@
             border: 1px solid #eee;
             margin-bottom: 16px;
         }
+
+
     </style>
     <div class="sc-ccSCjj kaTytj">
         <div class="sc-hmXxxW lppjxC">
@@ -411,7 +413,7 @@
                                 for (const product of products) {
                                     const productDiv = `
                                 <div class="sc-gldTML iOdjti">
-                                    <a data-pid="203671777" target="_blank" rel="noopener noreferrer" class="sc-iGrrsa iznGlI" href="/products/203671777">
+                                    <a data-pid="${product['pid']}" target="_blank" rel="noopener noreferrer" class="sc-iGrrsa iznGlI" href="https://m.bunjang.co.kr/products/${product['pid']}">
                                         <div class="sc-bmyXtO imqoyX">
                                             <img src="${product['productImage']}" width="194" height="194" alt="상품 이미지"/>
                                             <div class="sc-kxynE ieWpyX"></div>
@@ -438,7 +440,6 @@
 
                 document.addEventListener('DOMContentLoaded', loadProducts);
 
-                loadProducts()
 
                 window.addEventListener('scroll', function () {
                     let scrollHeight = document.documentElement.scrollHeight;
@@ -447,7 +448,7 @@
                     let threshold = 600;
 
                     if (scrollHeight - scrollTop - clientHeight <= threshold) {
-                        d+=1
+                        d += 1
                         loadProducts();
                     }
                 });
