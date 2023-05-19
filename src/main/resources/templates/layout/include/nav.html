@@ -31,6 +31,18 @@
             position: relative;
         }
 
+        .ipSIsJ {
+            display: flex;
+            -webkit-box-pack: center;
+            justify-content: center;
+            font-size: 12px;
+            color: rgb(247, 0, 0);
+            font-weight: 600;
+            width: 38px;
+            border-bottom: 2px dotted rgb(136, 136, 136);
+            padding-bottom: 10px;
+        }
+
         .voMyM {
             width: 100%;
             height: 100%;
@@ -595,6 +607,42 @@
     </style>
 
     <script>
+        let currentNumber = 0;
+
+        /// Cookie 저장 ///
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                let date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        function getCookie(name) {
+            let nameEQ = name + "=";
+            let ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ')
+                    c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0)
+                    return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        /// 여기서부터 click event ///
+        function cnt_click() {
+            if (currentNumber === 0) {
+                $('.sc-bbmXgH.eWzLza').removeClass('eWzLza').addClass('ipSIsJ');
+            }
+            let targetDiv = document.querySelector('.sc-bbmXgH.ipSIsJ');
+            currentNumber++;
+            targetDiv.textContent = currentNumber
+        }
+
         function clickEventFun(e) {
             let clickHref = $(e.target).closest('.iznGlI').attr('href');
             let clickImage = $(e.target).closest('.iznGlI').find('img').attr('src');
@@ -603,16 +651,26 @@
             let BoxDiv_3 = $('<div>').addClass('sc-jqCOkK hhXaDT');
             let button_Box = $('<button>').addClass('sc-bbmXgH dMZZQD')
 
+            let cookie_Href = setCookie('Href', clickHref, 1)
+            let cookie_Image = setCookie('Image', clickImage, 1)
+
+            let list = getCookie('name')
+            if (list === null)
+
+            let cookie_list = getCookie()
+
+            console.log(getCookie('Href'))
+            console.log(getCookie('Image'))
+
             button_Box.append(`<img src="https://m.bunjang.co.kr/pc-static/resource/8221ab3198c73f8141a4.png" width="10" height="12" alt="삭제버튼이미지">`)
             BoxDiv_3.append(button_Box)
             BoxDiv.append(`<img src="${clickImage}" alt="이미지">`).append(BoxDiv_2).append(BoxDiv_3);
             $('.hnPUCb').prepend(BoxDiv);
-
-
         }
 
         $(document).ready(function () {
             $('#product-container').on('click', '.iznGlI', function (e) {
+                cnt_click()
                 if ($('.eVyCsJ').length > 0) {
                     $('.eVyCsJ').empty().removeClass('eVyCsJ').addClass('sc-cIShpX hnPUCb');
                     clickEventFun(e)
@@ -737,7 +795,7 @@
             <div class="sc-kvZOFW fRAuHJ">
                 <div class="sc-hqyNC bjSxjd">최근본상품</div>
                 <div class="sc-uJMKN hVUerH">
-                    <div class="sc-bbmXgH eWzLza"></div>
+                    <div class="sc-bbmXgH eWzLza" onclick="cnt_click()"></div>
                 </div>
                 <div class="sc-cIShpX eVyCsJ">
                     <img id="img" th:src="@{/image/icon/viewed.png}" width="28" height="16" alt="빈 최근본상품 아이콘"/>
